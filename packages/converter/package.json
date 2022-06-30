@@ -1,0 +1,32 @@
+{
+  "name": "@cloudscape-design/test-utils-converter",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "pretest": "npm run build",
+    "test": "jest --coverage",
+    "posttest": "./scripts/verify-typescript.js"
+  },
+  "dependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-syntax-decorators": "^7.16.0",
+    "@babel/plugin-syntax-typescript": "^7.16.0"
+  },
+  "devDependencies": {
+    "@cloudscape-design/test-utils-core": "^1.0.0",
+    "@types/babel__core": "^7.1.16",
+    "@types/react-dom": "^16.9.14"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "test/tsconfig.json"
+      }
+    }
+  }
+}

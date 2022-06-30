@@ -1,0 +1,8 @@
+build
+node_modules
+packages/*/dist
+packages/*/test-utils-doc
+packages/*/coverage
+packages/converter/test/outputs
+packages/core/*.js
+packages/core/*.d.ts
