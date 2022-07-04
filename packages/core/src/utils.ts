@@ -61,7 +61,7 @@ const trimContentHash = (className: string): string => {
 
 export const getUnscopedClassName = (selector: string): string => {
   // this regexp resembles the logic of this code in the theming-core package:
-  // see https://github.com/cloudscape-design/theming-core/blob/main/src/build/tasks/postcss/generate-scoped-name.ts
+  // see src/build/tasks/postcss/generate-scoped-name.ts
   return selector.replace(/\.awsui_[a-zA-Z0-9_-]+/g, match => {
     return trimContentHash(match);
   });
