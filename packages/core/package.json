@@ -1,6 +1,12 @@
 {
   "name": "@cloudscape-design/test-utils-core",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudscape-design/test-utils.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://cloudscape.design",
   "scripts": {
     "build": "tsc && ./scripts/generate-exports.js && ./scripts/generate-doc.js",
     "pretest": "npm run build",

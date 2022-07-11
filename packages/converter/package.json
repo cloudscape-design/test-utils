@@ -1,6 +1,12 @@
 {
   "name": "@cloudscape-design/test-utils-converter",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudscape-design/test-utils.git",
+    "directory": "packages/converter"
+  },
+  "homepage": "https://cloudscape.design",
   "main": "dist/index.js",
   "files": [
     "dist"
