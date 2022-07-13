@@ -17,8 +17,7 @@ describe('component overrides', () => {
     const component = new ComponentWrapper('block');
     const element = new ElementWrapper('element');
     expect(element.findSomething).toEqual(expect.any(Function));
-    // we test javascript behavior here which is not a valid typescript
-    // @ts-expect-error
+    // @ts-expect-error: we test javascript behavior here which is not a valid typescript
     expect(component.findSomething).toBeUndefined();
   });
 });
