@@ -9,15 +9,12 @@ export default class DummyWrapper extends ComponentWrapper {
   findElement() {
     return this.find('.awsui-element');
   }
-
   findElements() {
     return this.findAll('.awsui-element');
   }
-
   findChildren() {
     return this.findAll('.awsui-element').map(element => new ChildWrapper(element.getElement()));
   }
-
 }"
 `;
 
@@ -29,14 +26,12 @@ export default class DummyWrapper extends ComponentWrapper {
   findElement() {
     return this.find('.awsui-element')!;
   }
-
 }"
 `;
 
 exports[`strip-dom 1`] = `
 "// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-
 /* eslint-env browser */
 import { Simulate } from 'react-dom/test-utils';
 import { ComponentWrapper, ElementWrapper } from \\"@cloudscape-design/test-utils-core/selectors\\";
@@ -44,11 +39,9 @@ export default class DummyWrapper extends ComponentWrapper {
   findOptionalElement() {
     return this.find('.awsui-optional-element');
   }
-
   findRequiredElement() {
     return this.find('.awsui-required-element')!;
   }
-
 }"
 `;
 
@@ -62,10 +55,8 @@ export default class DummyWrapper extends ComponentWrapper {
   findElement() {
     return new ChildWrapper(this.find('.awsui-child')!.getElement());
   }
-
   findSomething() {
     return KeyCode.enter;
   }
-
 }"
 `;
