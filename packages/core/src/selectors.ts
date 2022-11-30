@@ -64,6 +64,6 @@ export class MultiElementWrapper<T extends AbstractWrapper> extends ElementWrapp
     return new MultiElementWrapper(this.root, root => factory(new ElementWrapper(root)));
   }
 }
-export function createWrapper(): ElementWrapper {
-  return new ElementWrapper('body');
+export function createWrapper(root = 'body') {
+  return new ElementWrapper(root);
 }

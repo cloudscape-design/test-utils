@@ -121,6 +121,11 @@ export class AbstractWrapper<ElementType extends Element>
 
 export class ElementWrapper<ElementType extends Element = HTMLElement> extends AbstractWrapper<ElementType> {}
 export class ComponentWrapper<ElementType extends Element = HTMLElement> extends AbstractWrapper<ElementType> {}
-export function createWrapper(): ElementWrapper {
-  return new ElementWrapper(document.body);
+export function createWrapper(root: Element = document.body) {
+  if (document && document.body && !document.body.contains(root)) {
+    console.warn(
+      '[AwsUi] [test-utils] provided element is not part of the document body, interactions may work incorrectly'
+    );
+  }
+  return new ElementWrapper(root);
 }
