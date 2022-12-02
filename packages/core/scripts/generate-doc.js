@@ -15,7 +15,7 @@ testUtilTypes.forEach(testUtilType => {
     {
       tsconfig: require.resolve('./tsconfig.docs.json'),
       includeDeclarations: true,
-      excludeExternals: true
+      excludeExternals: true,
     },
     `**/${testUtilType}.d.ts`
   );

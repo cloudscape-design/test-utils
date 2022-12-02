@@ -62,8 +62,8 @@ function selectorUtilsGenerator({ types: t }: PluginArguments): PluginObj {
         if (containsDomElement) {
           path.remove();
         }
-      }
-    }
+      },
+    },
   };
 }
 
@@ -74,7 +74,7 @@ export default function convertToSelectorUtil(source: string) {
     plugins: [
       require('@babel/plugin-syntax-typescript'),
       [require('@babel/plugin-syntax-decorators'), { legacy: true }],
-      selectorUtilsGenerator
-    ]
+      selectorUtilsGenerator,
+    ],
   })?.code;
 }

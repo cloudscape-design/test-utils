@@ -28,5 +28,5 @@ fs.readdirSync(inputDir).forEach(name => {
 // Command-line API does not allow to use tsconfig when compiling only selected files
 // https://github.com/microsoft/TypeScript/issues/27379
 execSync('tsc --noEmit --strict --experimentalDecorators --target es5 test/inputs/*.ts test/outputs/*.ts', {
-  stdio: 'inherit'
+  stdio: 'inherit',
 });
