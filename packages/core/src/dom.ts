@@ -19,11 +19,12 @@ export const usesDom: MethodDecorator = () => {};
 
 const defaultParams = {
   bubbles: true,
-  cancelable: true
+  cancelable: true,
 };
 
 export class AbstractWrapper<ElementType extends Element>
-  implements IElementWrapper<ElementType, Array<ElementWrapper<ElementType>>> {
+  implements IElementWrapper<ElementType, Array<ElementWrapper<ElementType>>>
+{
   protected element: ElementType;
 
   constructor(element: ElementType) {

@@ -38,51 +38,27 @@ describe('CSS-selectors test utils', () => {
   });
 
   it('builds :nth-child selector for multiple elements', () => {
-    expect(
-      wrapper
-        .findAll('.item')
-        .get(2)
-        .toSelector()
-    ).toEqual('.awsui-component .item:nth-child(2)');
+    expect(wrapper.findAll('.item').get(2).toSelector()).toEqual('.awsui-component .item:nth-child(2)');
   });
 
   it('builds selectors using class names', () => {
     const CLASS_NAME = 'element';
     expect(wrapper.findByClassName(CLASS_NAME).toSelector()).toEqual('.awsui-component .element');
-    expect(
-      wrapper
-        .findAllByClassName(CLASS_NAME)
-        .get(2)
-        .toSelector()
-    ).toEqual('.awsui-component .element:nth-child(2)');
+    expect(wrapper.findAllByClassName(CLASS_NAME).get(2).toSelector()).toEqual(
+      '.awsui-component .element:nth-child(2)'
+    );
   });
 
   it('allows chaining to different component wrappers using .map', () => {
-    expect(
-      wrapper
-        .findItems()
-        .get(1)
-        .findTitle()
-        .toSelector()
-    ).toEqual('.awsui-component .item:nth-child(1) .title');
+    expect(wrapper.findItems().get(1).findTitle().toSelector()).toEqual('.awsui-component .item:nth-child(1) .title');
   });
 
   it('appends selector using matches method', () => {
-    expect(
-      wrapper
-        .findByClassName('button')
-        .matches(':focus')
-        .toSelector()
-    ).toEqual('.awsui-component .button:focus');
+    expect(wrapper.findByClassName('button').matches(':focus').toSelector()).toEqual('.awsui-component .button:focus');
   });
 
   it('allows to find components', () => {
-    expect(
-      wrapper
-        .findSingleChild()
-        .findTitle()
-        .toSelector()
-    ).toEqual('.awsui-component awsui-child .title');
+    expect(wrapper.findSingleChild().findTitle().toSelector()).toEqual('.awsui-component awsui-child .title');
   });
 
   it('converts css scoped selectors to wildcard classname selectors', () => {
@@ -96,12 +72,9 @@ describe('CSS-selectors test utils', () => {
     expect(wrapper.findByClassName(CLASS_NAME).toSelector()).toEqual(
       '.awsui-component [class*="awsui_element_header_filenameHash"]'
     );
-    expect(
-      wrapper
-        .findAllByClassName(CLASS_NAME)
-        .get(2)
-        .toSelector()
-    ).toEqual('.awsui-component [class*="awsui_element_header_filenameHash"]:nth-child(2)');
+    expect(wrapper.findAllByClassName(CLASS_NAME).get(2).toSelector()).toEqual(
+      '.awsui-component [class*="awsui_element_header_filenameHash"]:nth-child(2)'
+    );
   });
 
   it('trims scoping for multiple class names in the selector', () => {

@@ -9,14 +9,14 @@ const fs = require('fs');
 [
   require.resolve('../package-lock.json'),
   require.resolve('../packages/converter/package-lock.json'),
-  require.resolve('../packages/core/package-lock.json')
+  require.resolve('../packages/core/package-lock.json'),
 ].forEach(filename => unlock(filename));
 
 function unlock(filename) {
   const packageLock = require(filename);
-  Object.keys(packageLock.dependencies).forEach(dependency => {
-    if (dependency.startsWith('@cloudscape-design/')) {
-      delete packageLock.dependencies[dependency];
+  Object.keys(packageLock.packages).forEach(dependencyName => {
+    if (dependencyName.startsWith('node_modules/@cloudscape-design/')) {
+      delete packageLock.dependencies[dependencyName];
     }
   });
   fs.writeFileSync(filename, JSON.stringify(packageLock, null, 2) + '\n');

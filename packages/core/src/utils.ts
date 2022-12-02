@@ -84,5 +84,5 @@ export enum KeyCode {
   backspace = 8,
   control = 17,
   alt = 18,
-  meta = 91
+  meta = 91,
 }
