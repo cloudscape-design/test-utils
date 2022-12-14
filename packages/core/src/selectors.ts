@@ -56,6 +56,9 @@ export class MultiElementWrapper<T extends AbstractWrapper> extends ElementWrapp
     super(root);
   }
 
+  /**
+   * Index is one-based because the method uses the :nth-child() CSS pseudo-class.
+   */
   get(index: number): T {
     return this.elementFactory(`${this.root}:nth-child(${index})`);
   }
