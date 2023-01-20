@@ -22,6 +22,9 @@
     "css-selector-tokenizer": "^0.8.0",
     "css.escape": "^1.5.1"
   },
+  "peerDependencies": {
+    "react-dom": "^16.8 || ^17 || ^18"
+  },
   "jest": {
     "preset": "ts-jest",
     "globals": {
