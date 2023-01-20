@@ -95,7 +95,7 @@ describe('DOM test utils', () => {
       expect(event!.charCode).toBe(KeyCode.space);
     });
 
-    it('focus() passes down the focus call', () => {
+    it('element can be focused and blurred', () => {
       const element = wrapper.getElement();
 
       // make it focusable
@@ -103,6 +103,9 @@ describe('DOM test utils', () => {
 
       wrapper.focus();
       expect(element).toBe(document.activeElement);
+
+      wrapper.blur();
+      expect(element).not.toBe(document.activeElement);
     });
 
     describe('findAll()', () => {

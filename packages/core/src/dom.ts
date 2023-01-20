@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 /*eslint-env browser*/
+import { act } from 'react-dom/test-utils';
 import { IElementWrapper } from './interfaces';
 import { KeyCode, isScopedSelector, substituteScope } from './utils';
 
@@ -61,12 +62,17 @@ export class AbstractWrapper<ElementType extends Element>
   }
 
   fireEvent(event: Event) {
-    this.element.dispatchEvent(event);
+    act(() => {
+      this.element.dispatchEvent(event);
+    });
   }
 
   focus() {
     if (this.element instanceof HTMLElement || this.element instanceof SVGElement) {
-      this.element.focus();
+      const element = this.element;
+      act(() => {
+        element.focus();
+      });
     } else {
       throw new Error('Focus method is not supported for this element type');
     }
@@ -74,7 +80,10 @@ export class AbstractWrapper<ElementType extends Element>
 
   blur() {
     if (this.element instanceof HTMLElement || this.element instanceof SVGElement) {
-      this.element.blur();
+      const element = this.element;
+      act(() => {
+        element.blur();
+      });
     } else {
       throw new Error('Blur method is not supported for this element type');
     }
