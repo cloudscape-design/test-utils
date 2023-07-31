@@ -12,13 +12,22 @@ const fs = require('fs');
   require.resolve('../packages/core/package-lock.json'),
 ].forEach(filename => unlock(filename));
 
+function removeDependencies(dependencyName, packages) {
+  if (dependencyName.includes('@cloudscape-design/')) {
+    delete packages[dependencyName];
+  }
+}
+
 function unlock(filename) {
   const packageLock = require(filename);
   Object.keys(packageLock.packages).forEach(dependencyName => {
-    if (dependencyName.startsWith('node_modules/@cloudscape-design/')) {
-      delete packageLock.dependencies[dependencyName];
-    }
+    removeDependencies(dependencyName, packageLock.packages);
   });
+
+  Object.keys(packageLock.dependencies).forEach(dependencyName => {
+    removeDependencies(dependencyName, packageLock.dependencies);
+  });
+
   fs.writeFileSync(filename, JSON.stringify(packageLock, null, 2) + '\n');
   console.log(`Removed @cloudscape-design/ dependencies from ${filename} file`);
 }
