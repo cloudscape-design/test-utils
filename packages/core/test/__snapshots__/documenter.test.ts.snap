@@ -14,7 +14,7 @@ Array [
       },
       Object {
         "description": "Performs a click by triggering a mouse event.
-Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.",
+Note that in some environments this method will trigger listeners even if the element is disabled.",
         "name": "click",
         "parameters": Array [
           Object {
@@ -230,7 +230,7 @@ Note that programmatic events ignore disabled attribute and will trigger listene
       },
       Object {
         "description": "Performs a click by triggering a mouse event.
-Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.",
+Note that in some environments this method will trigger listeners even if the element is disabled.",
         "inheritedFrom": Object {
           "name": "AbstractWrapper.click",
         },
@@ -485,7 +485,7 @@ Note that programmatic events ignore disabled attribute and will trigger listene
       },
       Object {
         "description": "Performs a click by triggering a mouse event.
-Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.",
+Note that in some environments this method will trigger listeners even if the element is disabled.",
         "inheritedFrom": Object {
           "name": "AbstractWrapper.click",
         },
@@ -742,7 +742,7 @@ Array [
       },
       Object {
         "description": "Performs a click by triggering a mouse event.
-Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.",
+Note that in some environments this method will trigger listeners even if the element is disabled.",
         "name": "click",
         "parameters": Array [
           Object {
@@ -958,7 +958,7 @@ Note that programmatic events ignore disabled attribute and will trigger listene
       },
       Object {
         "description": "Performs a click by triggering a mouse event.
-Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.",
+Note that in some environments this method will trigger listeners even if the element is disabled.",
         "inheritedFrom": Object {
           "name": "AbstractWrapper.click",
         },
@@ -1213,7 +1213,7 @@ Note that programmatic events ignore disabled attribute and will trigger listene
       },
       Object {
         "description": "Performs a click by triggering a mouse event.
-Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.",
+Note that in some environments this method will trigger listeners even if the element is disabled.",
         "inheritedFrom": Object {
           "name": "AbstractWrapper.click",
         },

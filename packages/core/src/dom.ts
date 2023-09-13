@@ -38,7 +38,7 @@ export class AbstractWrapper<ElementType extends Element>
 
   /**
    * Performs a click by triggering a mouse event.
-   * Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.
+   * Note that in some environments this method will trigger listeners even if the element is disabled.
    */
   click(params?: MouseEventInit) {
     this.fireEvent(new MouseEvent('click', { ...defaultParams, ...params }));
