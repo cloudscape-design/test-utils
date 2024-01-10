@@ -21,11 +21,12 @@
     "@babel/core": "^7.16.0",
     "@babel/plugin-syntax-decorators": "^7.16.0",
     "@babel/plugin-syntax-typescript": "^7.16.0",
-    "glob": "^10.3.10"
+    "glob": "^7.2.0"
   },
   "devDependencies": {
     "@cloudscape-design/test-utils-core": "^1.0.0",
     "@types/babel__core": "^7.1.16",
+    "@types/glob": "^8.1.0",
     "@types/react-dom": "^16.9.14"
   },
   "jest": {

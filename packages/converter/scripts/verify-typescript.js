@@ -8,8 +8,8 @@ const path = require('path');
 const { execSync } = require('child_process');
 const convertToSelectorUtil = require('..').default;
 
-const inputDir = path.join(__dirname, '../test/inputs');
-const outputDir = path.join(__dirname, '../test/outputs');
+const inputDir = path.join(__dirname, '../test/inputs/converter');
+const outputDir = path.join(__dirname, '../test/outputs/converter');
 
 if (fs.rmSync) {
   // node 14+
@@ -27,6 +27,9 @@ fs.readdirSync(inputDir).forEach(name => {
 
 // Command-line API does not allow to use tsconfig when compiling only selected files
 // https://github.com/microsoft/TypeScript/issues/27379
-execSync('tsc --noEmit --strict --experimentalDecorators --target es5 test/inputs/*.ts test/outputs/*.ts', {
-  stdio: 'inherit',
-});
+execSync(
+  'tsc --noEmit --strict --experimentalDecorators --target es5 test/inputs/converter/*.ts test/outputs/converter/*.ts',
+  {
+    stdio: 'inherit',
+  }
+);
