@@ -20,7 +20,8 @@
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@babel/plugin-syntax-decorators": "^7.16.0",
-    "@babel/plugin-syntax-typescript": "^7.16.0"
+    "@babel/plugin-syntax-typescript": "^7.16.0",
+    "glob": "^10.3.10"
   },
   "devDependencies": {
     "@cloudscape-design/test-utils-core": "^1.0.0",
