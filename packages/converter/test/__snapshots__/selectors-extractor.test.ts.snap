@@ -3,6 +3,7 @@
 exports[`selectors-extractor 1`] = `
 Object {
   "alert": Array [
+    "awsui-alert-special",
     "awsui_action-button_mx3cw",
     "awsui_action-slot_mx3cw",
     "awsui_alert_mx3cw",

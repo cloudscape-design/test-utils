@@ -16,8 +16,8 @@ export default class AlertWrapper extends ComponentWrapper {
   }
 
   findActionButton(): ComponentWrapper {
-    const styleVariable = 'button';
-    return this.findComponent(`.${styles[`action-${styleVariable}`]}`, ButtonWrapper);
+    const templateVariable = 'a';
+    return this.findComponent(`.${styles[`action-${templateVariable}`]}`, ButtonWrapper);
   }
 
   findHeader(): ElementWrapper {
@@ -30,5 +30,9 @@ export default class AlertWrapper extends ComponentWrapper {
 
   findActionSlot(): ElementWrapper {
     return this.findByClassName(styles['action-slot']);
+  }
+
+  findSpecial(): ElementWrapper {
+    return this.findByClassName(styles['awsui-alert-special']);
   }
 }

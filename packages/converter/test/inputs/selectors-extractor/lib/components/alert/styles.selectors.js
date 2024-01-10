@@ -28,4 +28,5 @@ module.exports.default = {
   'type-warning': 'awsui_type-warning_mx3cw_tr160_258',
   'type-success': 'awsui_type-success_mx3cw_tr160_266',
   'type-info': 'awsui_type-info_mx3cw_tr160_274',
+  'awsui-alert-special': 'awsui-alert-special',
 };
