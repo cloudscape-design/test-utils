@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import convertToSelectorUtil from '../src/index';
 
-const inputDir = path.join(__dirname, 'inputs');
+const inputDir = path.join(__dirname, 'inputs', 'converter');
 
 fs.readdirSync(inputDir).forEach(name => {
   test(path.basename(name, '.ts'), () => {

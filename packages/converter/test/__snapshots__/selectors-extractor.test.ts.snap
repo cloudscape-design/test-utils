@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`selectors-extractor 1`] = `
+Object {
+  "alert": Array [
+    "awsui-alert-special",
+    "awsui_action-button_mx3cw",
+    "awsui_action-slot_mx3cw",
+    "awsui_alert_mx3cw",
+    "awsui_content_mx3cw",
+    "awsui_dismiss-button_mx3cw",
+    "awsui_header_mx3cw",
+    "awsui_root_mx3cw",
+  ],
+}
+`;
