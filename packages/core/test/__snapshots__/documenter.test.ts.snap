@@ -733,32 +733,6 @@ Array [
   Object {
     "methods": Array [
       Object {
-        "name": "blur",
-        "parameters": Array [],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "description": "Performs a click by triggering a mouse event.
-Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.",
-        "name": "click",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": true,
-            },
-            "name": "params",
-            "typeName": "MouseEventInit",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
         "name": "find",
         "parameters": Array [
           Object {
@@ -770,8 +744,8 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "ElementWrapper | null",
-          "type": "union",
+          "name": "ElementWrapper",
+          "type": "reference",
         },
       },
       Object {
@@ -786,8 +760,14 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "array",
+          "name": "MultiElementWrapper",
           "type": "reference",
+          "typeArguments": Array [
+            Object {
+              "name": "ElementWrapper",
+              "type": "reference",
+            },
+          ],
         },
       },
       Object {
@@ -802,8 +782,14 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "array",
+          "name": "MultiElementWrapper",
           "type": "reference",
+          "typeArguments": Array [
+            Object {
+              "name": "ElementWrapper",
+              "type": "reference",
+            },
+          ],
         },
       },
       Object {
@@ -818,8 +804,8 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "ElementWrapper | null",
-          "type": "union",
+          "name": "ElementWrapper",
+          "type": "reference",
         },
       },
       Object {
@@ -840,87 +826,15 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "Wrapper | null",
-          "type": "union",
-        },
-      },
-      Object {
-        "name": "fireEvent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": false,
-            },
-            "name": "event",
-            "typeName": "Event",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "name": "focus",
-        "parameters": Array [],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
+          "name": "Wrapper",
+          "type": "typeParameter",
         },
       },
       Object {
         "name": "getElement",
         "parameters": Array [],
         "returnType": Object {
-          "name": "ElementType",
-          "type": "typeParameter",
-        },
-      },
-      Object {
-        "name": "keydown",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": false,
-            },
-            "name": "keyCode",
-            "typeName": "KeyCode",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "name": "keypress",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": false,
-            },
-            "name": "keyCode",
-            "typeName": "KeyCode",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "name": "keyup",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": false,
-            },
-            "name": "keyCode",
-            "typeName": "KeyCode",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
+          "name": "string",
           "type": "intrinsic",
         },
       },
@@ -936,8 +850,16 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "this | null",
-          "type": "union",
+          "name": "ElementWrapper",
+          "type": "reference",
+        },
+      },
+      Object {
+        "name": "toSelector",
+        "parameters": Array [],
+        "returnType": Object {
+          "name": "string",
+          "type": "intrinsic",
         },
       },
     ],
@@ -947,38 +869,6 @@ Note that programmatic events ignore disabled attribute and will trigger listene
     "methods": Array [
       Object {
         "inheritedFrom": Object {
-          "name": "AbstractWrapper.blur",
-        },
-        "name": "blur",
-        "parameters": Array [],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "description": "Performs a click by triggering a mouse event.
-Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.",
-        "inheritedFrom": Object {
-          "name": "AbstractWrapper.click",
-        },
-        "name": "click",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": true,
-            },
-            "name": "params",
-            "typeName": "MouseEventInit",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "inheritedFrom": Object {
           "name": "AbstractWrapper.find",
         },
         "name": "find",
@@ -992,8 +882,8 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "ElementWrapper | null",
-          "type": "union",
+          "name": "ElementWrapper",
+          "type": "reference",
         },
       },
       Object {
@@ -1011,8 +901,14 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "array",
+          "name": "MultiElementWrapper",
           "type": "reference",
+          "typeArguments": Array [
+            Object {
+              "name": "ElementWrapper",
+              "type": "reference",
+            },
+          ],
         },
       },
       Object {
@@ -1030,8 +926,14 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "array",
+          "name": "MultiElementWrapper",
           "type": "reference",
+          "typeArguments": Array [
+            Object {
+              "name": "ElementWrapper",
+              "type": "reference",
+            },
+          ],
         },
       },
       Object {
@@ -1049,8 +951,8 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "ElementWrapper | null",
-          "type": "union",
+          "name": "ElementWrapper",
+          "type": "reference",
         },
       },
       Object {
@@ -1074,38 +976,8 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "Wrapper | null",
-          "type": "union",
-        },
-      },
-      Object {
-        "inheritedFrom": Object {
-          "name": "AbstractWrapper.fireEvent",
-        },
-        "name": "fireEvent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": false,
-            },
-            "name": "event",
-            "typeName": "Event",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "inheritedFrom": Object {
-          "name": "AbstractWrapper.focus",
-        },
-        "name": "focus",
-        "parameters": Array [],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
+          "name": "Wrapper",
+          "type": "typeParameter",
         },
       },
       Object {
@@ -1115,64 +987,7 @@ Note that programmatic events ignore disabled attribute and will trigger listene
         "name": "getElement",
         "parameters": Array [],
         "returnType": Object {
-          "name": "ElementType",
-          "type": "typeParameter",
-        },
-      },
-      Object {
-        "inheritedFrom": Object {
-          "name": "AbstractWrapper.keydown",
-        },
-        "name": "keydown",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": false,
-            },
-            "name": "keyCode",
-            "typeName": "KeyCode",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "inheritedFrom": Object {
-          "name": "AbstractWrapper.keypress",
-        },
-        "name": "keypress",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": false,
-            },
-            "name": "keyCode",
-            "typeName": "KeyCode",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "inheritedFrom": Object {
-          "name": "AbstractWrapper.keyup",
-        },
-        "name": "keyup",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": false,
-            },
-            "name": "keyCode",
-            "typeName": "KeyCode",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
+          "name": "string",
           "type": "intrinsic",
         },
       },
@@ -1191,8 +1006,19 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "this | null",
-          "type": "union",
+          "name": "ElementWrapper",
+          "type": "reference",
+        },
+      },
+      Object {
+        "inheritedFrom": Object {
+          "name": "AbstractWrapper.toSelector",
+        },
+        "name": "toSelector",
+        "parameters": Array [],
+        "returnType": Object {
+          "name": "string",
+          "type": "intrinsic",
         },
       },
     ],
@@ -1202,38 +1028,6 @@ Note that programmatic events ignore disabled attribute and will trigger listene
     "methods": Array [
       Object {
         "inheritedFrom": Object {
-          "name": "AbstractWrapper.blur",
-        },
-        "name": "blur",
-        "parameters": Array [],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "description": "Performs a click by triggering a mouse event.
-Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.",
-        "inheritedFrom": Object {
-          "name": "AbstractWrapper.click",
-        },
-        "name": "click",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": true,
-            },
-            "name": "params",
-            "typeName": "MouseEventInit",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "inheritedFrom": Object {
           "name": "AbstractWrapper.find",
         },
         "name": "find",
@@ -1247,8 +1041,8 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "ElementWrapper | null",
-          "type": "union",
+          "name": "ElementWrapper",
+          "type": "reference",
         },
       },
       Object {
@@ -1266,8 +1060,14 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "array",
+          "name": "MultiElementWrapper",
           "type": "reference",
+          "typeArguments": Array [
+            Object {
+              "name": "ElementWrapper",
+              "type": "reference",
+            },
+          ],
         },
       },
       Object {
@@ -1285,8 +1085,14 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "array",
+          "name": "MultiElementWrapper",
           "type": "reference",
+          "typeArguments": Array [
+            Object {
+              "name": "ElementWrapper",
+              "type": "reference",
+            },
+          ],
         },
       },
       Object {
@@ -1304,8 +1110,8 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "ElementWrapper | null",
-          "type": "union",
+          "name": "ElementWrapper",
+          "type": "reference",
         },
       },
       Object {
@@ -1329,38 +1135,8 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "Wrapper | null",
-          "type": "union",
-        },
-      },
-      Object {
-        "inheritedFrom": Object {
-          "name": "AbstractWrapper.fireEvent",
-        },
-        "name": "fireEvent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": false,
-            },
-            "name": "event",
-            "typeName": "Event",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "inheritedFrom": Object {
-          "name": "AbstractWrapper.focus",
-        },
-        "name": "focus",
-        "parameters": Array [],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
+          "name": "Wrapper",
+          "type": "typeParameter",
         },
       },
       Object {
@@ -1370,64 +1146,7 @@ Note that programmatic events ignore disabled attribute and will trigger listene
         "name": "getElement",
         "parameters": Array [],
         "returnType": Object {
-          "name": "ElementType",
-          "type": "typeParameter",
-        },
-      },
-      Object {
-        "inheritedFrom": Object {
-          "name": "AbstractWrapper.keydown",
-        },
-        "name": "keydown",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": false,
-            },
-            "name": "keyCode",
-            "typeName": "KeyCode",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "inheritedFrom": Object {
-          "name": "AbstractWrapper.keypress",
-        },
-        "name": "keypress",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": false,
-            },
-            "name": "keyCode",
-            "typeName": "KeyCode",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
-          "type": "intrinsic",
-        },
-      },
-      Object {
-        "inheritedFrom": Object {
-          "name": "AbstractWrapper.keyup",
-        },
-        "name": "keyup",
-        "parameters": Array [
-          Object {
-            "flags": Object {
-              "isOptional": false,
-            },
-            "name": "keyCode",
-            "typeName": "KeyCode",
-          },
-        ],
-        "returnType": Object {
-          "name": "void",
+          "name": "string",
           "type": "intrinsic",
         },
       },
@@ -1446,12 +1165,220 @@ Note that programmatic events ignore disabled attribute and will trigger listene
           },
         ],
         "returnType": Object {
-          "name": "this | null",
-          "type": "union",
+          "name": "ElementWrapper",
+          "type": "reference",
+        },
+      },
+      Object {
+        "inheritedFrom": Object {
+          "name": "AbstractWrapper.toSelector",
+        },
+        "name": "toSelector",
+        "parameters": Array [],
+        "returnType": Object {
+          "name": "string",
+          "type": "intrinsic",
         },
       },
     ],
     "name": "ElementWrapper",
+  },
+  Object {
+    "methods": Array [
+      Object {
+        "inheritedFrom": Object {
+          "name": "AbstractWrapper.find",
+        },
+        "name": "find",
+        "parameters": Array [
+          Object {
+            "flags": Object {
+              "isOptional": false,
+            },
+            "name": "selector",
+            "typeName": "string",
+          },
+        ],
+        "returnType": Object {
+          "name": "ElementWrapper",
+          "type": "reference",
+        },
+      },
+      Object {
+        "inheritedFrom": Object {
+          "name": "AbstractWrapper.findAll",
+        },
+        "name": "findAll",
+        "parameters": Array [
+          Object {
+            "flags": Object {
+              "isOptional": false,
+            },
+            "name": "selector",
+            "typeName": "string",
+          },
+        ],
+        "returnType": Object {
+          "name": "MultiElementWrapper",
+          "type": "reference",
+          "typeArguments": Array [
+            Object {
+              "name": "ElementWrapper",
+              "type": "reference",
+            },
+          ],
+        },
+      },
+      Object {
+        "inheritedFrom": Object {
+          "name": "AbstractWrapper.findAllByClassName",
+        },
+        "name": "findAllByClassName",
+        "parameters": Array [
+          Object {
+            "flags": Object {
+              "isOptional": false,
+            },
+            "name": "className",
+            "typeName": "string",
+          },
+        ],
+        "returnType": Object {
+          "name": "MultiElementWrapper",
+          "type": "reference",
+          "typeArguments": Array [
+            Object {
+              "name": "ElementWrapper",
+              "type": "reference",
+            },
+          ],
+        },
+      },
+      Object {
+        "inheritedFrom": Object {
+          "name": "AbstractWrapper.findByClassName",
+        },
+        "name": "findByClassName",
+        "parameters": Array [
+          Object {
+            "flags": Object {
+              "isOptional": false,
+            },
+            "name": "className",
+            "typeName": "string",
+          },
+        ],
+        "returnType": Object {
+          "name": "ElementWrapper",
+          "type": "reference",
+        },
+      },
+      Object {
+        "inheritedFrom": Object {
+          "name": "AbstractWrapper.findComponent",
+        },
+        "name": "findComponent",
+        "parameters": Array [
+          Object {
+            "flags": Object {
+              "isOptional": false,
+            },
+            "name": "selector",
+            "typeName": "string",
+          },
+          Object {
+            "flags": Object {
+              "isOptional": false,
+            },
+            "name": "ComponentClass",
+          },
+        ],
+        "returnType": Object {
+          "name": "Wrapper",
+          "type": "typeParameter",
+        },
+      },
+      Object {
+        "description": "Index is one-based because the method uses the :nth-child() CSS pseudo-class.",
+        "name": "get",
+        "parameters": Array [
+          Object {
+            "flags": Object {
+              "isOptional": false,
+            },
+            "name": "index",
+            "typeName": "number",
+          },
+        ],
+        "returnType": Object {
+          "name": "T",
+          "type": "typeParameter",
+        },
+      },
+      Object {
+        "inheritedFrom": Object {
+          "name": "AbstractWrapper.getElement",
+        },
+        "name": "getElement",
+        "parameters": Array [],
+        "returnType": Object {
+          "name": "string",
+          "type": "intrinsic",
+        },
+      },
+      Object {
+        "name": "map",
+        "parameters": Array [
+          Object {
+            "flags": Object {
+              "isOptional": false,
+            },
+            "name": "factory",
+          },
+        ],
+        "returnType": Object {
+          "name": "MultiElementWrapper",
+          "type": "reference",
+          "typeArguments": Array [
+            Object {
+              "name": "T",
+              "type": "typeParameter",
+            },
+          ],
+        },
+      },
+      Object {
+        "inheritedFrom": Object {
+          "name": "AbstractWrapper.matches",
+        },
+        "name": "matches",
+        "parameters": Array [
+          Object {
+            "flags": Object {
+              "isOptional": false,
+            },
+            "name": "selector",
+            "typeName": "string",
+          },
+        ],
+        "returnType": Object {
+          "name": "ElementWrapper",
+          "type": "reference",
+        },
+      },
+      Object {
+        "inheritedFrom": Object {
+          "name": "AbstractWrapper.toSelector",
+        },
+        "name": "toSelector",
+        "parameters": Array [],
+        "returnType": Object {
+          "name": "string",
+          "type": "intrinsic",
+        },
+      },
+    ],
+    "name": "MultiElementWrapper",
   },
 ]
 `;
