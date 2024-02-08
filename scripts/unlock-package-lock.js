@@ -6,11 +6,7 @@ const fs = require('fs');
 /**
  * Remove specific @cloudscape-design/* packages where we should always use the latest minor release
  */
-[
-  require.resolve('../package-lock.json'),
-  require.resolve('../packages/converter/package-lock.json'),
-  require.resolve('../packages/core/package-lock.json'),
-].forEach(filename => unlock(filename));
+[require.resolve('../package-lock.json')].forEach(filename => unlock(filename));
 
 function removeDependencies(dependencyName, packages) {
   if (dependencyName.includes('@cloudscape-design/')) {

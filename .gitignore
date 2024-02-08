@@ -1,9 +1,6 @@
 build
-node_modules
+/lib
 coverage
-packages/*/dist
-packages/*/test-utils-doc
-packages/*/coverage
-packages/converter/test/outputs
-packages/core/*.js
-packages/core/*.d.ts
+node_modules
+outputs
+packages
