@@ -1,10 +1,7 @@
 {
-  "compilerOptions": {
-    "strict": true,
-    "module": "CommonJS",
-    "types": [],
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "declaration": true
-  }
+  "files": [],
+  "references": [
+      { "path": "./src/converter"},
+      { "path": "./src/core"}
+  ]
 }

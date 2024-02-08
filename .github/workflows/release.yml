@@ -17,4 +17,4 @@ jobs:
     uses: cloudscape-design/actions/.github/workflows/release.yml@main
     secrets: inherit
     with:
-      publish-packages: packages/core,packages/converter
+      publish-packages: lib/core,lib/converter

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "CommonJS",
+    "types": [],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "rootDir": "./",
+    "outDir": "../../lib/core/dist"
+  },
+  "include": ["**/*.ts", "typings/**/*.d.ts", "dom.ts", "interfaces.ts", "selectors.ts", "utils.ts"],
+  "exclude": ["**/test/**"]
+}
