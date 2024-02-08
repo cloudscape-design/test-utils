@@ -1,213 +1,213 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`documenter output dom 1`] = `
-Array [
-  Object {
-    "methods": Array [
-      Object {
+exports[`documenter output > dom 1`] = `
+[
+  {
+    "methods": [
+      {
         "name": "blur",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
+      {
         "description": "Performs a click by triggering a mouse event.
 Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.",
         "name": "click",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": true,
             },
             "name": "params",
             "typeName": "MouseEventInit",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
+      {
         "name": "find",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper | null",
           "type": "union",
         },
       },
-      Object {
+      {
         "name": "findAll",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "array",
           "type": "reference",
         },
       },
-      Object {
+      {
         "name": "findAllByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "array",
           "type": "reference",
         },
       },
-      Object {
+      {
         "name": "findByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper | null",
           "type": "union",
         },
       },
-      Object {
+      {
         "name": "findComponent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
-          Object {
-            "flags": Object {
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "Wrapper | null",
           "type": "union",
         },
       },
-      Object {
+      {
         "name": "fireEvent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "event",
             "typeName": "Event",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
+      {
         "name": "focus",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
+      {
         "name": "getElement",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "ElementType",
           "type": "typeParameter",
         },
       },
-      Object {
+      {
         "name": "keydown",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "keyCode",
             "typeName": "KeyCode",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
+      {
         "name": "keypress",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "keyCode",
             "typeName": "KeyCode",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
+      {
         "name": "keyup",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "keyCode",
             "typeName": "KeyCode",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
+      {
         "name": "matches",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "this | null",
           "type": "union",
         },
@@ -215,254 +215,254 @@ Note that programmatic events ignore disabled attribute and will trigger listene
     ],
     "name": "AbstractWrapper",
   },
-  Object {
-    "methods": Array [
-      Object {
-        "inheritedFrom": Object {
+  {
+    "methods": [
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.blur",
         },
         "name": "blur",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
+      {
         "description": "Performs a click by triggering a mouse event.
 Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.",
-        "inheritedFrom": Object {
+        "inheritedFrom": {
           "name": "AbstractWrapper.click",
         },
         "name": "click",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": true,
             },
             "name": "params",
             "typeName": "MouseEventInit",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.find",
         },
         "name": "find",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper | null",
           "type": "union",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findAll",
         },
         "name": "findAll",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "array",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findAllByClassName",
         },
         "name": "findAllByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "array",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findByClassName",
         },
         "name": "findByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper | null",
           "type": "union",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findComponent",
         },
         "name": "findComponent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
-          Object {
-            "flags": Object {
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "Wrapper | null",
           "type": "union",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.fireEvent",
         },
         "name": "fireEvent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "event",
             "typeName": "Event",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.focus",
         },
         "name": "focus",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.getElement",
         },
         "name": "getElement",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "ElementType",
           "type": "typeParameter",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.keydown",
         },
         "name": "keydown",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "keyCode",
             "typeName": "KeyCode",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.keypress",
         },
         "name": "keypress",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "keyCode",
             "typeName": "KeyCode",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.keyup",
         },
         "name": "keyup",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "keyCode",
             "typeName": "KeyCode",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.matches",
         },
         "name": "matches",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "this | null",
           "type": "union",
         },
@@ -470,254 +470,254 @@ Note that programmatic events ignore disabled attribute and will trigger listene
     ],
     "name": "ComponentWrapper",
   },
-  Object {
-    "methods": Array [
-      Object {
-        "inheritedFrom": Object {
+  {
+    "methods": [
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.blur",
         },
         "name": "blur",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
+      {
         "description": "Performs a click by triggering a mouse event.
 Note that programmatic events ignore disabled attribute and will trigger listeners even if the element is disabled.",
-        "inheritedFrom": Object {
+        "inheritedFrom": {
           "name": "AbstractWrapper.click",
         },
         "name": "click",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": true,
             },
             "name": "params",
             "typeName": "MouseEventInit",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.find",
         },
         "name": "find",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper | null",
           "type": "union",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findAll",
         },
         "name": "findAll",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "array",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findAllByClassName",
         },
         "name": "findAllByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "array",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findByClassName",
         },
         "name": "findByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper | null",
           "type": "union",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findComponent",
         },
         "name": "findComponent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
-          Object {
-            "flags": Object {
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "Wrapper | null",
           "type": "union",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.fireEvent",
         },
         "name": "fireEvent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "event",
             "typeName": "Event",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.focus",
         },
         "name": "focus",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.getElement",
         },
         "name": "getElement",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "ElementType",
           "type": "typeParameter",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.keydown",
         },
         "name": "keydown",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "keyCode",
             "typeName": "KeyCode",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.keypress",
         },
         "name": "keypress",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "keyCode",
             "typeName": "KeyCode",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.keyup",
         },
         "name": "keyup",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "keyCode",
             "typeName": "KeyCode",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "void",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.matches",
         },
         "name": "matches",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "this | null",
           "type": "union",
         },
@@ -728,136 +728,136 @@ Note that programmatic events ignore disabled attribute and will trigger listene
 ]
 `;
 
-exports[`documenter output selectors 1`] = `
-Array [
-  Object {
-    "methods": Array [
-      Object {
+exports[`documenter output > selectors 1`] = `
+[
+  {
+    "methods": [
+      {
         "name": "find",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper",
           "type": "reference",
         },
       },
-      Object {
+      {
         "name": "findAll",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "MultiElementWrapper",
           "type": "reference",
-          "typeArguments": Array [
-            Object {
+          "typeArguments": [
+            {
               "name": "ElementWrapper",
               "type": "reference",
             },
           ],
         },
       },
-      Object {
+      {
         "name": "findAllByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "MultiElementWrapper",
           "type": "reference",
-          "typeArguments": Array [
-            Object {
+          "typeArguments": [
+            {
               "name": "ElementWrapper",
               "type": "reference",
             },
           ],
         },
       },
-      Object {
+      {
         "name": "findByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper",
           "type": "reference",
         },
       },
-      Object {
+      {
         "name": "findComponent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
-          Object {
-            "flags": Object {
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "Wrapper",
           "type": "typeParameter",
         },
       },
-      Object {
+      {
         "name": "getElement",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "string",
           "type": "intrinsic",
         },
       },
-      Object {
+      {
         "name": "matches",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper",
           "type": "reference",
         },
       },
-      Object {
+      {
         "name": "toSelector",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "string",
           "type": "intrinsic",
         },
@@ -865,158 +865,158 @@ Array [
     ],
     "name": "AbstractWrapper",
   },
-  Object {
-    "methods": Array [
-      Object {
-        "inheritedFrom": Object {
+  {
+    "methods": [
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.find",
         },
         "name": "find",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findAll",
         },
         "name": "findAll",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "MultiElementWrapper",
           "type": "reference",
-          "typeArguments": Array [
-            Object {
+          "typeArguments": [
+            {
               "name": "ElementWrapper",
               "type": "reference",
             },
           ],
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findAllByClassName",
         },
         "name": "findAllByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "MultiElementWrapper",
           "type": "reference",
-          "typeArguments": Array [
-            Object {
+          "typeArguments": [
+            {
               "name": "ElementWrapper",
               "type": "reference",
             },
           ],
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findByClassName",
         },
         "name": "findByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findComponent",
         },
         "name": "findComponent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
-          Object {
-            "flags": Object {
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "Wrapper",
           "type": "typeParameter",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.getElement",
         },
         "name": "getElement",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "string",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.matches",
         },
         "name": "matches",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.toSelector",
         },
         "name": "toSelector",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "string",
           "type": "intrinsic",
         },
@@ -1024,158 +1024,158 @@ Array [
     ],
     "name": "ComponentWrapper",
   },
-  Object {
-    "methods": Array [
-      Object {
-        "inheritedFrom": Object {
+  {
+    "methods": [
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.find",
         },
         "name": "find",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findAll",
         },
         "name": "findAll",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "MultiElementWrapper",
           "type": "reference",
-          "typeArguments": Array [
-            Object {
+          "typeArguments": [
+            {
               "name": "ElementWrapper",
               "type": "reference",
             },
           ],
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findAllByClassName",
         },
         "name": "findAllByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "MultiElementWrapper",
           "type": "reference",
-          "typeArguments": Array [
-            Object {
+          "typeArguments": [
+            {
               "name": "ElementWrapper",
               "type": "reference",
             },
           ],
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findByClassName",
         },
         "name": "findByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findComponent",
         },
         "name": "findComponent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
-          Object {
-            "flags": Object {
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "Wrapper",
           "type": "typeParameter",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.getElement",
         },
         "name": "getElement",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "string",
           "type": "intrinsic",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.matches",
         },
         "name": "matches",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.toSelector",
         },
         "name": "toSelector",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "string",
           "type": "intrinsic",
         },
@@ -1183,196 +1183,196 @@ Array [
     ],
     "name": "ElementWrapper",
   },
-  Object {
-    "methods": Array [
-      Object {
-        "inheritedFrom": Object {
+  {
+    "methods": [
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.find",
         },
         "name": "find",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findAll",
         },
         "name": "findAll",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "MultiElementWrapper",
           "type": "reference",
-          "typeArguments": Array [
-            Object {
+          "typeArguments": [
+            {
               "name": "ElementWrapper",
               "type": "reference",
             },
           ],
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findAllByClassName",
         },
         "name": "findAllByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "MultiElementWrapper",
           "type": "reference",
-          "typeArguments": Array [
-            Object {
+          "typeArguments": [
+            {
               "name": "ElementWrapper",
               "type": "reference",
             },
           ],
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findByClassName",
         },
         "name": "findByClassName",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "className",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.findComponent",
         },
         "name": "findComponent",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
-          Object {
-            "flags": Object {
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "Wrapper",
           "type": "typeParameter",
         },
       },
-      Object {
+      {
         "description": "Index is one-based because the method uses the :nth-child() CSS pseudo-class.",
         "name": "get",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "index",
             "typeName": "number",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "T",
           "type": "typeParameter",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.getElement",
         },
         "name": "getElement",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "string",
           "type": "intrinsic",
         },
       },
-      Object {
+      {
         "name": "map",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "factory",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "MultiElementWrapper",
           "type": "reference",
-          "typeArguments": Array [
-            Object {
+          "typeArguments": [
+            {
               "name": "T",
               "type": "typeParameter",
             },
           ],
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.matches",
         },
         "name": "matches",
-        "parameters": Array [
-          Object {
-            "flags": Object {
+        "parameters": [
+          {
+            "flags": {
               "isOptional": false,
             },
             "name": "selector",
             "typeName": "string",
           },
         ],
-        "returnType": Object {
+        "returnType": {
           "name": "ElementWrapper",
           "type": "reference",
         },
       },
-      Object {
-        "inheritedFrom": Object {
+      {
+        "inheritedFrom": {
           "name": "AbstractWrapper.toSelector",
         },
         "name": "toSelector",
-        "parameters": Array [],
-        "returnType": Object {
+        "parameters": [],
+        "returnType": {
           "name": "string",
           "type": "intrinsic",
         },

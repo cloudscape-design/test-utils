@@ -1,5 +1,0 @@
-{
-  "extends": "../../../tsconfig.test.json",
-  "compilerOptions": {},
-  "include": ["../src", "./**/*.ts", "../typings/**/*.d.ts"]
-}

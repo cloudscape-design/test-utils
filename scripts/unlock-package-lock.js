@@ -20,13 +20,17 @@ function removeDependencies(dependencyName, packages) {
 
 function unlock(filename) {
   const packageLock = require(filename);
-  Object.keys(packageLock.packages).forEach(dependencyName => {
-    removeDependencies(dependencyName, packageLock.packages);
-  });
+  if (packageLock.packages) {
+    Object.keys(packageLock.packages).forEach(dependencyName => {
+      removeDependencies(dependencyName, packageLock.packages);
+    });
+  }
 
-  Object.keys(packageLock.dependencies).forEach(dependencyName => {
-    removeDependencies(dependencyName, packageLock.dependencies);
-  });
+  if (packageLock.dependencies) {
+    Object.keys(packageLock.dependencies).forEach(dependencyName => {
+      removeDependencies(dependencyName, packageLock.dependencies);
+    });
+  }
 
   fs.writeFileSync(filename, JSON.stringify(packageLock, null, 2) + '\n');
   console.log(`Removed @cloudscape-design/ dependencies from ${filename} file`);

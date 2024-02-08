@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-
+import { test, expect } from 'vitest';
 import path from 'path';
 import { extractTestSelectorsUtil } from '../src/index';
 

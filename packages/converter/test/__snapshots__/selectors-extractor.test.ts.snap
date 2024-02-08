@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`selectors-extractor 1`] = `
-Object {
-  "alert": Array [
+{
+  "alert": [
     "awsui-alert-special",
     "awsui_action-button_mx3cw",
     "awsui_action-slot_mx3cw",

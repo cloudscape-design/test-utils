@@ -1,10 +1,7 @@
-/**
- * @jest-environment jsdom
- */
-/* eslint-disable header/header */
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 /*eslint-env browser*/
+import { describe, beforeEach, afterEach, it, expect, test } from 'vitest';
 import { ElementWrapper, ComponentWrapper, createWrapper } from '../src/dom';
 import { KeyCode } from '../src/utils';
 
@@ -36,7 +33,9 @@ describe('DOM test utils', () => {
     wrapper = new ElementWrapper(node);
   });
 
-  afterEach(() => document.body.removeChild(node));
+  afterEach(() => {
+    document.body.removeChild(node);
+  });
 
   describe('ElementWrapper', () => {
     it('getElement returns a dom element', () => {

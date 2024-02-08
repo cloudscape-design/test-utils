@@ -1,8 +1,0 @@
-{
-  "extends": "../../../tsconfig.test.json",
-  "compilerOptions": {
-    "target": "es5",
-    "experimentalDecorators": true
-  },
-  "include": ["../src", "./**/*.ts"]
-}

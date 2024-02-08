@@ -1,5 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import { describe, it, expect, beforeEach } from 'vitest';
 import { ElementWrapper, createWrapper } from '../src/selectors';
 
 class TestComponentWrapper extends ElementWrapper {
