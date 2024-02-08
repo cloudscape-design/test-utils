@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const domDefinition = require('../test-utils-doc/dom');
-const selectorsDefinition = require('../test-utils-doc/dom');
+const selectorsDefinition = require('../test-utils-doc/selectors');
 
 describe('documenter output', () => {
   test('dom', () => {
