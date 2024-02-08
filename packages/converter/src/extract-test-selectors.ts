@@ -46,7 +46,7 @@ export function extractTestSelectorsUtil({ srcPath = 'src', libPath = 'lib/compo
       } else if (path.node.property.type === 'TemplateLiteral') {
         return buildTemplateString(path.node.property);
       } else {
-        /* istanbul ignore next */
+        /* istanbul ignore next @preserve */
         throw new Error(`Unhandled selector access type at ${file}:${path.node.loc?.start.line}.`);
       }
     }
@@ -61,7 +61,7 @@ export function extractTestSelectorsUtil({ srcPath = 'src', libPath = 'lib/compo
         } else if (element.type === 'Identifier') {
           literal += '*';
         } else {
-          /* istanbul ignore next */
+          /* istanbul ignore next @preserve */
           throw new Error(`Unhandled template literal type at ${file}:${node.loc?.start.line}.`);
         }
       }
@@ -100,12 +100,12 @@ export function extractTestSelectorsUtil({ srcPath = 'src', libPath = 'lib/compo
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const source = require(file);
     if (typeof source.default !== 'object') {
-      /* istanbul ignore next */
+      /* istanbul ignore next @preserve */
       throw new Error(`Unexpected selectors file format at ${file}.`);
     }
     for (const [property, value] of Object.entries(source.default)) {
       if (typeof value !== 'string') {
-        /* istanbul ignore next */
+        /* istanbul ignore next @preserve */
         throw new Error(`Unexpected selectors file format at ${file}, "${property}".`);
       }
       if (matchProperties(usedProperties, property)) {
@@ -137,7 +137,7 @@ export function extractTestSelectorsUtil({ srcPath = 'src', libPath = 'lib/compo
     if (componentNameMatch && componentNameMatch[1]) {
       return componentNameMatch[1];
     } else {
-      /* istanbul ignore next */
+      /* istanbul ignore next @preserve */
       throw new Error(`Component name not matched from file "${filePath}".`);
     }
   }
