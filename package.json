@@ -2,6 +2,11 @@
   "name": "@cloudscape-design/test-utils-monorepo",
   "version": "1.0.0",
   "files": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudscape-design/test-utils.git"
+  },
+  "homepage": "https://cloudscape.design",
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --ext js,ts .",
     "build": "tsc -b && node scripts/generate-package.js && node scripts/generate-doc.js && node scripts/generate-exports.js",
