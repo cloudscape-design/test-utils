@@ -4,7 +4,7 @@
   "files": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/cloudscape-design/test-utils.git"
+    "url": "git+https://github.com/cloudscape-design/test-utils.git"
   },
   "homepage": "https://cloudscape.design",
   "scripts": {
