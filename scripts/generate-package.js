@@ -14,7 +14,7 @@ const packages = [
     manifest: {
       name: '@cloudscape-design/test-utils-converter',
       main: './dist/index.js',
-      files: ['dist'],
+      files: ['dist', 'NOTICE', 'LICENSE', 'README.md'],
     },
     packageRoot: path.join(root, './lib/converter'),
     dependencies: ['@babel/core', '@babel/plugin-syntax-decorators', '@babel/plugin-syntax-typescript', 'glob'],
@@ -22,7 +22,7 @@ const packages = [
   {
     manifest: {
       name: '@cloudscape-design/test-utils-core',
-      files: ['test-utils-doc', 'dist', '*.js', '*.d.ts'],
+      files: ['test-utils-doc', 'dist', '*.js', '*.d.ts', 'NOTICE', 'LICENSE', 'README.md'],
     },
     packageRoot: path.join(root, './lib/core'),
     dependencies: ['css-selector-tokenizer', 'css.escape'],
@@ -35,10 +35,11 @@ packages.forEach(package => {
 
   const pkg = {
     version,
+    license: originalContent.license,
+    homepage: originalContent.homepage,
+    repository: originalContent.repository,
     ...manifest,
     dependencies: pickDependenciesWithVersions(dependencies, originalContent.dependencies),
-    repository: originalContent.repository,
-    homepage: originalContent.homepage,
   };
   fs.writeFileSync(path.join(packageRoot, './package.json'), JSON.stringify(pkg, null, 2));
 });
