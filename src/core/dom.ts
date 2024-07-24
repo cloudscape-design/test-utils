@@ -5,8 +5,7 @@ import * as React from 'react';
 import { act as reactDomAct } from 'react-dom/test-utils';
 import { IElementWrapper } from './interfaces';
 import { KeyCode, isScopedSelector, substituteScope } from './utils';
-
-export const act = ('act' in React ? React.act : reactDomAct) as typeof reactDomAct;
+const act = ('act' in React ? React.act : reactDomAct) as typeof reactDomAct;
 
 // Original KeyboardEventInit lacks some properties https://github.com/Microsoft/TypeScript/issues/15228
 declare global {
