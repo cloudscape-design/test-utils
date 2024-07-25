@@ -1,6 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 /*eslint-env browser*/
+import * as React from 'react';
+import { act as reactDomAct } from 'react-dom/test-utils';
 import * as Tokenizer from 'css-selector-tokenizer';
 import 'css.escape';
 
@@ -86,3 +88,5 @@ export enum KeyCode {
   alt = 18,
   meta = 91,
 }
+
+export const act = ('act' in React ? React.act : reactDomAct) as typeof reactDomAct;

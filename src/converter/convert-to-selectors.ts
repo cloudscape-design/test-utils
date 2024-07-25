@@ -21,11 +21,11 @@ function selectorUtilsGenerator({ types: t }: PluginArguments): PluginObj {
           source.replaceWith(t.stringLiteral(newImportPath));
         }
 
-        // Remove @usesDom decorator and act function
+        // Remove @usesDom decorator
         if (source.node.value === runtimeSelectorsPath) {
           path
             .get('specifiers')
-            .filter(spec => ['usesDom', 'act'].includes(spec.node.local.name))
+            .filter(spec => spec.node.local.name === 'usesDom')
             .forEach(spec => spec.remove());
         }
       },

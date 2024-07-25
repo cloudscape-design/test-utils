@@ -1,12 +1,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 /*eslint-env browser*/
-import * as React from 'react';
-import { act as reactDomAct } from 'react-dom/test-utils';
 import { IElementWrapper } from './interfaces';
-import { KeyCode, isScopedSelector, substituteScope } from './utils';
-
-export const act = ('act' in React ? React.act : reactDomAct) as typeof reactDomAct;
+import { act, KeyCode, isScopedSelector, substituteScope } from './utils';
 
 // Original KeyboardEventInit lacks some properties https://github.com/Microsoft/TypeScript/issues/15228
 declare global {
