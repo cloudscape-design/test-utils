@@ -4,7 +4,7 @@ import { transformSync, types, PluginObj, NodePath } from '@babel/core';
 
 const runtimeSelectorsPath = '@cloudscape-design/test-utils-core/selectors';
 const ourWrappers = ['ElementWrapper', 'ComponentWrapper'];
-const utilsPaths = '@cloudscape-design/test-utils-core/utils';
+const domUtilsPath = '@cloudscape-design/test-utils-core/utils-dom';
 
 interface PluginArguments {
   types: typeof types;
@@ -30,12 +30,9 @@ function selectorUtilsGenerator({ types: t }: PluginArguments): PluginObj {
             .forEach(spec => spec.remove());
         }
 
-        // Remove act
-        if (source.node.value === utilsPaths) {
-          path
-            .get('specifiers')
-            .filter(spec => spec.node.local.name === 'act')
-            .forEach(spec => spec.remove());
+        // Remove dom utils
+        if (source.node.value === domUtilsPath) {
+          path.remove();
         }
       },
       ClassDeclaration(path: NodePath<types.ClassDeclaration>) {
