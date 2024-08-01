@@ -4,7 +4,7 @@
 const fs = require('node:fs');
 
 // This package exposes several APIs in different files. For each export we generate a separate file in the repository root
-const publicExports = ['dom', 'selectors', 'utils'];
+const publicExports = ['dom', 'selectors', 'utils', 'utils-dom'];
 
 publicExports.forEach(exportName => {
   fs.writeFileSync(`./lib/core/${exportName}.js`, `module.exports = require('./dist/${exportName}')`);
