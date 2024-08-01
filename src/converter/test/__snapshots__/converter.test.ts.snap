@@ -45,6 +45,22 @@ export default class DummyWrapper extends ComponentWrapper {
 }"
 `;
 
+exports[`strip-external-imports 1`] = `
+"// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+/* eslint-env browser */
+import { ComponentWrapper } from "@cloudscape-design/test-utils-core/selectors";
+import { KeyCode } from "@cloudscape-design/test-utils-core/utils";
+export default class DummyWrapper extends ComponentWrapper {
+  findElement() {
+    return new ComponentWrapper(this.find('.awsui-child')!.getElement());
+  }
+  findSomething() {
+    return KeyCode.enter;
+  }
+}"
+`;
+
 exports[`strip-imports 1`] = `
 "// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
