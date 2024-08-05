@@ -2,7 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 /*eslint-env browser*/
 import { IElementWrapper } from './interfaces';
-import { act, KeyCode, isScopedSelector, substituteScope } from './utils';
+import { KeyCode, isScopedSelector, substituteScope } from './utils';
+import { act } from './utils-dom';
 
 // Original KeyboardEventInit lacks some properties https://github.com/Microsoft/TypeScript/issues/15228
 declare global {
