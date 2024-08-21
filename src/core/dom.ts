@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 /*eslint-env browser*/
-import { IElementWrapper } from './interfaces';
+import { IElementWrapper, MultiElementWrapperOptions } from './interfaces';
 import { KeyCode, isScopedSelector, substituteScope } from './utils';
 import { act } from './utils-dom';
 
@@ -97,7 +97,10 @@ export class AbstractWrapper<ElementType extends Element>
     return this.element.matches(selector) ? this : null;
   }
 
-  findAll<NewElementType extends Element = HTMLElement>(selector: string) {
+  // Declaring options so that the method signature between dom and selectors is aligned.
+  // The options property is only used in the selectors wrapper.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  findAll<NewElementType extends Element = HTMLElement>(selector: string, options?: MultiElementWrapperOptions) {
     let elements: Array<NewElementType>;
     if (isScopedSelector(selector)) {
       const randomValue = Math.floor(Math.random() * 100000);

@@ -15,6 +15,11 @@ export default class DummyWrapper extends ComponentWrapper {
   findChildren() {
     return this.findAll('.awsui-element').map(element => new ChildWrapper(element.getElement()));
   }
+  findChildrenWithTestindex() {
+    return this.findAll('.awsui-element', {
+      useTestindex: true
+    }).map(element => new ChildWrapper(element.getElement()));
+  }
 }"
 `;
 

@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { IElementWrapper } from './interfaces';
+import { IElementWrapper, MultiElementWrapperOptions } from './interfaces';
 import { appendSelector, isScopedSelector, substituteScope, getUnscopedClassName } from './utils';
 
 const getRootSelector = (selector: string, root: string): string => {
@@ -23,8 +23,12 @@ export class AbstractWrapper implements IElementWrapper<string, MultiElementWrap
     return new ElementWrapper(getRootSelector(selector, this.root));
   }
 
-  findAll(selector: string): MultiElementWrapper<ElementWrapper> {
-    return new MultiElementWrapper(getRootSelector(selector, this.root), selector => new ElementWrapper(selector));
+  findAll(selector: string, options?: MultiElementWrapperOptions): MultiElementWrapper<ElementWrapper> {
+    return new MultiElementWrapper(
+      getRootSelector(selector, this.root),
+      selector => new ElementWrapper(selector),
+      options
+    );
   }
 
   findByClassName(className: string) {
@@ -52,15 +56,23 @@ export class ElementWrapper extends AbstractWrapper {}
 export class ComponentWrapper extends AbstractWrapper {}
 
 export class MultiElementWrapper<T extends AbstractWrapper> extends ElementWrapper {
-  constructor(root: string, private elementFactory: (selector: string) => T) {
+  constructor(
+    root: string,
+    private elementFactory: (selector: string) => T,
+    private options?: MultiElementWrapperOptions
+  ) {
     super(root);
   }
 
   /**
-   * Index is one-based because the method uses the :nth-child() CSS pseudo-class.
+   * Index is one-based.
    */
   get(index: number): T {
-    return this.elementFactory(`${this.root}:nth-child(${index})`);
+    if (this.options?.useTestindex) {
+      return this.elementFactory(`${this.root}[data-testindex=${index - 1}]`);
+    } else {
+      return this.elementFactory(`${this.root}:nth-child(${index})`);
+    }
   }
 
   map<T extends AbstractWrapper>(factory: (wrapper: ElementWrapper) => T): MultiElementWrapper<T> {

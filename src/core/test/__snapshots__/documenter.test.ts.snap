@@ -56,6 +56,13 @@ Note that programmatic events ignore disabled attribute and will trigger listene
             "name": "selector",
             "typeName": "string",
           },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "options",
+            "typeName": "MultiElementWrapperOptions",
+          },
         ],
         "returnType": {
           "name": "array",
@@ -280,6 +287,13 @@ Note that programmatic events ignore disabled attribute and will trigger listene
             },
             "name": "selector",
             "typeName": "string",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "options",
+            "typeName": "MultiElementWrapperOptions",
           },
         ],
         "returnType": {
@@ -535,6 +549,13 @@ Note that programmatic events ignore disabled attribute and will trigger listene
             },
             "name": "selector",
             "typeName": "string",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "options",
+            "typeName": "MultiElementWrapperOptions",
           },
         ],
         "returnType": {
@@ -758,6 +779,13 @@ exports[`documenter output > selectors 1`] = `
             "name": "selector",
             "typeName": "string",
           },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "options",
+            "typeName": "MultiElementWrapperOptions",
+          },
         ],
         "returnType": {
           "name": "MultiElementWrapper",
@@ -898,6 +926,13 @@ exports[`documenter output > selectors 1`] = `
             },
             "name": "selector",
             "typeName": "string",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "options",
+            "typeName": "MultiElementWrapperOptions",
           },
         ],
         "returnType": {
@@ -1058,6 +1093,13 @@ exports[`documenter output > selectors 1`] = `
             "name": "selector",
             "typeName": "string",
           },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "options",
+            "typeName": "MultiElementWrapperOptions",
+          },
         ],
         "returnType": {
           "name": "MultiElementWrapper",
@@ -1217,6 +1259,13 @@ exports[`documenter output > selectors 1`] = `
             "name": "selector",
             "typeName": "string",
           },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "options",
+            "typeName": "MultiElementWrapperOptions",
+          },
         ],
         "returnType": {
           "name": "MultiElementWrapper",
@@ -1299,7 +1348,7 @@ exports[`documenter output > selectors 1`] = `
         },
       },
       {
-        "description": "Index is one-based because the method uses the :nth-child() CSS pseudo-class.",
+        "description": "Index is one-based.",
         "name": "get",
         "parameters": [
           {
