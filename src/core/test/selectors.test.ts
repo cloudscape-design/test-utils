@@ -11,9 +11,15 @@ class TestComponentWrapper extends ElementWrapper {
   findSingleChild() {
     return this.findComponent('awsui-child', ChildComponentWrapper);
   }
+
+  findAllChildren(selector?: string) {
+    return this.findAllComponents(ChildComponentWrapper, selector);
+  }
 }
 
 class ChildComponentWrapper extends ElementWrapper {
+  static rootSelector = 'awsui-child';
+
   findTitle() {
     return this.find('.title');
   }
@@ -60,6 +66,18 @@ describe('CSS-selectors test utils', () => {
 
   it('allows to find components', () => {
     expect(wrapper.findSingleChild().findTitle().toSelector()).toEqual('.awsui-component awsui-child .title');
+  });
+
+  it('allows to find nth-child of the same type components', () => {
+    expect(wrapper.findAllChildren().get(2).findTitle().toSelector()).toEqual(
+      '.awsui-component .awsui-child:nth-child(2) .title'
+    );
+  });
+
+  it('allows to find nth-child of the same type components matching the specified selector', () => {
+    expect(wrapper.findAllChildren('.some-class[data-some-attribute]').get(2).findTitle().toSelector()).toEqual(
+      '.awsui-component .awsui-child.some-class[data-some-attribute]:nth-child(2) .title'
+    );
   });
 
   it('converts css scoped selectors to wildcard classname selectors', () => {

@@ -7,7 +7,12 @@ import { KeyCode } from '../utils';
 
 describe('DOM test utils', () => {
   let node: HTMLElement, wrapper: ElementWrapper;
+
   const CLASS_NAME = 'some-class';
+
+  const LIST_WITH_ITEMS_CLASS_NAME = 'list-with-items';
+  const LIST_WITHOUT_ITEMS_CLASS_NAME = 'list-without-items';
+  const LIST_ITEM_CLASS_NAME = 'list-item';
 
   beforeEach(() => {
     // create test HTML
@@ -27,6 +32,19 @@ describe('DOM test utils', () => {
         <button>2</button>
         <button>2</button>
       </div>
+      <ul class="${LIST_WITH_ITEMS_CLASS_NAME}">
+        <li class="${LIST_ITEM_CLASS_NAME} first-type">1</li>
+        <li class="${LIST_ITEM_CLASS_NAME} second-type">2</li>
+        <li>
+          <ul>
+            <li class="${LIST_ITEM_CLASS_NAME} second-type">2.1</li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="${LIST_WITHOUT_ITEMS_CLASS_NAME}">
+        <li class="some-other-item-type">1</li>
+        <li class="some-other-item-type">2</li>
+      </ul>
     `;
     document.body.appendChild(node);
 
@@ -210,7 +228,40 @@ describe('DOM test utils', () => {
         expect(result).toEqual(null);
       });
     });
+
+    describe('findAllComponents()', () => {
+      class ListItemWrapper extends ComponentWrapper<HTMLUListElement> {
+        static rootSelector = LIST_ITEM_CLASS_NAME;
+      }
+
+      it('returns an array of all components matching the wrapper class', () => {
+        const nodeWithListItemComponents = node.querySelector(`.${LIST_WITH_ITEMS_CLASS_NAME}`)!;
+        const wrapper = createWrapper(nodeWithListItemComponents);
+        const listItems = wrapper.findAllComponents(ListItemWrapper);
+        const listItemsContent = listItems.map(wrapper => wrapper.getElement().textContent);
+
+        expect(listItemsContent).toEqual(['1', '2', '2.1']);
+      });
+
+      it('returns an array of all components matching the wrapper class and the specified selector', () => {
+        const nodeWithListItemComponents = node.querySelector(`.${LIST_WITH_ITEMS_CLASS_NAME}`)!;
+        const wrapper = createWrapper(nodeWithListItemComponents);
+        const listItems = wrapper.findAllComponents(ListItemWrapper, '.second-type');
+        const listItemsContent = listItems.map(wrapper => wrapper.getElement().textContent);
+
+        expect(listItemsContent).toEqual(['2', '2.1']);
+      });
+
+      it('returns an empty array if no component was found', () => {
+        const nodeWithoutListItemComponents = node.querySelector(`.${LIST_WITHOUT_ITEMS_CLASS_NAME}`)!;
+        const wrapper = createWrapper(nodeWithoutListItemComponents);
+        const listItems = wrapper.findAllComponents(ListItemWrapper, '.second-type');
+
+        expect(listItems).toHaveLength(0);
+      });
+    });
   });
+
   describe('createWrapper', () => {
     test('returns an ElementWrapper of the document body', () => {
       const actual = createWrapper().getElement();

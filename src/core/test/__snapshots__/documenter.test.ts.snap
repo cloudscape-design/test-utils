@@ -79,6 +79,39 @@ Note that programmatic events ignore disabled attribute and will trigger listene
         },
       },
       {
+        "description": "Returns the wrappers of all components that match the specified component type and the specified CSS selector.
+If no CSS selector is specified, returns all of the components that match the specified component type.
+If no matching component is found, returns an empty array.",
+        "name": "findAllComponents",
+        "parameters": [
+          {
+            "description": "
+Component's wrapper class",
+            "flags": {
+              "isOptional": false,
+            },
+            "name": "ComponentClass",
+            "typeName": "ComponentWrapperClass",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+          },
+        ],
+        "returnType": {
+          "name": "Array",
+          "type": "reference",
+          "typeArguments": [
+            {
+              "name": "Wrapper",
+              "type": "typeParameter",
+            },
+          ],
+        },
+      },
+      {
         "name": "findByClassName",
         "parameters": [
           {
@@ -95,9 +128,15 @@ Note that programmatic events ignore disabled attribute and will trigger listene
         },
       },
       {
+        "description": "Returns the component wrapper matching the specified selector.
+If the specified selector doesn't match any element, it returns \`null\`.
+Note: This function returns the specified component's wrapper even if the specified selector points to a different component type.
+",
         "name": "findComponent",
         "parameters": [
           {
+            "description": "
+CSS selector",
             "flags": {
               "isOptional": false,
             },
@@ -105,10 +144,13 @@ Note that programmatic events ignore disabled attribute and will trigger listene
             "typeName": "string",
           },
           {
+            "description": "
+Component's wrapper class",
             "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
+            "typeName": "WrapperClass",
           },
         ],
         "returnType": {
@@ -307,6 +349,42 @@ Note that programmatic events ignore disabled attribute and will trigger listene
         },
       },
       {
+        "description": "Returns the wrappers of all components that match the specified component type and the specified CSS selector.
+If no CSS selector is specified, returns all of the components that match the specified component type.
+If no matching component is found, returns an empty array.",
+        "inheritedFrom": {
+          "name": "AbstractWrapper.findAllComponents",
+        },
+        "name": "findAllComponents",
+        "parameters": [
+          {
+            "description": "
+Component's wrapper class",
+            "flags": {
+              "isOptional": false,
+            },
+            "name": "ComponentClass",
+            "typeName": "ComponentWrapperClass",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+          },
+        ],
+        "returnType": {
+          "name": "Array",
+          "type": "reference",
+          "typeArguments": [
+            {
+              "name": "Wrapper",
+              "type": "typeParameter",
+            },
+          ],
+        },
+      },
+      {
         "inheritedFrom": {
           "name": "AbstractWrapper.findByClassName",
         },
@@ -326,12 +404,18 @@ Note that programmatic events ignore disabled attribute and will trigger listene
         },
       },
       {
+        "description": "Returns the component wrapper matching the specified selector.
+If the specified selector doesn't match any element, it returns \`null\`.
+Note: This function returns the specified component's wrapper even if the specified selector points to a different component type.
+",
         "inheritedFrom": {
           "name": "AbstractWrapper.findComponent",
         },
         "name": "findComponent",
         "parameters": [
           {
+            "description": "
+CSS selector",
             "flags": {
               "isOptional": false,
             },
@@ -339,10 +423,13 @@ Note that programmatic events ignore disabled attribute and will trigger listene
             "typeName": "string",
           },
           {
+            "description": "
+Component's wrapper class",
             "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
+            "typeName": "WrapperClass",
           },
         ],
         "returnType": {
@@ -562,6 +649,42 @@ Note that programmatic events ignore disabled attribute and will trigger listene
         },
       },
       {
+        "description": "Returns the wrappers of all components that match the specified component type and the specified CSS selector.
+If no CSS selector is specified, returns all of the components that match the specified component type.
+If no matching component is found, returns an empty array.",
+        "inheritedFrom": {
+          "name": "AbstractWrapper.findAllComponents",
+        },
+        "name": "findAllComponents",
+        "parameters": [
+          {
+            "description": "
+Component's wrapper class",
+            "flags": {
+              "isOptional": false,
+            },
+            "name": "ComponentClass",
+            "typeName": "ComponentWrapperClass",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+          },
+        ],
+        "returnType": {
+          "name": "Array",
+          "type": "reference",
+          "typeArguments": [
+            {
+              "name": "Wrapper",
+              "type": "typeParameter",
+            },
+          ],
+        },
+      },
+      {
         "inheritedFrom": {
           "name": "AbstractWrapper.findByClassName",
         },
@@ -581,12 +704,18 @@ Note that programmatic events ignore disabled attribute and will trigger listene
         },
       },
       {
+        "description": "Returns the component wrapper matching the specified selector.
+If the specified selector doesn't match any element, it returns \`null\`.
+Note: This function returns the specified component's wrapper even if the specified selector points to a different component type.
+",
         "inheritedFrom": {
           "name": "AbstractWrapper.findComponent",
         },
         "name": "findComponent",
         "parameters": [
           {
+            "description": "
+CSS selector",
             "flags": {
               "isOptional": false,
             },
@@ -594,10 +723,13 @@ Note that programmatic events ignore disabled attribute and will trigger listene
             "typeName": "string",
           },
           {
+            "description": "
+Component's wrapper class",
             "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
+            "typeName": "WrapperClass",
           },
         ],
         "returnType": {
@@ -793,6 +925,36 @@ exports[`documenter output > selectors 1`] = `
         },
       },
       {
+        "description": "Returns a multi-element wrapper that matches the specified component type with the specified CSS selector.
+If no CSS selector is specified, returns a multi-element wrapper that matches the specified component type.",
+        "name": "findAllComponents",
+        "parameters": [
+          {
+            "flags": {
+              "isOptional": false,
+            },
+            "name": "ComponentClass",
+            "typeName": "ComponentWrapperClass",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+          },
+        ],
+        "returnType": {
+          "name": "MultiElementWrapper",
+          "type": "reference",
+          "typeArguments": [
+            {
+              "name": "Wrapper",
+              "type": "typeParameter",
+            },
+          ],
+        },
+      },
+      {
         "name": "findByClassName",
         "parameters": [
           {
@@ -809,9 +971,14 @@ exports[`documenter output > selectors 1`] = `
         },
       },
       {
+        "description": "Returns a wrapper that matches the specified component type with the specified CSS selector.
+Note: This function returns the specified component's wrapper even if the specified selector points to a different component type.
+",
         "name": "findComponent",
         "parameters": [
           {
+            "description": "
+CSS selector",
             "flags": {
               "isOptional": false,
             },
@@ -819,10 +986,13 @@ exports[`documenter output > selectors 1`] = `
             "typeName": "string",
           },
           {
+            "description": "
+Component's wrapper class",
             "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
+            "typeName": "WrapperClass",
           },
         ],
         "returnType": {
@@ -937,6 +1107,39 @@ exports[`documenter output > selectors 1`] = `
         },
       },
       {
+        "description": "Returns a multi-element wrapper that matches the specified component type with the specified CSS selector.
+If no CSS selector is specified, returns a multi-element wrapper that matches the specified component type.",
+        "inheritedFrom": {
+          "name": "AbstractWrapper.findAllComponents",
+        },
+        "name": "findAllComponents",
+        "parameters": [
+          {
+            "flags": {
+              "isOptional": false,
+            },
+            "name": "ComponentClass",
+            "typeName": "ComponentWrapperClass",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+          },
+        ],
+        "returnType": {
+          "name": "MultiElementWrapper",
+          "type": "reference",
+          "typeArguments": [
+            {
+              "name": "Wrapper",
+              "type": "typeParameter",
+            },
+          ],
+        },
+      },
+      {
         "inheritedFrom": {
           "name": "AbstractWrapper.findByClassName",
         },
@@ -956,12 +1159,17 @@ exports[`documenter output > selectors 1`] = `
         },
       },
       {
+        "description": "Returns a wrapper that matches the specified component type with the specified CSS selector.
+Note: This function returns the specified component's wrapper even if the specified selector points to a different component type.
+",
         "inheritedFrom": {
           "name": "AbstractWrapper.findComponent",
         },
         "name": "findComponent",
         "parameters": [
           {
+            "description": "
+CSS selector",
             "flags": {
               "isOptional": false,
             },
@@ -969,10 +1177,13 @@ exports[`documenter output > selectors 1`] = `
             "typeName": "string",
           },
           {
+            "description": "
+Component's wrapper class",
             "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
+            "typeName": "WrapperClass",
           },
         ],
         "returnType": {
@@ -1096,6 +1307,39 @@ exports[`documenter output > selectors 1`] = `
         },
       },
       {
+        "description": "Returns a multi-element wrapper that matches the specified component type with the specified CSS selector.
+If no CSS selector is specified, returns a multi-element wrapper that matches the specified component type.",
+        "inheritedFrom": {
+          "name": "AbstractWrapper.findAllComponents",
+        },
+        "name": "findAllComponents",
+        "parameters": [
+          {
+            "flags": {
+              "isOptional": false,
+            },
+            "name": "ComponentClass",
+            "typeName": "ComponentWrapperClass",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+          },
+        ],
+        "returnType": {
+          "name": "MultiElementWrapper",
+          "type": "reference",
+          "typeArguments": [
+            {
+              "name": "Wrapper",
+              "type": "typeParameter",
+            },
+          ],
+        },
+      },
+      {
         "inheritedFrom": {
           "name": "AbstractWrapper.findByClassName",
         },
@@ -1115,12 +1359,17 @@ exports[`documenter output > selectors 1`] = `
         },
       },
       {
+        "description": "Returns a wrapper that matches the specified component type with the specified CSS selector.
+Note: This function returns the specified component's wrapper even if the specified selector points to a different component type.
+",
         "inheritedFrom": {
           "name": "AbstractWrapper.findComponent",
         },
         "name": "findComponent",
         "parameters": [
           {
+            "description": "
+CSS selector",
             "flags": {
               "isOptional": false,
             },
@@ -1128,10 +1377,13 @@ exports[`documenter output > selectors 1`] = `
             "typeName": "string",
           },
           {
+            "description": "
+Component's wrapper class",
             "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
+            "typeName": "WrapperClass",
           },
         ],
         "returnType": {
@@ -1255,6 +1507,39 @@ exports[`documenter output > selectors 1`] = `
         },
       },
       {
+        "description": "Returns a multi-element wrapper that matches the specified component type with the specified CSS selector.
+If no CSS selector is specified, returns a multi-element wrapper that matches the specified component type.",
+        "inheritedFrom": {
+          "name": "AbstractWrapper.findAllComponents",
+        },
+        "name": "findAllComponents",
+        "parameters": [
+          {
+            "flags": {
+              "isOptional": false,
+            },
+            "name": "ComponentClass",
+            "typeName": "ComponentWrapperClass",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+          },
+        ],
+        "returnType": {
+          "name": "MultiElementWrapper",
+          "type": "reference",
+          "typeArguments": [
+            {
+              "name": "Wrapper",
+              "type": "typeParameter",
+            },
+          ],
+        },
+      },
+      {
         "inheritedFrom": {
           "name": "AbstractWrapper.findByClassName",
         },
@@ -1274,12 +1559,17 @@ exports[`documenter output > selectors 1`] = `
         },
       },
       {
+        "description": "Returns a wrapper that matches the specified component type with the specified CSS selector.
+Note: This function returns the specified component's wrapper even if the specified selector points to a different component type.
+",
         "inheritedFrom": {
           "name": "AbstractWrapper.findComponent",
         },
         "name": "findComponent",
         "parameters": [
           {
+            "description": "
+CSS selector",
             "flags": {
               "isOptional": false,
             },
@@ -1287,10 +1577,13 @@ exports[`documenter output > selectors 1`] = `
             "typeName": "string",
           },
           {
+            "description": "
+Component's wrapper class",
             "flags": {
               "isOptional": false,
             },
             "name": "ComponentClass",
+            "typeName": "WrapperClass",
           },
         ],
         "returnType": {
