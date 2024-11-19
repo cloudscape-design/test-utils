@@ -8,6 +8,14 @@ const getRootSelector = (selector: string, root: string): string => {
   return getUnscopedClassName(rootSelector);
 };
 
+interface WrapperClass<Wrapper> {
+  new (selector: string): Wrapper;
+}
+
+interface ComponentWrapperClass<Wrapper> extends WrapperClass<Wrapper> {
+  rootSelector: string;
+}
+
 export class AbstractWrapper implements IElementWrapper<string, MultiElementWrapper<ElementWrapper>> {
   constructor(protected root: string) {}
 
@@ -35,11 +43,36 @@ export class AbstractWrapper implements IElementWrapper<string, MultiElementWrap
     return this.findAll(`.${className}`);
   }
 
-  findComponent<Wrapper extends ComponentWrapper>(
-    selector: string,
-    ComponentClass: { new (element: string): Wrapper }
-  ): Wrapper {
+  /**
+   * Returns a wrapper that matches the specified component type with the specified CSS selector.
+   *
+   * Note: This function returns the specified component's wrapper even if the specified selector points to a different component type.
+   *
+   * @param {string} selector CSS selector
+   * @param {WrapperClass} ComponentClass Component's wrapper class
+   * @returns `Wrapper`
+   */
+  findComponent<Wrapper extends ComponentWrapper>(selector: string, ComponentClass: WrapperClass<Wrapper>): Wrapper {
     return new ComponentClass(this.find(selector).getElement());
+  }
+
+  /**
+   * Returns a multi-element wrapper that matches the specified component type with the specified CSS selector.
+   * If no CSS selector is specified, returns a multi-element wrapper that matches the specified component type.
+   *
+   * @param {string} [selector] CSS Selector
+   * @returns {MultiElementWrapper}
+   */
+  findAllComponents<Wrapper extends ComponentWrapper>(
+    ComponentClass: ComponentWrapperClass<Wrapper>,
+    selector?: string
+  ): MultiElementWrapper<Wrapper> {
+    const componentRootSelector = `.${ComponentClass.rootSelector}`;
+    const componentCombinedSelector = selector
+      ? appendSelector(componentRootSelector, selector)
+      : componentRootSelector;
+    const rootSelector = getRootSelector(componentCombinedSelector, this.root);
+    return new MultiElementWrapper(rootSelector, selector => new ComponentClass(selector));
   }
 
   toSelector(): string {

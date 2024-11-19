@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 /*eslint-env browser*/
 import { IElementWrapper } from './interfaces';
-import { KeyCode, isScopedSelector, substituteScope } from './utils';
+import { KeyCode, isScopedSelector, substituteScope, appendSelector } from './utils';
 import { act } from './utils-dom';
 
 // Original KeyboardEventInit lacks some properties https://github.com/Microsoft/TypeScript/issues/15228
@@ -22,6 +22,14 @@ const defaultParams = {
   bubbles: true,
   cancelable: true,
 };
+
+interface WrapperClass<Wrapper, ElementType> {
+  new (element: ElementType): Wrapper;
+}
+
+interface ComponentWrapperClass<Wrapper, ElementType> extends WrapperClass<Wrapper, ElementType> {
+  rootSelector: string;
+}
 
 export class AbstractWrapper<ElementType extends Element>
   implements IElementWrapper<ElementType, Array<ElementWrapper<ElementType>>>
@@ -120,12 +128,44 @@ export class AbstractWrapper<ElementType extends Element>
     return this.findAll<NewElementType>(`.${className}`);
   }
 
-  findComponent<Wrapper extends ComponentWrapper<ElementType>, ElementType extends HTMLElement>(
+  /**
+   * Returns the component wrapper matching the specified selector.
+   * If the specified selector doesn't match any element, it returns `null`.
+   *
+   * Note: This function returns the specified component's wrapper even if the specified selector points to a different component type.
+   *
+   * @param {string} selector CSS selector
+   * @param {WrapperClass} ComponentClass Component's wrapper class
+   * @returns `Wrapper | null`
+   */
+  findComponent<Wrapper extends ComponentWrapper, ElementType extends HTMLElement>(
     selector: string,
-    ComponentClass: { new (element: ElementType): Wrapper }
+    ComponentClass: WrapperClass<Wrapper, ElementType>
   ): Wrapper | null {
     const elementWrapper = this.find<ElementType>(selector);
     return elementWrapper ? new ComponentClass(elementWrapper.getElement()) : null;
+  }
+
+  /**
+   * Returns the wrappers of all components that match the specified component type and the specified CSS selector.
+   * If no CSS selector is specified, returns all of the components that match the specified component type.
+   * If no matching component is found, returns an empty array.
+   *
+   * @param {ComponentWrapperClass} ComponentClass Component's wrapper class
+   * @param {string} [selector] CSS selector
+   * @returns `Array<Wrapper>`
+   */
+  findAllComponents<Wrapper extends ComponentWrapper, ElementType extends HTMLElement>(
+    ComponentClass: ComponentWrapperClass<Wrapper, ElementType>,
+    selector?: string
+  ): Array<Wrapper> {
+    const componentRootSelector = `.${ComponentClass.rootSelector}`;
+    const componentCombinedSelector = selector
+      ? appendSelector(componentRootSelector, selector)
+      : componentRootSelector;
+
+    const elementWrappers = this.findAll<ElementType>(componentCombinedSelector);
+    return elementWrappers.map(wrapper => new ComponentClass(wrapper.getElement()));
   }
 }
 
