@@ -2,6 +2,7 @@
   "files": [],
   "references": [
       { "path": "./src/converter"},
+      { "path": "./src/generator"},
       { "path": "./src/core"}
   ]
 }

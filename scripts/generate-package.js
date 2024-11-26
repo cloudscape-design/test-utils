@@ -21,6 +21,15 @@ const packages = [
   },
   {
     manifest: {
+      name: '@cloudscape-design/test-utils-generator',
+      main: './dist/index.js',
+      files: ['dist', '*.js', '*.d.ts', 'NOTICE', 'LICENSE', 'README.md'],
+    },
+    packageRoot: path.join(root, './lib/generator'),
+    dependencies: [],
+  },
+  {
+    manifest: {
       name: '@cloudscape-design/test-utils-core',
       files: ['test-utils-doc', 'dist', '*.js', '*.d.ts', 'NOTICE', 'LICENSE', 'README.md'],
     },

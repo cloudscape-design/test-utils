@@ -1,0 +1,162 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`generates the finders for the specified list > generates component specific finders for dom 1`] = `
+"
+import { ElementWrapper } from '@cloudscape-design/test-utils-core/dom';
+import { appendSelector } from '@cloudscape-design/test-utils-core/utils';
+
+export { ElementWrapper };
+
+import FooWrapper from 'foo/wrapper/import/path';,
+import BarWrapper from 'bar/wrapper/import/path';
+
+export { FooWrapper };,
+export { BarWrapper };
+
+declare module '@cloudscape-design/test-utils-core/dist/dom' {
+   interface ElementWrapper {
+/**
+ * Returns a wrapper that matches the Foos with the specified CSS selector.
+ * If no CSS selector is specified, returns a wrapper that matches Foos.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {FooWrapper}
+ */
+findFoo(selector?: string): FooWrapper;
+
+/**
+ * Returns a multi-element wrapper that matches Foos with the specified CSS selector.
+ * If no CSS selector is specified, returns a multi-element wrapper that matches Foos.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {MultiElementWrapper<FooWrapper>}
+ */
+findAllFoos(selector?: string): MultiElementWrapper<FooWrapper>;
+
+/**
+ * Returns a wrapper that matches the Bars with the specified CSS selector.
+ * If no CSS selector is specified, returns a wrapper that matches Bars.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {BarWrapper}
+ */
+findBar(selector?: string): BarWrapper;
+
+/**
+ * Returns a multi-element wrapper that matches Bars with the specified CSS selector.
+ * If no CSS selector is specified, returns a multi-element wrapper that matches Bars.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {MultiElementWrapper<BarWrapper>}
+ */
+findAllBars(selector?: string): MultiElementWrapper<BarWrapper>;}
+}
+
+ElementWrapper.prototype.findFoo = function(selector) {
+  const rootSelector = \`.\${FooWrapper.rootSelector}\`;
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, FooWrapper);
+};
+
+ElementWrapper.prototype.findAllFoos = function(selector) {
+  return this.findAllComponents(FooWrapper, selector);
+};
+
+ElementWrapper.prototype.findBar = function(selector) {
+  const rootSelector = \`.\${BarWrapper.rootSelector}\`;
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, BarWrapper);
+};
+
+ElementWrapper.prototype.findAllBars = function(selector) {
+  return this.findAllComponents(BarWrapper, selector);
+};
+
+export default function wrapper(root: Element = document.body) {
+  if (document && document.body && !document.body.contains(root)) {
+    console.warn('[AwsUi] [test-utils] provided element is not part of the document body, interactions may work incorrectly')
+  };
+  return new ElementWrapper(root);
+}"
+`;
+
+exports[`generates the finders for the specified list > generates component specific finders for selectors 1`] = `
+"
+import { ElementWrapper } from '@cloudscape-design/test-utils-core/selectors';
+import { appendSelector } from '@cloudscape-design/test-utils-core/utils';
+
+export { ElementWrapper };
+
+import FooWrapper from 'foo/wrapper/import/path';,
+import BarWrapper from 'bar/wrapper/import/path';
+
+export { FooWrapper };,
+export { BarWrapper };
+
+declare module '@cloudscape-design/test-utils-core/dist/selectors' {
+   interface ElementWrapper {
+/**
+ * Returns a wrapper that matches the Foos with the specified CSS selector.
+ * If no CSS selector is specified, returns a wrapper that matches Foos.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {FooWrapper}
+ */
+findFoo(selector?: string): FooWrapper;
+
+/**
+ * Returns a multi-element wrapper that matches Foos with the specified CSS selector.
+ * If no CSS selector is specified, returns a multi-element wrapper that matches Foos.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {MultiElementWrapper<FooWrapper>}
+ */
+findAllFoos(selector?: string): MultiElementWrapper<FooWrapper>;
+
+/**
+ * Returns a wrapper that matches the Bars with the specified CSS selector.
+ * If no CSS selector is specified, returns a wrapper that matches Bars.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {BarWrapper}
+ */
+findBar(selector?: string): BarWrapper;
+
+/**
+ * Returns a multi-element wrapper that matches Bars with the specified CSS selector.
+ * If no CSS selector is specified, returns a multi-element wrapper that matches Bars.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {MultiElementWrapper<BarWrapper>}
+ */
+findAllBars(selector?: string): MultiElementWrapper<BarWrapper>;}
+}
+
+ElementWrapper.prototype.findFoo = function(selector) {
+  const rootSelector = \`.\${FooWrapper.rootSelector}\`;
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, FooWrapper);
+};
+
+ElementWrapper.prototype.findAllFoos = function(selector) {
+  return this.findAllComponents(FooWrapper, selector);
+};
+
+ElementWrapper.prototype.findBar = function(selector) {
+  const rootSelector = \`.\${BarWrapper.rootSelector}\`;
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, BarWrapper);
+};
+
+ElementWrapper.prototype.findAllBars = function(selector) {
+  return this.findAllComponents(BarWrapper, selector);
+};
+
+export default function wrapper(root: string = 'body') { 
+  return new ElementWrapper(root);
+}"
+`;
