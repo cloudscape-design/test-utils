@@ -12,7 +12,7 @@ export default defineConfig({
       include: ['src/**'],
       exclude: ['**/debug-tools/**', '**/test/**'],
     },
-    setupFiles: [path.resolve(__dirname, './src/generator/setup-tests.ts')],
+    setupFiles: [path.resolve(__dirname, './src/converter/setup-tests.ts')],
   },
   resolve: {
     alias: {

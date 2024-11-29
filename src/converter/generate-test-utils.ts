@@ -5,8 +5,8 @@ import fs from 'fs';
 import { generateComponentFinders } from './generate-component-finders';
 import { ComponentWrapperMetadata, GenerateTestUtilsParams, TestUtilType } from './interfaces';
 import { writeSourceFile } from './utils';
-import convertToSelectorUtil from '../../lib/converter';
 import lodash from 'lodash';
+import { convertToSelectorUtil } from './convert-to-selectors';
 
 interface GenerateIndexFilesParams extends GenerateTestUtilsParams {
   testUtilType: TestUtilType;

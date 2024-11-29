@@ -11,7 +11,7 @@
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --ext js,ts .",
     "build": "tsc -b && node scripts/generate-package.js && node scripts/generate-doc.js && node scripts/generate-exports.js",
-    "postbuild": "cp NOTICE README.md LICENSE lib/core && cp NOTICE README.md LICENSE lib/converter && cp NOTICE README.md LICENSE lib/generator",
+    "postbuild": "cp NOTICE README.md LICENSE lib/core && cp NOTICE README.md LICENSE lib/converter",
     "test": "vitest run",
     "posttest": "node ./scripts/verify-typescript.js",
     "prepare": "husky install"
@@ -22,12 +22,10 @@
     "@babel/plugin-syntax-typescript": "^7.16.0",
     "@babel/plugin-transform-modules-commonjs": "^7.23.3",
     "@cloudscape-design/documenter": "^1.0.0",
-    "@types/lodash": "^4.17.13",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "css-selector-tokenizer": "^0.8.0",
     "css.escape": "^1.5.1",
-    "execa": "^9.5.1",
     "glob": "^7.2.0",
     "lodash": "^4.17.21",
     "react-dom": "^18.2.0"
@@ -37,6 +35,7 @@
     "@types/babel__core": "^7.1.16",
     "@types/glob": "^8.1.0",
     "@types/jest": "^28.1.3",
+    "@types/lodash": "^4.17.13",
     "@types/node": "^18.0.0",
     "@types/react-dom": "^18.0.10",
     "@vitest/coverage-istanbul": "^1.2.2",

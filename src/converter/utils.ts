@@ -3,7 +3,6 @@
 import fs from 'fs';
 import path from 'path';
 import { ComponentPublicMetadata, ComponentWrapperMetadata } from './interfaces';
-import { execaSync } from 'execa';
 
 export function buildComponentsMetadataMap(components: ComponentWrapperMetadata[]): string {
   const componentPublicMetadata: Record<string, ComponentPublicMetadata> = {};
@@ -21,9 +20,4 @@ export function buildComponentsMetadataMap(components: ComponentWrapperMetadata[
 export function writeSourceFile(filepath: string, content: string) {
   fs.mkdirSync(path.dirname(filepath), { recursive: true });
   fs.writeFileSync(filepath, content);
-}
-
-export function compileTypescript() {
-  const config = path.resolve('./tsconfig.compiler.json');
-  execaSync('tsc', ['-p', config, '--sourceMap', '--inlineSources'], { stdio: 'inherit' });
 }
