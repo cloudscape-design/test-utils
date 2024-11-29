@@ -15,35 +15,49 @@ export interface ComponentMetadata {
    * Examples: Buttons, Alerts, ButtonDropdowns
    */
   pluralName: string;
+}
 
+export interface GenerateTestUtilsParams {
   /**
-   * Test utils wrapper name of the component in pascal case.
+   * List of components metadata to generate test utils.
+   */
+  components: ComponentMetadata[];
+
+  /*
+   * Absolute path to the test utils folder.
+   *
+   * Component wrappers will be loaded from this path.
+   * Generated test utils will be stored in this folder.
+   *
+   * Expected file name format is kebab case.
+   *
+   */
+  testUtilsPath: string;
+}
+
+export interface ComponentWrapperMetadata extends ComponentMetadata {
+  /*
+   * Name of the component wrapper in pascal case
    * Examples: ButtonWrapper, AlertWrapper, ButtonDropdownWrapper
    */
   wrapperName: string;
 
   /**
-   * Path to import the test utils wrapper.
+   * Relative path to import the wrapper.
    */
   wrapperImportPath: string;
 }
 
-export type ComponentPublicMetadata = Pick<ComponentMetadata, 'pluralName' | 'wrapperName'>;
-export type ComponentPublicMetadataMap = Record<string, ComponentPublicMetadata>;
-
-export interface GenerateFindersParams {
+export interface ComponentPublicMetadata {
   /**
-   * List of the components that test utils will be generated for.
+   * Plural name of the component in pascal case.
+   * Examples: Buttons, Alerts, ButtonDropdowns
    */
-  components: ComponentMetadata[];
+  pluralName: string;
 
-  /**
-   * Target test utils type. The values can be `dom` or `selectors`.
+  /*
+   * Name of the component wrapper in pascal case
+   * Examples: ButtonWrapper, AlertWrapper, ButtonDropdownWrapper
    */
-  testUtilType: TestUtilType;
-
-  /**
-   * Extra imports to be added to the generated file head.
-   */
-  extraImports?: string[];
+  wrapperName: string;
 }

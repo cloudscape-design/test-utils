@@ -22,11 +22,14 @@
     "@babel/plugin-syntax-typescript": "^7.16.0",
     "@babel/plugin-transform-modules-commonjs": "^7.23.3",
     "@cloudscape-design/documenter": "^1.0.0",
+    "@types/lodash": "^4.17.13",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "css-selector-tokenizer": "^0.8.0",
     "css.escape": "^1.5.1",
+    "execa": "^9.5.1",
     "glob": "^7.2.0",
+    "lodash": "^4.17.21",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {

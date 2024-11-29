@@ -1,6 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import { defineConfig } from 'vitest/config';
+import path from 'path';
 
 export default defineConfig({
   test: {
@@ -10,6 +11,12 @@ export default defineConfig({
       provider: 'istanbul',
       include: ['src/**'],
       exclude: ['**/debug-tools/**', '**/test/**'],
+    },
+    setupFiles: [path.resolve(__dirname, './src/generator/setup-tests.ts')],
+  },
+  resolve: {
+    alias: {
+      '@cloudscape-design/test-utils-core': path.resolve(__dirname, './lib/core'),
     },
   },
 });

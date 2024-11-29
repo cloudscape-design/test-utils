@@ -1,11 +1,10 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-
 import { describe, test, expect } from 'vitest';
-import { ComponentMetadataInternal } from '../interfaces';
-import { generateComponentFinders } from '../component-finder-generator';
+import { generateComponentFinders } from '../generate-component-finders';
+import { ComponentWrapperMetadata } from '../interfaces';
 
-const components: ComponentMetadataInternal[] = [
+const components: ComponentWrapperMetadata[] = [
   {
     name: 'Foo',
     pluralName: 'Foos',

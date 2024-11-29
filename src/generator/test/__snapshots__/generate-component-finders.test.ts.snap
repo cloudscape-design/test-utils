@@ -2,55 +2,64 @@
 
 exports[`generates the finders for the specified list > generates component specific finders for dom 1`] = `
 "
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
 import { ElementWrapper } from '@cloudscape-design/test-utils-core/dom';
 import { appendSelector } from '@cloudscape-design/test-utils-core/utils';
 
 export { ElementWrapper };
 
-import FooWrapper from 'foo/wrapper/import/path';,
+import FooWrapper from 'foo/wrapper/import/path';
 import BarWrapper from 'bar/wrapper/import/path';
 
-export { FooWrapper };,
+
+export { FooWrapper };
 export { BarWrapper };
 
 declare module '@cloudscape-design/test-utils-core/dist/dom' {
    interface ElementWrapper {
+    
 /**
- * Returns a wrapper that matches the Foos with the specified CSS selector.
- * If no CSS selector is specified, returns a wrapper that matches Foos.
+ * Returns the wrapper of the first Foo that matches the specified CSS selector.
+ * If no CSS selector is specified, returns the wrapper of the first Foo.
+ * If no matching Foo is found, returns \`null\`.
  *
  * @param {string} [selector] CSS Selector
- * @returns {FooWrapper}
+ * @returns {FooWrapper | null}
  */
-findFoo(selector?: string): FooWrapper;
+findFoo(selector?: string): FooWrapper | null;
 
 /**
- * Returns a multi-element wrapper that matches Foos with the specified CSS selector.
- * If no CSS selector is specified, returns a multi-element wrapper that matches Foos.
+ * Returns an array of Foo wrapper that matches the specified CSS selector.
+ * If no CSS selector is specified, returns all of the Foos inside the current wrapper.
+ * If no matching Foo is found, returns an empty array.
  *
  * @param {string} [selector] CSS Selector
- * @returns {MultiElementWrapper<FooWrapper>}
+ * @returns {Array<FooWrapper>}
  */
-findAllFoos(selector?: string): MultiElementWrapper<FooWrapper>;
+findAllFoos(selector?: string): Array<FooWrapper>;
+/**
+ * Returns the wrapper of the first Bar that matches the specified CSS selector.
+ * If no CSS selector is specified, returns the wrapper of the first Bar.
+ * If no matching Bar is found, returns \`null\`.
+ *
+ * @param {string} [selector] CSS Selector
+ * @returns {BarWrapper | null}
+ */
+findBar(selector?: string): BarWrapper | null;
 
 /**
- * Returns a wrapper that matches the Bars with the specified CSS selector.
- * If no CSS selector is specified, returns a wrapper that matches Bars.
+ * Returns an array of Bar wrapper that matches the specified CSS selector.
+ * If no CSS selector is specified, returns all of the Bars inside the current wrapper.
+ * If no matching Bar is found, returns an empty array.
  *
  * @param {string} [selector] CSS Selector
- * @returns {BarWrapper}
+ * @returns {Array<BarWrapper>}
  */
-findBar(selector?: string): BarWrapper;
-
-/**
- * Returns a multi-element wrapper that matches Bars with the specified CSS selector.
- * If no CSS selector is specified, returns a multi-element wrapper that matches Bars.
- *
- * @param {string} [selector] CSS Selector
- * @returns {MultiElementWrapper<BarWrapper>}
- */
-findAllBars(selector?: string): MultiElementWrapper<BarWrapper>;}
+findAllBars(selector?: string): Array<BarWrapper>;
+   }
 }
+
 
 ElementWrapper.prototype.findFoo = function(selector) {
   const rootSelector = \`.\${FooWrapper.rootSelector}\`;
@@ -62,7 +71,6 @@ ElementWrapper.prototype.findFoo = function(selector) {
 ElementWrapper.prototype.findAllFoos = function(selector) {
   return this.findAllComponents(FooWrapper, selector);
 };
-
 ElementWrapper.prototype.findBar = function(selector) {
   const rootSelector = \`.\${BarWrapper.rootSelector}\`;
   // casting to 'any' is needed to avoid this issue with generics
@@ -73,30 +81,47 @@ ElementWrapper.prototype.findBar = function(selector) {
 ElementWrapper.prototype.findAllBars = function(selector) {
   return this.findAllComponents(BarWrapper, selector);
 };
+
+
+/**
+ * Returns the component metadata including its plural and wrapper name.
+ *
+ * @param {string} componentName Component name in pascal case.
+ * @returns {ComponentMetadata}
+ */
+export function getComponentMetadata(componentName: string) {
+  return {"Foo":{"pluralName":"Foos","wrapperName":"FooWrapper"},"Bar":{"pluralName":"Bars","wrapperName":"BarWrapper"}}[componentName];
+}
+
 
 export default function wrapper(root: Element = document.body) {
   if (document && document.body && !document.body.contains(root)) {
     console.warn('[AwsUi] [test-utils] provided element is not part of the document body, interactions may work incorrectly')
   };
   return new ElementWrapper(root);
-}"
+}
+"
 `;
 
 exports[`generates the finders for the specified list > generates component specific finders for selectors 1`] = `
 "
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
 import { ElementWrapper } from '@cloudscape-design/test-utils-core/selectors';
 import { appendSelector } from '@cloudscape-design/test-utils-core/utils';
 
 export { ElementWrapper };
 
-import FooWrapper from 'foo/wrapper/import/path';,
+import FooWrapper from 'foo/wrapper/import/path';
 import BarWrapper from 'bar/wrapper/import/path';
 
-export { FooWrapper };,
+
+export { FooWrapper };
 export { BarWrapper };
 
 declare module '@cloudscape-design/test-utils-core/dist/selectors' {
    interface ElementWrapper {
+    
 /**
  * Returns a wrapper that matches the Foos with the specified CSS selector.
  * If no CSS selector is specified, returns a wrapper that matches Foos.
@@ -114,7 +139,6 @@ findFoo(selector?: string): FooWrapper;
  * @returns {MultiElementWrapper<FooWrapper>}
  */
 findAllFoos(selector?: string): MultiElementWrapper<FooWrapper>;
-
 /**
  * Returns a wrapper that matches the Bars with the specified CSS selector.
  * If no CSS selector is specified, returns a wrapper that matches Bars.
@@ -131,8 +155,10 @@ findBar(selector?: string): BarWrapper;
  * @param {string} [selector] CSS Selector
  * @returns {MultiElementWrapper<BarWrapper>}
  */
-findAllBars(selector?: string): MultiElementWrapper<BarWrapper>;}
+findAllBars(selector?: string): MultiElementWrapper<BarWrapper>;
+   }
 }
+
 
 ElementWrapper.prototype.findFoo = function(selector) {
   const rootSelector = \`.\${FooWrapper.rootSelector}\`;
@@ -144,7 +170,6 @@ ElementWrapper.prototype.findFoo = function(selector) {
 ElementWrapper.prototype.findAllFoos = function(selector) {
   return this.findAllComponents(FooWrapper, selector);
 };
-
 ElementWrapper.prototype.findBar = function(selector) {
   const rootSelector = \`.\${BarWrapper.rootSelector}\`;
   // casting to 'any' is needed to avoid this issue with generics
@@ -156,7 +181,20 @@ ElementWrapper.prototype.findAllBars = function(selector) {
   return this.findAllComponents(BarWrapper, selector);
 };
 
-export default function wrapper(root: string = 'body') { 
+
+/**
+ * Returns the component metadata including its plural and wrapper name.
+ *
+ * @param {string} componentName Component name in pascal case.
+ * @returns {ComponentMetadata}
+ */
+export function getComponentMetadata(componentName: string) {
+  return {"Foo":{"pluralName":"Foos","wrapperName":"FooWrapper"},"Bar":{"pluralName":"Bars","wrapperName":"BarWrapper"}}[componentName];
+}
+
+
+export default function wrapper(root: string = 'body') {
   return new ElementWrapper(root);
-}"
+}
+"
 `;

@@ -1,16 +1,15 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-
-import { ComponentMetadata, GenerateFindersParams } from './interfaces';
+import { ComponentWrapperMetadata, TestUtilType } from './interfaces';
 import { buildComponentsMetadataMap } from './utils';
 
-const componentWrapperImport = ({ wrapperName, wrapperImportPath }: ComponentMetadata) => `
+const componentWrapperImport = ({ wrapperName, wrapperImportPath }: ComponentWrapperMetadata) => `
 import ${wrapperName} from '${wrapperImportPath}';`;
 
-const componentWrapperExport = ({ wrapperName }: ComponentMetadata) => `
+const componentWrapperExport = ({ wrapperName }: ComponentWrapperMetadata) => `
 export { ${wrapperName} };`;
 
-const componentFinders = ({ name, wrapperName, pluralName }: ComponentMetadata) => `
+const componentFinders = ({ name, wrapperName, pluralName }: ComponentWrapperMetadata) => `
 ElementWrapper.prototype.find${name} = function(selector) {
   const rootSelector = \`.$\{${wrapperName}.rootSelector}\`;
   // casting to 'any' is needed to avoid this issue with generics
@@ -23,7 +22,7 @@ ElementWrapper.prototype.findAll${pluralName} = function(selector) {
 };`;
 
 const componentFindersInterfaces = {
-  dom: ({ name, pluralName, wrapperName }: ComponentMetadata) => `
+  dom: ({ name, pluralName, wrapperName }: ComponentWrapperMetadata) => `
 /**
  * Returns the wrapper of the first ${name} that matches the specified CSS selector.
  * If no CSS selector is specified, returns the wrapper of the first ${name}.
@@ -44,7 +43,7 @@ find${name}(selector?: string): ${wrapperName} | null;
  */
 findAll${pluralName}(selector?: string): Array<${wrapperName}>;`,
 
-  selectors: ({ name, pluralName, wrapperName }: ComponentMetadata) => `
+  selectors: ({ name, pluralName, wrapperName }: ComponentWrapperMetadata) => `
 /**
  * Returns a wrapper that matches the ${pluralName} with the specified CSS selector.
  * If no CSS selector is specified, returns a wrapper that matches ${pluralName}.
@@ -79,13 +78,16 @@ export default function wrapper(root: string = 'body') {
 }`,
 };
 
-const extraImport = (extraImport: string) => `
-import "${extraImport}";`;
+export interface GenerateFindersParams {
+  components: ComponentWrapperMetadata[];
+  testUtilType: TestUtilType;
+}
 
-export const generateComponentFinders = ({ components, testUtilType, extraImports = [] }: GenerateFindersParams) => `
+export const generateComponentFinders = ({ components, testUtilType }: GenerateFindersParams) => `
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
 import { ElementWrapper } from '@cloudscape-design/test-utils-core/${testUtilType}';
 import { appendSelector } from '@cloudscape-design/test-utils-core/utils';
-${extraImports.map(extraImport).join('')}
 
 export { ElementWrapper };
 ${components.map(componentWrapperImport).join('')}
