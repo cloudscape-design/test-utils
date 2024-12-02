@@ -15,6 +15,12 @@ export interface ComponentMetadata {
    * Examples: Buttons, Alerts, ButtonDropdowns
    */
   pluralName: string;
+
+  /**
+   * Folder name of the component test utils.
+   * If not specified, the kebab case of the component name will be used by default.
+   */
+  testUtilsFolderName?: string;
 }
 
 export interface GenerateTestUtilsParams {

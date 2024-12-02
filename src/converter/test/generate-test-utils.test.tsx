@@ -12,13 +12,17 @@ function renderTestNode() {
         <h1 className="test-component-a-child">First Component A</h1>
       </div>
       <div className="test-component-b-root">
-        <h1 className="test-component-b-child">First Component B</h1>
+        <div className="test-component-b-child">
+          <h1 className="test-component-b-child-content">First Component B</h1>
+        </div>
       </div>
       <div className="test-component-a-root">
         <h1 className="test-component-a-child">Second Component A</h1>
       </div>
       <div className="test-component-b-root">
-        <h1 className="test-component-b-child">Second Component B</h1>
+        <div className="test-component-b-child">
+          <h1 className="test-component-b-child-content">Second Component B</h1>
+        </div>
       </div>
     </>
   );
