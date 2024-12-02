@@ -10,7 +10,7 @@
   "homepage": "https://cloudscape.design",
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --ext js,ts .",
-    "build": "tsc -b && node scripts/generate-package.js && node scripts/generate-doc.js && node scripts/generate-exports.js",
+    "build": "tsc -b && node scripts/generate-package.js && node scripts/generate-doc.js && node scripts/generate-exports.js && node scripts/build-mocks.js",
     "postbuild": "cp NOTICE README.md LICENSE lib/core && cp NOTICE README.md LICENSE lib/converter",
     "test": "vitest run",
     "posttest": "node ./scripts/verify-typescript.js",
@@ -27,6 +27,7 @@
     "css-selector-tokenizer": "^0.8.0",
     "css.escape": "^1.5.1",
     "glob": "^7.2.0",
+    "lodash": "^4.17.21",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
@@ -34,6 +35,7 @@
     "@types/babel__core": "^7.1.16",
     "@types/glob": "^8.1.0",
     "@types/jest": "^28.1.3",
+    "@types/lodash": "^4.17.13",
     "@types/node": "^18.0.0",
     "@types/react-dom": "^18.0.10",
     "@vitest/coverage-istanbul": "^1.2.2",

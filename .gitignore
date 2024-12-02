@@ -4,3 +4,5 @@ coverage
 node_modules
 outputs
 packages
+**/mock-test-utils/selectors
+**/mock-test-utils/dom/index.ts
