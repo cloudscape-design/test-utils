@@ -9,7 +9,7 @@ describe('index files', () => {
 
   test.each(testUtilTypes)('%s index file matches the snapshot', testUtilType => {
     const testUtilsIndexFilePath = path.resolve(__dirname, `./mock-test-utils/${testUtilType}/index.ts`);
-    const content = fs.readFileSync(testUtilsIndexFilePath);
+    const content = fs.readFileSync(testUtilsIndexFilePath, { encoding: 'utf8' });
     expect(content).toMatchSnapshot();
   });
 });

@@ -10,7 +10,7 @@
   "homepage": "https://cloudscape.design",
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --ext js,ts .",
-    "build": "tsc -b && node scripts/generate-package.js && node scripts/generate-doc.js && node scripts/generate-exports.js",
+    "build": "tsc -b && node scripts/generate-package.js && node scripts/generate-doc.js && node scripts/generate-exports.js && node scripts/build-mocks.js",
     "postbuild": "cp NOTICE README.md LICENSE lib/core && cp NOTICE README.md LICENSE lib/converter",
     "test": "vitest run",
     "posttest": "node ./scripts/verify-typescript.js",
