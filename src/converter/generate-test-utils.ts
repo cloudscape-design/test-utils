@@ -33,6 +33,10 @@ function generateSelectorUtils(testUtilsPath: string) {
   const selectorsFolderPath = path.join(testUtilsPath, 'selectors');
   const conversionTargetRelativePaths = glob.sync(`**/*.{ts,tsx}`, { cwd: domFolderPath });
 
+  if (conversionTargetRelativePaths.length === 0) {
+    throw new Error(`No file with ts or tsx extension found at: ${domFolderPath}`);
+  }
+
   for (const fileRelativePath of conversionTargetRelativePaths) {
     const domFilePath = path.join(domFolderPath, fileRelativePath);
     const domFileContent = fs.readFileSync(domFilePath, 'utf-8');

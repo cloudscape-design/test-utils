@@ -36,6 +36,20 @@ describe(`${generateTestUtils.name}`, () => {
     expect(convertToSelectorUtil).toHaveBeenCalledWith('file content');
   });
 
+  test('throws an error with the path if the specified path has no matching file', () => {
+    const runGenerateTestUtils = () =>
+      generateTestUtils({
+        components: mockComponents,
+        testUtilsPath: './some-invalid-path/mock-test-utils',
+      });
+
+    expect(runGenerateTestUtils).toThrowError(
+      new Error(`No file with ts or tsx extension found at: some-invalid-path/mock-test-utils/dom`)
+    );
+
+    expect(convertToSelectorUtil).not.toHaveBeenCalled();
+  });
+
   const testUtilsType = ['dom', 'selectors'] as const;
   test.each(testUtilsType)('generates the index file for %s test utils', testUtilType => {
     generateTestUtils({
