@@ -59,10 +59,6 @@ describe(`${generateComponentFinders.name}`, () => {
       expect(sourceFileContent).toMatch('ElementWrapper.prototype.findAllStatus = function(selector)');
     });
 
-    test('it exports the component metadata helper', () => {
-      expect(sourceFileContent).toMatch(`export function getComponentMetadata(componentName: string)`);
-    });
-
     test('it exports the wrapper creator', () => {
       if (testUtilType === 'dom') {
         expect(sourceFileContent).toMatch('export default function wrapper(root: Element = document.body)');

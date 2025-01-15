@@ -83,17 +83,6 @@ ElementWrapper.prototype.findAllTestComponentBs = function(selector) {
 };
 
 
-/**
- * Returns the component metadata including its plural and wrapper name.
- *
- * @param {string} componentName Component name in pascal case.
- * @returns {ComponentMetadata}
- */
-export function getComponentMetadata(componentName: string) {
-  return {"TestComponentA":{"pluralName":"TestComponentAs","wrapperName":"TestComponentAWrapper"},"TestComponentB":{"pluralName":"TestComponentBs","wrapperName":"TestComponentBWrapper"}}[componentName];
-}
-
-
 export default function wrapper(root: Element = document.body) {
   if (document && document.body && !document.body.contains(root)) {
     console.warn('[AwsUi] [test-utils] provided element is not part of the document body, interactions may work incorrectly')
@@ -180,17 +169,6 @@ ElementWrapper.prototype.findTestComponentB = function(selector) {
 ElementWrapper.prototype.findAllTestComponentBs = function(selector) {
   return this.findAllComponents(TestComponentBWrapper, selector);
 };
-
-
-/**
- * Returns the component metadata including its plural and wrapper name.
- *
- * @param {string} componentName Component name in pascal case.
- * @returns {ComponentMetadata}
- */
-export function getComponentMetadata(componentName: string) {
-  return {"TestComponentA":{"pluralName":"TestComponentAs","wrapperName":"TestComponentAWrapper"},"TestComponentB":{"pluralName":"TestComponentBs","wrapperName":"TestComponentBWrapper"}}[componentName];
-}
 
 
 export default function wrapper(root: string = 'body') {

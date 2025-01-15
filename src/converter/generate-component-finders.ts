@@ -1,7 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import { ComponentWrapperMetadata, TestUtilType } from './interfaces';
-import { buildComponentsMetadataMap } from './utils';
 
 const componentWrapperImport = ({ wrapperName, wrapperImportPath }: ComponentWrapperMetadata) => `
 import ${wrapperName} from '${wrapperImportPath}';`;
@@ -101,17 +100,6 @@ declare module '@cloudscape-design/test-utils-core/dist/${testUtilType}' {
 }
 
 ${components.map(componentFinders).join('')}
-
-
-/**
- * Returns the component metadata including its plural and wrapper name.
- *
- * @param {string} componentName Component name in pascal case.
- * @returns {ComponentMetadata}
- */
-export function getComponentMetadata(componentName: string) {
-  return ${buildComponentsMetadataMap(components)}[componentName];
-}
 
 ${defaultExport[testUtilType]}
 `;

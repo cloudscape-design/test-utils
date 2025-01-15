@@ -53,17 +53,3 @@ export interface ComponentWrapperMetadata extends ComponentMetadata {
    */
   wrapperImportPath: string;
 }
-
-export interface ComponentPublicMetadata {
-  /**
-   * Plural name of the component in pascal case.
-   * Examples: Buttons, Alerts, ButtonDropdowns
-   */
-  pluralName: string;
-
-  /*
-   * Name of the component wrapper in pascal case
-   * Examples: ButtonWrapper, AlertWrapper, ButtonDropdownWrapper
-   */
-  wrapperName: string;
-}
