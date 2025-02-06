@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 /* eslint-env browser */
-import { Simulate } from 'react-dom/test-utils';
+
 import { ComponentWrapper, ElementWrapper, usesDom } from '../../../../../lib/core/dom';
 
 export default class DummyWrapper extends ComponentWrapper<HTMLButtonElement> {
@@ -15,6 +15,6 @@ export default class DummyWrapper extends ComponentWrapper<HTMLButtonElement> {
 
   @usesDom
   makeChange(): void {
-    Simulate.change(this.getElement());
+    this.getElement().click();
   }
 }

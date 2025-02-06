@@ -1,12 +1,12 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from '@testing-library/react';
 import { generateTestUtils } from '../index';
 import { describe, test, expect } from 'vitest';
 
 function renderTestNode() {
-  const testNode = (
+  const { container } = render(
     <>
       <div className="test-component-a-root">
         <h1 className="test-component-a-child">First Component A</h1>
@@ -26,9 +26,6 @@ function renderTestNode() {
       </div>
     </>
   );
-
-  const container = document.createElement('body');
-  ReactDOM.render(testNode, container);
   return container;
 }
 
