@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import { describe, test, expect } from 'vitest';
-import { appendSelector } from '../utils';
+import { appendSelector, unionSelectors } from '../utils';
 
 describe('appendSelector', () => {
   test('appends selectors', () => {
@@ -24,5 +24,13 @@ describe('appendSelector', () => {
     expect(() => appendSelector('.button', '.selected .icon')).toThrow(
       /Appended selector may not contain a combinator/
     );
+  });
+
+});
+
+describe(`${unionSelectors.name}`, () => {
+  test('creates a union of all selectors using :is pseudo-class', () => {
+    const selector = unionSelectors('.selector-1', '.selector-2', '.selector-3');
+    expect(selector).toBe(':is(.selector-1,.selector-2,.selector-3)');
   });
 });
