@@ -67,6 +67,10 @@ export const getUnscopedClassName = (selector: string): string => {
   });
 };
 
+export function unionSelectors(...selectors: string[]) {
+  return `:is(${selectors.join()})`;
+}
+
 export enum KeyCode {
   pageUp = 33,
   pageDown = 34,
