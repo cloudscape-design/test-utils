@@ -48,6 +48,12 @@ describe('CSS-selectors test utils', () => {
     expect(wrapper.findAll('.item').get(2).toSelector()).toEqual('.awsui-component .item:nth-child(2)');
   });
 
+  it('finds multiple elements in the tree', () => {
+    expect(wrapper.findAny('.awsui-first', '.awsui-second').find('.awsui-inner').toSelector()).toEqual(
+      '.awsui-component :is(.awsui-first, .awsui-second) .awsui-inner',
+    );
+  });
+
   it('builds selectors using class names', () => {
     const CLASS_NAME = 'element';
     expect(wrapper.findByClassName(CLASS_NAME).toSelector()).toEqual('.awsui-component .element');
