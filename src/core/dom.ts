@@ -140,7 +140,7 @@ export class AbstractWrapper<ElementType extends Element>
    */
   findComponent<Wrapper extends ComponentWrapper, ElementType extends HTMLElement>(
     selector: string,
-    ComponentClass: WrapperClass<Wrapper, ElementType>
+    ComponentClass: WrapperClass<Wrapper, ElementType>,
   ): Wrapper | null {
     const elementWrapper = this.find<ElementType>(selector);
     return elementWrapper ? new ComponentClass(elementWrapper.getElement()) : null;
@@ -157,7 +157,7 @@ export class AbstractWrapper<ElementType extends Element>
    */
   findAllComponents<Wrapper extends ComponentWrapper, ElementType extends HTMLElement>(
     ComponentClass: ComponentWrapperClass<Wrapper, ElementType>,
-    selector?: string
+    selector?: string,
   ): Array<Wrapper> {
     const componentRootSelector = `.${ComponentClass.rootSelector}`;
     const componentCombinedSelector = selector
@@ -174,7 +174,7 @@ export class ComponentWrapper<ElementType extends Element = HTMLElement> extends
 export function createWrapper(root: Element = document.body) {
   if (document && document.body && !document.body.contains(root)) {
     console.warn(
-      '[AwsUi] [test-utils] provided element is not part of the document body, interactions may work incorrectly'
+      '[AwsUi] [test-utils] provided element is not part of the document body, interactions may work incorrectly',
     );
   }
   return new ElementWrapper(root);

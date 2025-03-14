@@ -44,7 +44,7 @@ describe(`${generateTestUtils.name}`, () => {
       });
 
     expect(runGenerateTestUtils).toThrowError(
-      new Error(`No file with ts or tsx extension found at: some-invalid-path/mock-test-utils/dom`)
+      new Error(`No file with ts or tsx extension found at: some-invalid-path/mock-test-utils/dom`),
     );
 
     expect(convertToSelectorUtil).not.toHaveBeenCalled();
@@ -61,7 +61,7 @@ describe(`${generateTestUtils.name}`, () => {
 
     expect(writeFileSync).toHaveBeenCalledWith(
       `test/mock-test-utils/${testUtilType}/index.ts`,
-      expect.stringMatching(testUtilsFilePartialContent)
+      expect.stringMatching(testUtilsFilePartialContent),
     );
   });
 });

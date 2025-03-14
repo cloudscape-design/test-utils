@@ -65,7 +65,7 @@ export class AbstractWrapper implements IElementWrapper<string, MultiElementWrap
    */
   findAllComponents<Wrapper extends ComponentWrapper>(
     ComponentClass: ComponentWrapperClass<Wrapper>,
-    selector?: string
+    selector?: string,
   ): MultiElementWrapper<Wrapper> {
     const componentRootSelector = `.${ComponentClass.rootSelector}`;
     const componentCombinedSelector = selector
@@ -85,7 +85,10 @@ export class ElementWrapper extends AbstractWrapper {}
 export class ComponentWrapper extends AbstractWrapper {}
 
 export class MultiElementWrapper<T extends AbstractWrapper> extends ElementWrapper {
-  constructor(root: string, private elementFactory: (selector: string) => T) {
+  constructor(
+    root: string,
+    private elementFactory: (selector: string) => T,
+  ) {
     super(root);
   }
 

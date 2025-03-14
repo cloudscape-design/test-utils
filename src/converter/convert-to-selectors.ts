@@ -46,7 +46,7 @@ function selectorUtilsGenerator({ types: t }: PluginArguments): PluginObj {
         // remove methods marked with @usesDom decorator
         if (decorators) {
           const domDecorator = decorators.find(
-            dec => t.isIdentifier(dec.expression) && dec.expression.name === 'usesDom'
+            dec => t.isIdentifier(dec.expression) && dec.expression.name === 'usesDom',
           );
           if (domDecorator) {
             path.remove();
@@ -63,7 +63,7 @@ function selectorUtilsGenerator({ types: t }: PluginArguments): PluginObj {
           param =>
             param.type === 'TSTypeReference' &&
             param.typeName.type === 'Identifier' &&
-            param.typeName.name.startsWith('HTML')
+            param.typeName.name.startsWith('HTML'),
         );
         if (containsDomElement) {
           path.remove();
