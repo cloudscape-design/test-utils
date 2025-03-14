@@ -52,7 +52,7 @@ describe('CSS-selectors test utils', () => {
     const CLASS_NAME = 'element';
     expect(wrapper.findByClassName(CLASS_NAME).toSelector()).toEqual('.awsui-component .element');
     expect(wrapper.findAllByClassName(CLASS_NAME).get(2).toSelector()).toEqual(
-      '.awsui-component .element:nth-child(2)'
+      '.awsui-component .element:nth-child(2)',
     );
   });
 
@@ -70,29 +70,29 @@ describe('CSS-selectors test utils', () => {
 
   it('allows to find nth-child of the same type components', () => {
     expect(wrapper.findAllChildren().get(2).findTitle().toSelector()).toEqual(
-      '.awsui-component .awsui-child:nth-child(2) .title'
+      '.awsui-component .awsui-child:nth-child(2) .title',
     );
   });
 
   it('allows to find nth-child of the same type components matching the specified selector', () => {
     expect(wrapper.findAllChildren('.some-class[data-some-attribute]').get(2).findTitle().toSelector()).toEqual(
-      '.awsui-component .awsui-child.some-class[data-some-attribute]:nth-child(2) .title'
+      '.awsui-component .awsui-child.some-class[data-some-attribute]:nth-child(2) .title',
     );
   });
 
   it('converts css scoped selectors to wildcard classname selectors', () => {
     const CLASS_NAME = 'awsui_element_header_filenameHash_contentHash_3';
     expect(wrapper.find(`.${CLASS_NAME}`).toSelector()).toEqual(
-      '.awsui-component [class*="awsui_element_header_filenameHash"]'
+      '.awsui-component [class*="awsui_element_header_filenameHash"]',
     );
     expect(wrapper.find(`:scope > .${CLASS_NAME}`).toSelector()).toEqual(
-      '.awsui-component > [class*="awsui_element_header_filenameHash"]'
+      '.awsui-component > [class*="awsui_element_header_filenameHash"]',
     );
     expect(wrapper.findByClassName(CLASS_NAME).toSelector()).toEqual(
-      '.awsui-component [class*="awsui_element_header_filenameHash"]'
+      '.awsui-component [class*="awsui_element_header_filenameHash"]',
     );
     expect(wrapper.findAllByClassName(CLASS_NAME).get(2).toSelector()).toEqual(
-      '.awsui-component [class*="awsui_element_header_filenameHash"]:nth-child(2)'
+      '.awsui-component [class*="awsui_element_header_filenameHash"]:nth-child(2)',
     );
   });
 
@@ -100,7 +100,7 @@ describe('CSS-selectors test utils', () => {
     expect(
       wrapper
         .find(`.awsui_button_filenameHash_contentHash_3.awsui_button-active_filenameHash_contentHash_3`)
-        .toSelector()
+        .toSelector(),
     ).toEqual('.awsui-component [class*="awsui_button_filenameHash"][class*="awsui_button-active_filenameHash"]');
   });
 });

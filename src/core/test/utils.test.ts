@@ -22,7 +22,7 @@ describe('appendSelector', () => {
 
   test('throws error when additional string is a cascade selector', () => {
     expect(() => appendSelector('.button', '.selected .icon')).toThrow(
-      /Appended selector may not contain a combinator/
+      /Appended selector may not contain a combinator/,
     );
   });
 });

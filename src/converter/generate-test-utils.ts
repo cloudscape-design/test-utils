@@ -20,7 +20,7 @@ function generateIndexFile({ testUtilsPath, components, testUtilType }: Generate
       pluralName,
       wrapperName: `${name}Wrapper`,
       wrapperImportPath: `./${testUtilsFolderName ?? kebabCase(name)}`,
-    })
+    }),
   );
 
   const content = generateComponentFinders({ testUtilType, components: componenWrappersMetadata });

@@ -17,7 +17,7 @@ testUtilTypes.forEach(testUtilType => {
       includeDeclarations: true,
       excludeExternals: true,
     },
-    `./lib/core/**/${testUtilType}.d.ts`
+    `./lib/core/**/${testUtilType}.d.ts`,
   );
 
   const fileContent = `module.exports = ${JSON.stringify(wrapperDefinitions)}`;

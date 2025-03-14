@@ -25,5 +25,5 @@ execSync(
   `tsc --noEmit --strict --experimentalDecorators --target es5 src/converter/test/inputs/converter/*.ts src/converter/test/outputs/converter/*.ts`,
   {
     stdio: 'inherit',
-  }
+  },
 );
