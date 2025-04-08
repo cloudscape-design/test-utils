@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "strict": true,
-    "module": "CommonJS",
+    "module": "ES2015",
+    "moduleResolution": "node",
     "types": [],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "declaration": true,
-    "target": "es5",
-    "lib": ["es6", "dom"],
+    "target": "ES2015",
+    "lib": ["ES2020", "DOM"],
     "rootDir": "./",
     "outDir": "../../lib/core/dist"
   },
