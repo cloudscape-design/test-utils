@@ -35,6 +35,10 @@ export class AbstractWrapper implements IElementWrapper<string, MultiElementWrap
     return new MultiElementWrapper(getRootSelector(selector, this.root), selector => new ElementWrapper(selector));
   }
 
+  findAny(...selectors: Array<string>): ElementWrapper {
+    return this.find(`:is(${selectors.map(selector => getUnscopedClassName(selector)).join(', ')})`);
+  }
+
   findByClassName(className: string) {
     return this.find(`.${className}`);
   }

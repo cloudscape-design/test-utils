@@ -120,6 +120,12 @@ export class AbstractWrapper<ElementType extends Element>
     return elements.map(element => new ElementWrapper(element));
   }
 
+  findAny<NewElementType extends Element = HTMLElement>(
+    ...selectors: Array<string>
+  ): ElementWrapper<NewElementType> | null {
+    return this.find(selectors.join(', '));
+  }
+
   findByClassName<NewElementType extends HTMLElement = HTMLElement>(className: string) {
     return this.find<NewElementType>(`.${className}`);
   }
