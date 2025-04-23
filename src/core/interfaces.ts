@@ -7,5 +7,7 @@ export interface IElementWrapper<ElementType, CollectionType> {
 
   find(selector: string): IElementWrapper<ElementType, CollectionType> | null;
 
+  findAny(...selectors: Array<string>): IElementWrapper<ElementType, CollectionType> | null;
+
   findAll(selector: string): CollectionType;
 }

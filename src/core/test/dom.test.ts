@@ -32,6 +32,7 @@ describe('DOM test utils', () => {
         <button>2</button>
         <button>2</button>
       </div>
+      <div class="second-type">should not match</div>
       <ul class="${LIST_WITH_ITEMS_CLASS_NAME}">
         <li class="${LIST_ITEM_CLASS_NAME} first-type">1</li>
         <li class="${LIST_ITEM_CLASS_NAME} second-type">2</li>
@@ -181,6 +182,13 @@ describe('DOM test utils', () => {
         const result = wrapper.find('article');
         expect(result).toEqual(null);
       });
+    });
+
+    it('findAny()', () => {
+      expect(
+        wrapper.findByClassName(LIST_WITH_ITEMS_CLASS_NAME).findAny('.first-type', '.second-type').getElement()
+          .textContent,
+      ).toEqual('1');
     });
 
     describe('matches()', () => {
