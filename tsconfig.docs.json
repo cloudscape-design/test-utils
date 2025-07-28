@@ -9,5 +9,6 @@
     "target": "es2018",
     "lib": ["es2018", "dom"]
   },
-  "include": ["./lib/core/**/*.d.ts"]
+  "include": ["./src/core/**/*.ts"],
+  "exclude": ["./src/core/test"]
 }
