@@ -86,3 +86,18 @@ export enum KeyCode {
   alt = 18,
   meta = 91,
 }
+
+export type Comparator = string | RegExp | ((name: string) => boolean);
+
+export function createComparator(comparator: Comparator) {
+  switch (typeof comparator) {
+    case 'string':
+      return (subject: string) => subject === comparator;
+    case 'function':
+      return comparator;
+  }
+  if (comparator instanceof RegExp) {
+    return (subject: string) => comparator.exec(subject);
+  }
+  throw new Error(`Invalid condition provided: ${comparator}`);
+}

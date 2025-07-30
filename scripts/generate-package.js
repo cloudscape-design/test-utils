@@ -25,7 +25,7 @@ const packages = [
       files: ['test-utils-doc', 'dist', '*.js', '*.d.ts', 'NOTICE', 'LICENSE', 'README.md'],
     },
     packageRoot: path.join(root, './lib/core'),
-    dependencies: ['css-selector-tokenizer', 'css.escape'],
+    dependencies: ['css-selector-tokenizer', 'css.escape', 'dom-accessibility-api'],
   },
 ];
 

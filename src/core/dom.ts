@@ -2,8 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 /*eslint-env browser*/
 import { IElementWrapper } from './interfaces';
-import { KeyCode, isScopedSelector, substituteScope, appendSelector } from './utils';
+import { KeyCode, isScopedSelector, substituteScope, appendSelector, createComparator, Comparator } from './utils';
 import { act } from './utils-dom';
+import { computeAccessibleDescription, computeAccessibleName } from 'dom-accessibility-api';
 
 // Original KeyboardEventInit lacks some properties https://github.com/Microsoft/TypeScript/issues/15228
 declare global {
@@ -30,6 +31,14 @@ interface WrapperClass<Wrapper, ElementType> {
 interface ComponentWrapperClass<Wrapper, ElementType> extends WrapperClass<Wrapper, ElementType> {
   rootSelector: string;
 }
+
+type Selector =
+  | string
+  | {
+      name?: Comparator;
+      description?: Comparator;
+      textContent?: Comparator;
+    };
 
 export class AbstractWrapper<ElementType extends Element>
   implements IElementWrapper<ElementType, Array<ElementWrapper<ElementType>>>
@@ -97,26 +106,57 @@ export class AbstractWrapper<ElementType extends Element>
     }
   }
 
-  find<NewElementType extends Element = HTMLElement>(selector: string): ElementWrapper<NewElementType> | null {
-    return this.findAll<NewElementType>(selector)[0] || null;
+  find<NewElementType extends Element = HTMLElement>(
+    rootSelector: string,
+    selector?: Selector,
+  ): ElementWrapper<NewElementType> | null {
+    return this.findAll<NewElementType>(rootSelector, selector)[0] || null;
   }
 
   matches(selector: string): this | null {
     return this.element.matches(selector) ? this : null;
   }
 
-  findAll<NewElementType extends Element = HTMLElement>(selector: string) {
+  findAll<NewElementType extends Element = HTMLElement>(rootSelector: string, selector?: Selector) {
     let elements: Array<NewElementType>;
-    if (isScopedSelector(selector)) {
+    const combinedSelector = typeof selector === 'string' ? appendSelector(rootSelector, selector) : rootSelector;
+    if (isScopedSelector(combinedSelector)) {
       const randomValue = Math.floor(Math.random() * 100000);
       const attributeName = `data-awsui-test-scope-${randomValue}`;
-      const domSelector = substituteScope(selector, `[${attributeName}]`);
+      const domSelector = substituteScope(combinedSelector, `[${attributeName}]`);
       this.getElement().setAttribute(attributeName, '');
       elements = Array.prototype.slice.call(this.element.querySelectorAll(domSelector));
       this.getElement().removeAttribute(attributeName);
     } else {
-      elements = Array.prototype.slice.call(this.element.querySelectorAll(selector));
+      elements = Array.prototype.slice.call(this.element.querySelectorAll(combinedSelector));
     }
+
+    if (selector && typeof selector === 'object') {
+      // TODO: validate parts of selector
+      elements = elements.filter(element => {
+        if (selector.name) {
+          const comparator = createComparator(selector.name);
+          if (!comparator(computeAccessibleName(element))) {
+            return false;
+          }
+        }
+        if (selector.description) {
+          const comparator = createComparator(selector.description);
+          if (!comparator(computeAccessibleDescription(element))) {
+            return false;
+          }
+        }
+        if (selector.textContent) {
+          const comparator = createComparator(selector.textContent);
+          if (!comparator(element.textContent || '')) {
+            return false;
+          }
+        }
+        return true;
+      });
+      // TODO: messaging if selector filters out all options?
+    }
+
     return elements.map(element => new ElementWrapper(element));
   }
 
@@ -145,10 +185,11 @@ export class AbstractWrapper<ElementType extends Element>
    * @returns `Wrapper | null`
    */
   findComponent<Wrapper extends ComponentWrapper, ElementType extends HTMLElement>(
-    selector: string,
+    rootSelector: string,
     ComponentClass: WrapperClass<Wrapper, ElementType>,
+    selector?: Selector,
   ): Wrapper | null {
-    const elementWrapper = this.find<ElementType>(selector);
+    const elementWrapper = this.find<ElementType>(rootSelector, selector);
     return elementWrapper ? new ComponentClass(elementWrapper.getElement()) : null;
   }
 
@@ -163,14 +204,10 @@ export class AbstractWrapper<ElementType extends Element>
    */
   findAllComponents<Wrapper extends ComponentWrapper, ElementType extends HTMLElement>(
     ComponentClass: ComponentWrapperClass<Wrapper, ElementType>,
-    selector?: string,
+    selector?: Selector,
   ): Array<Wrapper> {
     const componentRootSelector = `.${ComponentClass.rootSelector}`;
-    const componentCombinedSelector = selector
-      ? appendSelector(componentRootSelector, selector)
-      : componentRootSelector;
-
-    const elementWrappers = this.findAll<ElementType>(componentCombinedSelector);
+    const elementWrappers = this.findAll<ElementType>(componentRootSelector, selector);
     return elementWrappers.map(wrapper => new ComponentClass(wrapper.getElement()));
   }
 }

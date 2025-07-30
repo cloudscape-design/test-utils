@@ -37,8 +37,15 @@ Note that programmatic events ignore disabled attribute and will trigger listene
             "flags": {
               "isOptional": false,
             },
-            "name": "selector",
+            "name": "rootSelector",
             "typeName": "string",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+            "typeName": "Selector",
           },
         ],
         "returnType": {
@@ -53,8 +60,15 @@ Note that programmatic events ignore disabled attribute and will trigger listene
             "flags": {
               "isOptional": false,
             },
-            "name": "selector",
+            "name": "rootSelector",
             "typeName": "string",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+            "typeName": "Selector",
           },
         ],
         "returnType": {
@@ -98,6 +112,7 @@ Component's wrapper class",
               "isOptional": true,
             },
             "name": "selector",
+            "typeName": "Selector",
           },
         ],
         "returnType": {
@@ -151,12 +166,10 @@ Note: This function returns the specified component's wrapper even if the specif
         "name": "findComponent",
         "parameters": [
           {
-            "description": "
-CSS selector",
             "flags": {
               "isOptional": false,
             },
-            "name": "selector",
+            "name": "rootSelector",
             "typeName": "string",
           },
           {
@@ -167,6 +180,15 @@ Component's wrapper class",
             },
             "name": "ComponentClass",
             "typeName": "WrapperClass",
+          },
+          {
+            "description": "
+CSS selector",
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+            "typeName": "Selector",
           },
         ],
         "returnType": {
@@ -317,8 +339,15 @@ Note that programmatic events ignore disabled attribute and will trigger listene
             "flags": {
               "isOptional": false,
             },
-            "name": "selector",
+            "name": "rootSelector",
             "typeName": "string",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+            "typeName": "Selector",
           },
         ],
         "returnType": {
@@ -336,8 +365,15 @@ Note that programmatic events ignore disabled attribute and will trigger listene
             "flags": {
               "isOptional": false,
             },
-            "name": "selector",
+            "name": "rootSelector",
             "typeName": "string",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+            "typeName": "Selector",
           },
         ],
         "returnType": {
@@ -387,6 +423,7 @@ Component's wrapper class",
               "isOptional": true,
             },
             "name": "selector",
+            "typeName": "Selector",
           },
         ],
         "returnType": {
@@ -449,12 +486,10 @@ Note: This function returns the specified component's wrapper even if the specif
         "name": "findComponent",
         "parameters": [
           {
-            "description": "
-CSS selector",
             "flags": {
               "isOptional": false,
             },
-            "name": "selector",
+            "name": "rootSelector",
             "typeName": "string",
           },
           {
@@ -465,6 +500,15 @@ Component's wrapper class",
             },
             "name": "ComponentClass",
             "typeName": "WrapperClass",
+          },
+          {
+            "description": "
+CSS selector",
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+            "typeName": "Selector",
           },
         ],
         "returnType": {
@@ -636,8 +680,15 @@ Note that programmatic events ignore disabled attribute and will trigger listene
             "flags": {
               "isOptional": false,
             },
-            "name": "selector",
+            "name": "rootSelector",
             "typeName": "string",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+            "typeName": "Selector",
           },
         ],
         "returnType": {
@@ -655,8 +706,15 @@ Note that programmatic events ignore disabled attribute and will trigger listene
             "flags": {
               "isOptional": false,
             },
-            "name": "selector",
+            "name": "rootSelector",
             "typeName": "string",
+          },
+          {
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+            "typeName": "Selector",
           },
         ],
         "returnType": {
@@ -706,6 +764,7 @@ Component's wrapper class",
               "isOptional": true,
             },
             "name": "selector",
+            "typeName": "Selector",
           },
         ],
         "returnType": {
@@ -768,12 +827,10 @@ Note: This function returns the specified component's wrapper even if the specif
         "name": "findComponent",
         "parameters": [
           {
-            "description": "
-CSS selector",
             "flags": {
               "isOptional": false,
             },
-            "name": "selector",
+            "name": "rootSelector",
             "typeName": "string",
           },
           {
@@ -784,6 +841,15 @@ Component's wrapper class",
             },
             "name": "ComponentClass",
             "typeName": "WrapperClass",
+          },
+          {
+            "description": "
+CSS selector",
+            "flags": {
+              "isOptional": true,
+            },
+            "name": "selector",
+            "typeName": "Selector",
           },
         ],
         "returnType": {
