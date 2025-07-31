@@ -7,6 +7,15 @@ exports[`index files > dom index file matches the snapshot 1`] = `
 import { ElementWrapper } from '@cloudscape-design/test-utils-core/dom';
 import { appendSelector } from '@cloudscape-design/test-utils-core/utils';
 
+type Comparator = string | RegExp | ((name: string) => boolean);
+type Selector =
+  | string
+  | {
+      name?: Comparator;
+      description?: Comparator;
+      textContent?: Comparator;
+    };
+
 export { ElementWrapper };
 
 import TestComponentAWrapper from './test-component-a';
@@ -27,7 +36,7 @@ declare module '@cloudscape-design/test-utils-core/dist/dom' {
  * @param {string} [selector] CSS Selector
  * @returns {TestComponentAWrapper | null}
  */
-findTestComponentA(selector?: string): TestComponentAWrapper | null;
+findTestComponentA(selector?: Selector): TestComponentAWrapper | null;
 
 /**
  * Returns an array of TestComponentA wrapper that matches the specified CSS selector.
@@ -37,7 +46,7 @@ findTestComponentA(selector?: string): TestComponentAWrapper | null;
  * @param {string} [selector] CSS Selector
  * @returns {Array<TestComponentAWrapper>}
  */
-findAllTestComponentAs(selector?: string): Array<TestComponentAWrapper>;
+findAllTestComponentAs(selector?: Selector): Array<TestComponentAWrapper>;
 /**
  * Returns the wrapper of the first TestComponentB that matches the specified CSS selector.
  * If no CSS selector is specified, returns the wrapper of the first TestComponentB.
@@ -46,7 +55,7 @@ findAllTestComponentAs(selector?: string): Array<TestComponentAWrapper>;
  * @param {string} [selector] CSS Selector
  * @returns {TestComponentBWrapper | null}
  */
-findTestComponentB(selector?: string): TestComponentBWrapper | null;
+findTestComponentB(selector?: Selector): TestComponentBWrapper | null;
 
 /**
  * Returns an array of TestComponentB wrapper that matches the specified CSS selector.
@@ -56,7 +65,7 @@ findTestComponentB(selector?: string): TestComponentBWrapper | null;
  * @param {string} [selector] CSS Selector
  * @returns {Array<TestComponentBWrapper>}
  */
-findAllTestComponentBs(selector?: string): Array<TestComponentBWrapper>;
+findAllTestComponentBs(selector?: Selector): Array<TestComponentBWrapper>;
    }
 }
 
@@ -65,7 +74,7 @@ ElementWrapper.prototype.findTestComponentA = function(selector) {
   const rootSelector = \`.\${TestComponentAWrapper.rootSelector}\`;
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
-  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, TestComponentAWrapper);
+  return (this as any).findComponent(rootSelector, TestComponentAWrapper, selector);
 };
 
 ElementWrapper.prototype.findAllTestComponentAs = function(selector) {
@@ -75,7 +84,7 @@ ElementWrapper.prototype.findTestComponentB = function(selector) {
   const rootSelector = \`.\${TestComponentBWrapper.rootSelector}\`;
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
-  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, TestComponentBWrapper);
+  return (this as any).findComponent(rootSelector, TestComponentBWrapper, selector);
 };
 
 ElementWrapper.prototype.findAllTestComponentBs = function(selector) {
@@ -98,6 +107,7 @@ exports[`index files > selectors index file matches the snapshot 1`] = `
 // SPDX-License-Identifier: Apache-2.0
 import { ElementWrapper } from '@cloudscape-design/test-utils-core/selectors';
 import { appendSelector } from '@cloudscape-design/test-utils-core/utils';
+
 
 export { ElementWrapper };
 
@@ -153,7 +163,7 @@ ElementWrapper.prototype.findTestComponentA = function(selector) {
   const rootSelector = \`.\${TestComponentAWrapper.rootSelector}\`;
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
-  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, TestComponentAWrapper);
+  return (this as any).findComponent(rootSelector, TestComponentAWrapper, selector);
 };
 
 ElementWrapper.prototype.findAllTestComponentAs = function(selector) {
@@ -163,7 +173,7 @@ ElementWrapper.prototype.findTestComponentB = function(selector) {
   const rootSelector = \`.\${TestComponentBWrapper.rootSelector}\`;
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
-  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, TestComponentBWrapper);
+  return (this as any).findComponent(rootSelector, TestComponentBWrapper, selector);
 };
 
 ElementWrapper.prototype.findAllTestComponentBs = function(selector) {

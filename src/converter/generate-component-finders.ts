@@ -13,7 +13,7 @@ ElementWrapper.prototype.find${name} = function(selector) {
   const rootSelector = \`.$\{${wrapperName}.rootSelector}\`;
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
-  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, ${wrapperName});
+  return (this as any).findComponent(rootSelector, ${wrapperName}, selector);
 };
 
 ElementWrapper.prototype.findAll${pluralName} = function(selector) {
@@ -30,7 +30,7 @@ const componentFindersInterfaces = {
  * @param {string} [selector] CSS Selector
  * @returns {${wrapperName} | null}
  */
-find${name}(selector?: string): ${wrapperName} | null;
+find${name}(selector?: Selector): ${wrapperName} | null;
 
 /**
  * Returns an array of ${name} wrapper that matches the specified CSS selector.
@@ -40,7 +40,7 @@ find${name}(selector?: string): ${wrapperName} | null;
  * @param {string} [selector] CSS Selector
  * @returns {Array<${wrapperName}>}
  */
-findAll${pluralName}(selector?: string): Array<${wrapperName}>;`,
+findAll${pluralName}(selector?: Selector): Array<${wrapperName}>;`,
 
   selectors: ({ name, pluralName, wrapperName }: ComponentWrapperMetadata) => `
 /**
@@ -87,6 +87,19 @@ export const generateComponentFinders = ({ components, testUtilType }: GenerateF
 // SPDX-License-Identifier: Apache-2.0
 import { ElementWrapper } from '@cloudscape-design/test-utils-core/${testUtilType}';
 import { appendSelector } from '@cloudscape-design/test-utils-core/utils';
+${
+  testUtilType === 'dom'
+    ? `
+type Comparator = string | RegExp | ((name: string) => boolean);
+type Selector =
+  | string
+  | {
+      name?: Comparator;
+      description?: Comparator;
+      textContent?: Comparator;
+    };`
+    : ''
+}
 
 export { ElementWrapper };
 ${components.map(componentWrapperImport).join('')}

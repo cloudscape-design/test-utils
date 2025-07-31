@@ -40,10 +40,10 @@ describe(`${generateComponentFinders.name}`, () => {
       expect(sourceFileContent).toMatch(`declare module '@cloudscape-design/test-utils-core/dist/${testUtilType}'`);
 
       if (testUtilType === 'dom') {
-        expect(sourceFileContent).toMatch(`findAlert(selector?: string): AlertWrapper | null`);
-        expect(sourceFileContent).toMatch(`findAllAlerts(selector?: string): Array<AlertWrapper>`);
-        expect(sourceFileContent).toMatch(`findStatus(selector?: string): StatusWrapper | null`);
-        expect(sourceFileContent).toMatch(`findAllStatus(selector?: string): Array<StatusWrapper>`);
+        expect(sourceFileContent).toMatch(`findAlert(selector?: Selector): AlertWrapper | null`);
+        expect(sourceFileContent).toMatch(`findAllAlerts(selector?: Selector): Array<AlertWrapper>`);
+        expect(sourceFileContent).toMatch(`findStatus(selector?: Selector): StatusWrapper | null`);
+        expect(sourceFileContent).toMatch(`findAllStatus(selector?: Selector): Array<StatusWrapper>`);
       } else {
         expect(sourceFileContent).toMatch(`findAlert(selector?: string): AlertWrapper`);
         expect(sourceFileContent).toMatch(`findAllAlerts(selector?: string): MultiElementWrapper<AlertWrapper>`);

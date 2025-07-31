@@ -9,6 +9,7 @@ describe('DOM test utils', () => {
   let node: HTMLElement, wrapper: ElementWrapper;
 
   const CLASS_NAME = 'some-class';
+  const BUTTON_CLASS_NAME = 'some-class-button';
 
   const LIST_WITH_ITEMS_CLASS_NAME = 'list-with-items';
   const LIST_WITHOUT_ITEMS_CLASS_NAME = 'list-without-items';
@@ -26,11 +27,12 @@ describe('DOM test utils', () => {
         <a>2</a>
         <a>2</a>
       </div>
-      <button class="${CLASS_NAME} active">1</button>
-      <button class="${CLASS_NAME}">1</button>
+      <button class="${BUTTON_CLASS_NAME} ${CLASS_NAME} active">1</button>
+      <button class="${BUTTON_CLASS_NAME} ${CLASS_NAME}">1</button>
       <div>
-        <button>2</button>
-        <button>2</button>
+        <button class="${BUTTON_CLASS_NAME}">2</button>
+        <button class="${BUTTON_CLASS_NAME}">2</button>
+        <button class="${BUTTON_CLASS_NAME}">12</button>
       </div>
       <div class="second-type">should not match</div>
       <ul class="${LIST_WITH_ITEMS_CLASS_NAME}">
@@ -241,6 +243,9 @@ describe('DOM test utils', () => {
       class ListItemWrapper extends ComponentWrapper<HTMLUListElement> {
         static rootSelector = LIST_ITEM_CLASS_NAME;
       }
+      class ButtonWrapper extends ComponentWrapper<HTMLButtonElement> {
+        static rootSelector = BUTTON_CLASS_NAME;
+      }
 
       it('returns an array of all components matching the wrapper class', () => {
         const nodeWithListItemComponents = node.querySelector(`.${LIST_WITH_ITEMS_CLASS_NAME}`)!;
@@ -266,6 +271,32 @@ describe('DOM test utils', () => {
         const listItems = wrapper.findAllComponents(ListItemWrapper, '.second-type');
 
         expect(listItems).toHaveLength(0);
+      });
+
+      describe('AOM querying', () => {
+        describe('name', () => {
+          it('should filter based on accessible name: exact string match', () => {
+            const wrapper = createWrapper(node);
+            const buttons = wrapper.findAllComponents(ButtonWrapper, { name: '1' });
+            const buttonsContent = buttons.map(wrapper => wrapper.getElement().textContent);
+
+            expect(buttonsContent).toEqual(['1', '1']);
+          });
+          it('should filter based on accessible name: loose match with regex', () => {
+            const wrapper = createWrapper(node);
+            const buttons = wrapper.findAllComponents(ButtonWrapper, { name: /1/ });
+            const buttonsContent = buttons.map(wrapper => wrapper.getElement().textContent);
+
+            expect(buttonsContent).toEqual(['1', '1', '12']);
+          });
+          it('should filter based on accessible name: function', () => {
+            const wrapper = createWrapper(node);
+            const buttons = wrapper.findAllComponents(ButtonWrapper, { name: name => name === '12' });
+            const buttonsContent = buttons.map(wrapper => wrapper.getElement().textContent);
+
+            expect(buttonsContent).toEqual(['12']);
+          });
+        });
       });
     });
   });
