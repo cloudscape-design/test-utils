@@ -63,7 +63,7 @@ describe(`${generateComponentFinders.name}`, () => {
       if (testUtilType === 'dom') {
         expect(sourceFileContent).toMatch('export default function wrapper(root: Element = document.body)');
       } else {
-        expect(sourceFileContent).toMatch(`export default function wrapper(root: string = 'body')`);
+        expect(sourceFileContent).toMatch(`function wrapper(root: string = 'body')`);
       }
     });
   });

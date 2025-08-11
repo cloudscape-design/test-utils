@@ -7,6 +7,6 @@ const fs = require('node:fs');
 const publicExports = ['dom', 'selectors', 'utils', 'utils-dom'];
 
 publicExports.forEach(exportName => {
-  fs.writeFileSync(`./lib/core/${exportName}.js`, `module.exports = require('./dist/${exportName}')`);
+  fs.writeFileSync(`./lib/core/${exportName}.js`, `export * from './dist/${exportName}';`);
   fs.writeFileSync(`./lib/core/${exportName}.d.ts`, `export * from './dist/${exportName}';`);
 });
