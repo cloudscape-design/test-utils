@@ -74,7 +74,10 @@ export default function wrapper(root: Element = document.body) {
   selectors: `
 export default function wrapper(root: string = 'body') {
   return new ElementWrapper(root);
-}`,
+}
+// For backward compatibility with consumers expecting .default
+wrapper.default = wrapper;
+export default wrapper;`,
 };
 
 export interface GenerateFindersParams {
