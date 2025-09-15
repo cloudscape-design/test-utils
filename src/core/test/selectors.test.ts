@@ -109,6 +109,31 @@ describe('CSS-selectors test utils', () => {
         .toSelector(),
     ).toEqual('.awsui-component [class*="awsui_button_filenameHash"][class*="awsui_button-active_filenameHash"]');
   });
+
+  it('handles findAllComponents with legacyRootSelector', () => {
+    class MockComponentWrapper extends ElementWrapper {
+      static rootSelector = 'awsui_button_1ueyk_1xee3_5';
+      static legacyRootSelector = 'awsui_button_2oldf_2oldf_5';
+    }
+
+    const multiWrapper = wrapper.findAllComponents(MockComponentWrapper);
+    expect(multiWrapper.toSelector()).toBe(
+      '.awsui-component :is([class*="awsui_button_1ueyk"], [class*="awsui_button_2oldf"])',
+    );
+  });
+
+  it('handles MultiElementWrapper get() with :is() selector', () => {
+    class MockComponentWrapper extends ElementWrapper {
+      static rootSelector = 'awsui_button_1ueyk_1xee3_5';
+      static legacyRootSelector = 'awsui_button_2oldf_2oldf_5';
+    }
+
+    const multiWrapper = wrapper.findAllComponents(MockComponentWrapper);
+    const secondElement = multiWrapper.get(2);
+    expect(secondElement.toSelector()).toBe(
+      '.awsui-component :is([class*="awsui_button_1ueyk"], [class*="awsui_button_2oldf"]):nth-child(2)',
+    );
+  });
 });
 
 describe('createWrapper', () => {

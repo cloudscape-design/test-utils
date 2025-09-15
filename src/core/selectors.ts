@@ -14,6 +14,7 @@ interface WrapperClass<Wrapper> {
 
 interface ComponentWrapperClass<Wrapper> extends WrapperClass<Wrapper> {
   rootSelector: string;
+  legacyRootSelector?: string;
 }
 
 export class AbstractWrapper implements IElementWrapper<string, MultiElementWrapper<ElementWrapper>> {
@@ -71,7 +72,10 @@ export class AbstractWrapper implements IElementWrapper<string, MultiElementWrap
     ComponentClass: ComponentWrapperClass<Wrapper>,
     selector?: string,
   ): MultiElementWrapper<Wrapper> {
-    const componentRootSelector = `.${ComponentClass.rootSelector}`;
+    let componentRootSelector = `.${ComponentClass.rootSelector}`;
+    if ('legacyRootSelector' in ComponentClass && ComponentClass.legacyRootSelector) {
+      componentRootSelector = `:is(.${ComponentClass.rootSelector}, .${ComponentClass.legacyRootSelector})`;
+    }
     const componentCombinedSelector = selector
       ? appendSelector(componentRootSelector, selector)
       : componentRootSelector;
