@@ -62,7 +62,10 @@ findAllTestComponentBs(selector?: string): Array<TestComponentBWrapper>;
 
 
 ElementWrapper.prototype.findTestComponentA = function(selector) {
-  const rootSelector = \`.\${TestComponentAWrapper.rootSelector}\`;
+  let rootSelector = \`.\${TestComponentAWrapper.rootSelector}\`;
+  if("legacyRootSelector" in TestComponentAWrapper && TestComponentAWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${TestComponentAWrapper.rootSelector}, .\${TestComponentAWrapper.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, TestComponentAWrapper);
@@ -72,7 +75,10 @@ ElementWrapper.prototype.findAllTestComponentAs = function(selector) {
   return this.findAllComponents(TestComponentAWrapper, selector);
 };
 ElementWrapper.prototype.findTestComponentB = function(selector) {
-  const rootSelector = \`.\${TestComponentBWrapper.rootSelector}\`;
+  let rootSelector = \`.\${TestComponentBWrapper.rootSelector}\`;
+  if("legacyRootSelector" in TestComponentBWrapper && TestComponentBWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${TestComponentBWrapper.rootSelector}, .\${TestComponentBWrapper.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, TestComponentBWrapper);
@@ -150,7 +156,10 @@ findAllTestComponentBs(selector?: string): MultiElementWrapper<TestComponentBWra
 
 
 ElementWrapper.prototype.findTestComponentA = function(selector) {
-  const rootSelector = \`.\${TestComponentAWrapper.rootSelector}\`;
+  let rootSelector = \`.\${TestComponentAWrapper.rootSelector}\`;
+  if("legacyRootSelector" in TestComponentAWrapper && TestComponentAWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${TestComponentAWrapper.rootSelector}, .\${TestComponentAWrapper.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, TestComponentAWrapper);
@@ -160,7 +169,10 @@ ElementWrapper.prototype.findAllTestComponentAs = function(selector) {
   return this.findAllComponents(TestComponentAWrapper, selector);
 };
 ElementWrapper.prototype.findTestComponentB = function(selector) {
-  const rootSelector = \`.\${TestComponentBWrapper.rootSelector}\`;
+  let rootSelector = \`.\${TestComponentBWrapper.rootSelector}\`;
+  if("legacyRootSelector" in TestComponentBWrapper && TestComponentBWrapper.legacyRootSelector){
+    rootSelector = \`:is(.\${TestComponentBWrapper.rootSelector}, .\${TestComponentBWrapper.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, TestComponentBWrapper);

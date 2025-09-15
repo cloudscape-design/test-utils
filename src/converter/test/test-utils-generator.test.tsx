@@ -8,7 +8,7 @@ import { describe, test, expect } from 'vitest';
 function renderTestNode() {
   const { container } = render(
     <>
-      <div className="test-component-a-root">
+      <div className="awsui_button_1ueyk_1xee3_5">
         <h1 className="test-component-a-child">First Component A</h1>
       </div>
       <div className="test-component-b-root">
@@ -16,7 +16,7 @@ function renderTestNode() {
           <h1 className="test-component-b-child-content">First Component B</h1>
         </div>
       </div>
-      <div className="test-component-a-root">
+      <div className="awsui_button_2oldf_2oldf_5">
         <h1 className="test-component-a-child">Second Component A</h1>
       </div>
       <div className="test-component-b-root">
@@ -24,7 +24,7 @@ function renderTestNode() {
           <h1 className="test-component-b-child-content">Second Component B</h1>
         </div>
       </div>
-    </>
+    </>,
   );
   return container;
 }
@@ -77,10 +77,10 @@ describe(`${generateTestUtils.name}`, () => {
       const container = renderTestNode();
       const wrapper = createWrapper();
 
-      const secondComponentASelector = wrapper.findAllTestComponentAs().get(3).toSelector();
+      const secondComponentASelector = wrapper.findAllTestComponentAs().toSelector();
       const secondComponentBSelector = wrapper.findAllTestComponentBs().get(4).toSelector();
 
-      expect(container.querySelector(secondComponentASelector).textContent).toBe('Second Component A');
+      expect(container.querySelectorAll(secondComponentASelector)[1]!.textContent).toBe('Second Component A');
       expect(container.querySelector(secondComponentBSelector).textContent).toBe('Second Component B');
     });
   });

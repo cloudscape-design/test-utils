@@ -29,6 +29,7 @@ interface WrapperClass<Wrapper, ElementType> {
 
 interface ComponentWrapperClass<Wrapper, ElementType> extends WrapperClass<Wrapper, ElementType> {
   rootSelector: string;
+  legacyRootSelector?: string;
 }
 
 export class AbstractWrapper<ElementType extends Element>
@@ -165,7 +166,10 @@ export class AbstractWrapper<ElementType extends Element>
     ComponentClass: ComponentWrapperClass<Wrapper, ElementType>,
     selector?: string,
   ): Array<Wrapper> {
-    const componentRootSelector = `.${ComponentClass.rootSelector}`;
+    let componentRootSelector = `.${ComponentClass.rootSelector}`;
+    if ('legacyRootSelector' in ComponentClass && ComponentClass.legacyRootSelector) {
+      componentRootSelector = `:is(.${ComponentClass.rootSelector}, .${ComponentClass.legacyRootSelector})`;
+    }
     const componentCombinedSelector = selector
       ? appendSelector(componentRootSelector, selector)
       : componentRootSelector;
