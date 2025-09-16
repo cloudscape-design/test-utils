@@ -46,6 +46,10 @@ describe('DOM test utils', () => {
         <li class="some-other-item-type">1</li>
         <li class="some-other-item-type">2</li>
       </ul>
+      <div>
+        <div class="awsui_button_1ueyk_1xee3_5">New Button</div>
+        <div class="awsui_button_2oldf_2oldf_5">Old Button</div>
+      </div>
     `;
     document.body.appendChild(node);
 
@@ -266,6 +270,20 @@ describe('DOM test utils', () => {
         const listItems = wrapper.findAllComponents(ListItemWrapper, '.second-type');
 
         expect(listItems).toHaveLength(0);
+      });
+
+      it('handles findAllComponents with legacyRootSelector', () => {
+        class MockComponentWrapper extends ComponentWrapper {
+          static rootSelector = 'awsui_button_1ueyk_1xee3_5';
+          static legacyRootSelector = 'awsui_button_2oldf_2oldf_5';
+        }
+
+        const wrapper = createWrapper();
+        const components = wrapper.findAllComponents(MockComponentWrapper);
+
+        expect(components).toHaveLength(2);
+        expect(components[0].getElement().textContent).toBe('New Button');
+        expect(components[1].getElement().textContent).toBe('Old Button');
       });
     });
   });

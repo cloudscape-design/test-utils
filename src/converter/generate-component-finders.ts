@@ -10,7 +10,10 @@ export { ${wrapperName} };`;
 
 const componentFinders = ({ name, wrapperName, pluralName }: ComponentWrapperMetadata) => `
 ElementWrapper.prototype.find${name} = function(selector) {
-  const rootSelector = \`.$\{${wrapperName}.rootSelector}\`;
+  let rootSelector = \`.$\{${wrapperName}.rootSelector}\`;
+  if("legacyRootSelector" in ${wrapperName} && ${wrapperName}.legacyRootSelector){
+    rootSelector = \`:is(.$\{${wrapperName}.rootSelector}, .$\{${wrapperName}.legacyRootSelector})\`;
+  }
   // casting to 'any' is needed to avoid this issue with generics
   // https://github.com/microsoft/TypeScript/issues/29132
   return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, ${wrapperName});
