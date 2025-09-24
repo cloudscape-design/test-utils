@@ -60,14 +60,20 @@ export class AbstractWrapper<ElementType extends Element>
     this.fireEvent(new KeyboardEvent('keydown', { ...defaultParams, ...params }));
   }
 
-  keyup(keyCode: KeyCode) {
-    this.fireEvent(new KeyboardEvent('keyup', { ...defaultParams, keyCode }));
+  keyup(keyCode: KeyCode): void;
+  keyup(keyboardEventProps: KeyboardEventInit): void;
+  keyup(args: KeyboardEventInit | KeyCode) {
+    const params = typeof args === 'object' ? args : { keyCode: args };
+    this.fireEvent(new KeyboardEvent('keyup', { ...defaultParams, ...params }));
   }
 
-  keypress(keyCode: KeyCode) {
+  keypress(keyCode: KeyCode): void;
+  keypress(keyboardEventProps: KeyboardEventInit): void;
+  keypress(args: KeyboardEventInit | KeyCode) {
     // React more or less requires charCode to be set on keypress events
     // https://github.com/facebook/react/blob/d95c4938df670a8f0a13267bd89173737bb185e4/packages/react-dom/src/events/plugins/SimpleEventPlugin.js#L67-L74
-    this.fireEvent(new KeyboardEvent('keypress', { ...defaultParams, keyCode, charCode: keyCode }));
+    const params = typeof args === 'object' ? args : { keyCode: args, charCode: args };
+    this.fireEvent(new KeyboardEvent('keypress', { ...defaultParams, ...params }));
   }
 
   fireEvent(event: Event) {

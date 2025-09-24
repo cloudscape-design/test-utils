@@ -279,6 +279,22 @@ Note: This function returns the specified component's wrapper even if the specif
           },
         },
         {
+          "name": "keypress",
+          "parameters": [
+            {
+              "flags": {
+                "isOptional": false,
+              },
+              "name": "keyboardEventProps",
+              "typeName": "KeyboardEventInit",
+            },
+          ],
+          "returnType": {
+            "isNullable": false,
+            "name": "void",
+          },
+        },
+        {
           "name": "keyup",
           "parameters": [
             {
@@ -287,6 +303,22 @@ Note: This function returns the specified component's wrapper even if the specif
               },
               "name": "keyCode",
               "typeName": "KeyCode",
+            },
+          ],
+          "returnType": {
+            "isNullable": false,
+            "name": "void",
+          },
+        },
+        {
+          "name": "keyup",
+          "parameters": [
+            {
+              "flags": {
+                "isOptional": false,
+              },
+              "name": "keyboardEventProps",
+              "typeName": "KeyboardEventInit",
             },
           ],
           "returnType": {
@@ -635,6 +667,25 @@ Note: This function returns the specified component's wrapper even if the specif
         },
         {
           "inheritedFrom": {
+            "name": "AbstractWrapper.keypress",
+          },
+          "name": "keypress",
+          "parameters": [
+            {
+              "flags": {
+                "isOptional": false,
+              },
+              "name": "keyboardEventProps",
+              "typeName": "KeyboardEventInit",
+            },
+          ],
+          "returnType": {
+            "isNullable": false,
+            "name": "void",
+          },
+        },
+        {
+          "inheritedFrom": {
             "name": "AbstractWrapper.keyup",
           },
           "name": "keyup",
@@ -645,6 +696,25 @@ Note: This function returns the specified component's wrapper even if the specif
               },
               "name": "keyCode",
               "typeName": "KeyCode",
+            },
+          ],
+          "returnType": {
+            "isNullable": false,
+            "name": "void",
+          },
+        },
+        {
+          "inheritedFrom": {
+            "name": "AbstractWrapper.keyup",
+          },
+          "name": "keyup",
+          "parameters": [
+            {
+              "flags": {
+                "isOptional": false,
+              },
+              "name": "keyboardEventProps",
+              "typeName": "KeyboardEventInit",
             },
           ],
           "returnType": {
@@ -996,6 +1066,25 @@ Note: This function returns the specified component's wrapper even if the specif
         },
         {
           "inheritedFrom": {
+            "name": "AbstractWrapper.keypress",
+          },
+          "name": "keypress",
+          "parameters": [
+            {
+              "flags": {
+                "isOptional": false,
+              },
+              "name": "keyboardEventProps",
+              "typeName": "KeyboardEventInit",
+            },
+          ],
+          "returnType": {
+            "isNullable": false,
+            "name": "void",
+          },
+        },
+        {
+          "inheritedFrom": {
             "name": "AbstractWrapper.keyup",
           },
           "name": "keyup",
@@ -1006,6 +1095,25 @@ Note: This function returns the specified component's wrapper even if the specif
               },
               "name": "keyCode",
               "typeName": "KeyCode",
+            },
+          ],
+          "returnType": {
+            "isNullable": false,
+            "name": "void",
+          },
+        },
+        {
+          "inheritedFrom": {
+            "name": "AbstractWrapper.keyup",
+          },
+          "name": "keyup",
+          "parameters": [
+            {
+              "flags": {
+                "isOptional": false,
+              },
+              "name": "keyboardEventProps",
+              "typeName": "KeyboardEventInit",
             },
           ],
           "returnType": {

@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 /*eslint-env browser*/
-import { describe, beforeEach, afterEach, it, expect, test } from 'vitest';
+import { describe, beforeEach, afterEach, it, expect, test, vi } from 'vitest';
 import { ElementWrapper, ComponentWrapper, createWrapper } from '../dom';
 import { KeyCode } from '../utils';
 
@@ -97,24 +97,29 @@ describe('DOM test utils', () => {
     });
 
     it('keydown() dispatches a keydown event on the element', () => {
-      let event: KeyboardEvent | undefined;
-
+      const onKeyDown = vi.fn();
       const element = wrapper.getElement();
-      element.addEventListener('keydown', e => (event = e));
-      wrapper.keydown(KeyCode.enter);
-      expect(event).toBeDefined();
-      expect(event!.keyCode).toBe(KeyCode.enter);
+      element.addEventListener('keydown', onKeyDown);
+      wrapper.keydown({ key: 'Enter' });
+      expect(onKeyDown).toHaveBeenCalledWith(expect.objectContaining({ key: 'Enter' }));
+    });
+
+    it('keyup() dispatches a keyup event on the element', () => {
+      const onKeyUp = vi.fn();
+      const element = wrapper.getElement();
+      element.addEventListener('keyup', onKeyUp);
+      wrapper.keyup({ key: 'Enter' });
+      expect(onKeyUp).toHaveBeenCalledWith(expect.objectContaining({ key: 'Enter' }));
     });
 
     it('keypress() dispatches a keypress event on the element with a charCode', () => {
-      let event: KeyboardEvent | undefined;
-
+      const onKeyPress = vi.fn();
       const element = wrapper.getElement();
-      element.addEventListener('keypress', e => (event = e));
+      element.addEventListener('keypress', onKeyPress);
       wrapper.keypress(KeyCode.space);
-      expect(event).toBeDefined();
-      expect(event!.keyCode).toBe(KeyCode.space);
-      expect(event!.charCode).toBe(KeyCode.space);
+      expect(onKeyPress).toHaveBeenCalledWith(
+        expect.objectContaining({ keyCode: KeyCode.space, charCode: KeyCode.space }),
+      );
     });
 
     it('element can be focused and blurred', () => {
