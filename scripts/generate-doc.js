@@ -6,6 +6,7 @@ const { writeTestUtilsDocumentation } = require('@cloudscape-design/documenter')
 writeTestUtilsDocumentation({
   outDir: './lib/core/test-utils-doc',
   tsconfigPath: require.resolve('../tsconfig.docs.json'),
+  includeCoreMethods: true,
   domUtils: { root: 'src/core/dom.ts', extraExports: ['createWrapper', 'usesDom'] },
   selectorsUtils: { root: 'src/core/selectors.ts', extraExports: ['createWrapper'] },
 });
