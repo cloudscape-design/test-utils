@@ -67,6 +67,9 @@ export const getUnscopedClassName = (selector: string): string => {
   });
 };
 
+/**
+ * @deprecated Use event.key property
+ */
 export enum KeyCode {
   pageUp = 33,
   pageDown = 34,
