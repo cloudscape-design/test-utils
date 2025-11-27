@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import fs from 'fs';
-import glob from 'glob';
+import { globSync } from 'glob';
 import path from 'path';
 import { transformSync, types, PluginObj, NodePath } from '@babel/core';
 
@@ -19,7 +19,7 @@ export function extractTestSelectorsUtil({ srcPath = 'src', libPath = 'lib/compo
 
   // Find referenced selector files and properties.
   const selectorsFilePathToUsedProperties = new Map<string, Set<string>>();
-  for (const file of glob.sync(selectorsPathPattern)) {
+  for (const file of globSync(selectorsPathPattern)) {
     extractSelectorProperties(file, (filePath, propertyKey) => {
       const properties = selectorsFilePathToUsedProperties.get(filePath) ?? new Set();
       properties.add(propertyKey);
@@ -97,7 +97,6 @@ export function extractTestSelectorsUtil({ srcPath = 'src', libPath = 'lib/compo
   }
 
   function extractComponentSelectors(file: string, usedProperties: string[], onExtract: (selector: string) => void) {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const source = require(file);
     if (typeof source.default !== 'object') {
       /* istanbul ignore next @preserve */

@@ -15,7 +15,7 @@ declare global {
 }
 
 // Used as decorator to mark dom-only methods in test-utils
-// eslint-disable-next-line @typescript-eslint/no-empty-function
+
 export const usesDom: MethodDecorator = () => {};
 
 const defaultParams = {

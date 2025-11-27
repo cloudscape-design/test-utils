@@ -1,7 +1,4 @@
 {
   "files": [],
-  "references": [
-      { "path": "./src/converter"},
-      { "path": "./src/core"}
-  ]
+  "references": [{ "path": "./src/converter" }, { "path": "./src/core" }]
 }

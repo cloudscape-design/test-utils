@@ -93,7 +93,7 @@ export function getComponentMetadata(componentName: string) {
 export default function wrapper(root: Element = document.body) {
   if (document && document.body && !document.body.contains(root)) {
     console.warn(
-      '[AwsUi] [test-utils] provided element is not part of the document body, interactions may work incorrectly'
+      '[AwsUi] [test-utils] provided element is not part of the document body, interactions may work incorrectly',
     );
   }
   return new ElementWrapper(root);

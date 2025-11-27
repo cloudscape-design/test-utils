@@ -1,0 +1,6 @@
+node_modules
+lib
+**/dist
+src/converter/test/mock-test-utils
+src/converter/test/outputs
+test/mock-test-utils

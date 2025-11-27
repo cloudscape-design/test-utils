@@ -6,8 +6,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "declaration": true,
-    "target": "es5",
-    "lib": ["es6", "dom"],
+    "target": "es2022",
+    "lib": ["es2022", "dom"],
     "rootDir": "./",
     "outDir": "../../lib/core/dist"
   },
