@@ -74,6 +74,8 @@ module.exports = [
       '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unused-expressions': 'off',
+      'header/header': 'off',
+      'prettier/prettier': 'off',
     },
   },
   {
