@@ -7,7 +7,7 @@ import { ComponentWrapperMetadata, GenerateTestUtilsParams, TestUtilType } from 
 import { writeSourceFile } from './utils';
 import { kebabCase } from 'lodash';
 import { convertToSelectorUtil } from './convert-to-selectors';
-import glob from 'glob';
+import { globSync } from 'glob';
 
 interface GenerateIndexFilesParams extends GenerateTestUtilsParams {
   testUtilType: TestUtilType;
@@ -31,7 +31,7 @@ function generateIndexFile({ testUtilsPath, components, testUtilType }: Generate
 function generateSelectorUtils(testUtilsPath: string) {
   const domFolderPath = path.join(testUtilsPath, 'dom');
   const selectorsFolderPath = path.join(testUtilsPath, 'selectors');
-  const conversionTargetRelativePaths = glob.sync(`**/*.{ts,tsx}`, { cwd: domFolderPath });
+  const conversionTargetRelativePaths = globSync(`**/*.{ts,tsx}`, { cwd: domFolderPath });
 
   if (conversionTargetRelativePaths.length === 0) {
     throw new Error(`No file with ts or tsx extension found at: ${domFolderPath}`);
