@@ -6,7 +6,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "declaration": true,
-    "target": "es2022",
+    "target": "es2015",
     "lib": ["es2022", "dom"]
   },
   "include": ["./src/core/**/*.ts"],
