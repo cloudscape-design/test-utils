@@ -133,6 +133,11 @@ export class AbstractWrapper<ElementType extends Element>
     return this.find(selectors.join(', '));
   }
 
+  findClosest<NewElementType extends Element = HTMLElement>(selector: string): ElementWrapper<NewElementType> | null {
+    const closest = this.element.closest(selector);
+    return closest ? new ElementWrapper(closest as NewElementType) : null;
+  }
+
   findByClassName<NewElementType extends HTMLElement = HTMLElement>(className: string) {
     return this.find<NewElementType>(`.${className}`);
   }
@@ -182,6 +187,14 @@ export class AbstractWrapper<ElementType extends Element>
 
     const elementWrappers = this.findAll<ElementType>(componentCombinedSelector);
     return elementWrappers.map(wrapper => new ComponentClass(wrapper.getElement()));
+  }
+
+  findClosestComponent<Wrapper extends ComponentWrapper, ElementType extends HTMLElement>(
+    selector: string,
+    ComponentClass: WrapperClass<Wrapper, ElementType>,
+  ): Wrapper | null {
+    const elementWrapper = this.findClosest<ElementType>(selector);
+    return elementWrapper ? new ComponentClass(elementWrapper.getElement()) : null;
   }
 }
 

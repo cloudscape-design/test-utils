@@ -9,14 +9,15 @@ const componentWrapperExport = ({ wrapperName }: ComponentWrapperMetadata) => `
 export { ${wrapperName} };`;
 
 const componentFinders = ({ name, wrapperName, pluralName }: ComponentWrapperMetadata) => `
-ElementWrapper.prototype.find${name} = function(selector) {
+ElementWrapper.prototype.find${name} = function(selector, options) {
   let rootSelector = \`.$\{${wrapperName}.rootSelector}\`;
   if("legacyRootSelector" in ${wrapperName} && ${wrapperName}.legacyRootSelector){
     rootSelector = \`:is(.$\{${wrapperName}.rootSelector}, .$\{${wrapperName}.legacyRootSelector})\`;
   }
   // casting to 'any' is needed to avoid this issue with generics
-  // https://github.com/microsoft/TypeScript/issues/29132
-  return (this as any).findComponent(selector ? appendSelector(selector, rootSelector) : rootSelector, ${wrapperName});
+  // https://github.com/microsoft/TypeScript/issues/29132  
+  const method = (options?.closest ? (this as any).findClosestComponent : (this as any).findComponent).bind(this);
+  return method(selector ? appendSelector(selector, rootSelector) : rootSelector, ${wrapperName});
 };
 
 ElementWrapper.prototype.findAll${pluralName} = function(selector) {
@@ -31,9 +32,10 @@ const componentFindersInterfaces = {
  * If no matching ${name} is found, returns \`null\`.
  *
  * @param {string} [selector] CSS Selector
+ * @param {FindOptions} [options] Find options to change find direction
  * @returns {${wrapperName} | null}
  */
-find${name}(selector?: string): ${wrapperName} | null;
+find${name}(selector?: string, options?: FindOptions): ${wrapperName} | null;
 
 /**
  * Returns an array of ${name} wrapper that matches the specified CSS selector.
@@ -53,7 +55,7 @@ findAll${pluralName}(selector?: string): Array<${wrapperName}>;`,
  * @param {string} [selector] CSS Selector
  * @returns {${wrapperName}}
  */
-find${name}(selector?: string): ${wrapperName};
+find${name}(selector?: string, options?: FindOptions): ${wrapperName};
 
 /**
  * Returns a multi-element wrapper that matches ${pluralName} with the specified CSS selector.
@@ -92,6 +94,11 @@ import { ElementWrapper } from '@cloudscape-design/test-utils-core/${testUtilTyp
 import { appendSelector } from '@cloudscape-design/test-utils-core/utils';
 
 export { ElementWrapper };
+
+interface FindOptions {
+  closest?: boolean;
+}
+
 ${components.map(componentWrapperImport).join('')}
 
 ${components.map(componentWrapperExport).join('')}
