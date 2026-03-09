@@ -14,7 +14,7 @@ interface GenerateIndexFilesParams extends GenerateTestUtilsParams {
 }
 
 function generateIndexFile({ testUtilsPath, components, testUtilType }: GenerateIndexFilesParams) {
-  const componenWrappersMetadata: ComponentWrapperMetadata[] = components.map(
+  const componentWrappersMetadata: ComponentWrapperMetadata[] = components.map(
     ({ name, pluralName, testUtilsFolderName }) => ({
       name,
       pluralName,
@@ -23,7 +23,7 @@ function generateIndexFile({ testUtilsPath, components, testUtilType }: Generate
     }),
   );
 
-  const content = generateComponentFinders({ testUtilType, components: componenWrappersMetadata });
+  const content = generateComponentFinders({ testUtilType, components: componentWrappersMetadata });
   const indexFilePath = path.join(testUtilsPath, testUtilType, 'index.ts');
   writeSourceFile(indexFilePath, content);
 }

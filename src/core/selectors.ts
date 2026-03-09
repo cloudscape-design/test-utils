@@ -40,6 +40,10 @@ export class AbstractWrapper implements IElementWrapper<string, MultiElementWrap
     return this.find(`:is(${selectors.map(selector => getUnscopedClassName(selector)).join(', ')})`);
   }
 
+  findClosest(selector: string): ElementWrapper {
+    return this.find(selector);
+  }
+
   findByClassName(className: string) {
     return this.find(`.${className}`);
   }
@@ -81,6 +85,13 @@ export class AbstractWrapper implements IElementWrapper<string, MultiElementWrap
       : componentRootSelector;
     const rootSelector = getRootSelector(componentCombinedSelector, this.root);
     return new MultiElementWrapper(rootSelector, selector => new ComponentClass(selector));
+  }
+
+  findClosestComponent<Wrapper extends ComponentWrapper>(
+    selector: string,
+    ComponentClass: WrapperClass<Wrapper>,
+  ): Wrapper {
+    return this.findComponent(selector, ComponentClass);
   }
 
   toSelector(): string {
