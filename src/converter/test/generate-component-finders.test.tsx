@@ -42,8 +42,10 @@ describe(`${generateComponentFinders.name}`, () => {
       if (testUtilType === 'dom') {
         expect(sourceFileContent).toMatch(`findAlert(selector?: string): AlertWrapper | null`);
         expect(sourceFileContent).toMatch(`findAllAlerts(selector?: string): Array<AlertWrapper>`);
+        expect(sourceFileContent).toMatch(`findClosestAlert(): AlertWrapper | null`);
         expect(sourceFileContent).toMatch(`findStatus(selector?: string): StatusWrapper | null`);
         expect(sourceFileContent).toMatch(`findAllStatus(selector?: string): Array<StatusWrapper>`);
+        expect(sourceFileContent).toMatch(`findClosestStatus(): StatusWrapper | null`);
       } else {
         expect(sourceFileContent).toMatch(`findAlert(selector?: string): AlertWrapper`);
         expect(sourceFileContent).toMatch(`findAllAlerts(selector?: string): MultiElementWrapper<AlertWrapper>`);
@@ -57,6 +59,10 @@ describe(`${generateComponentFinders.name}`, () => {
       expect(sourceFileContent).toMatch('ElementWrapper.prototype.findAllAlerts = function(selector)');
       expect(sourceFileContent).toMatch('ElementWrapper.prototype.findStatus = function(selector)');
       expect(sourceFileContent).toMatch('ElementWrapper.prototype.findAllStatus = function(selector)');
+      if (testUtilType === 'dom') {
+        expect(sourceFileContent).toMatch('ElementWrapper.prototype.findClosestAlert = function()');
+        expect(sourceFileContent).toMatch('ElementWrapper.prototype.findClosestStatus = function()');
+      }
     });
 
     test('it exports the wrapper creator', () => {

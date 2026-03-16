@@ -38,6 +38,15 @@ findTestComponentA(selector?: string): TestComponentAWrapper | null;
  * @returns {Array<TestComponentAWrapper>}
  */
 findAllTestComponentAs(selector?: string): Array<TestComponentAWrapper>;
+
+/**
+ * Returns the wrapper of the closest parent TestComponentA for the current element.
+ * If the current element is a TestComponentA, it is returned.
+ * If no matching TestComponentA is found, returns \`null\`.
+ *
+ * @returns {TestComponentAWrapper | null}
+ */
+findClosestTestComponentA(): TestComponentAWrapper | null;
 /**
  * Returns the wrapper of the first TestComponentB that matches the specified CSS selector.
  * If no CSS selector is specified, returns the wrapper of the first TestComponentB.
@@ -57,6 +66,15 @@ findTestComponentB(selector?: string): TestComponentBWrapper | null;
  * @returns {Array<TestComponentBWrapper>}
  */
 findAllTestComponentBs(selector?: string): Array<TestComponentBWrapper>;
+
+/**
+ * Returns the wrapper of the closest parent TestComponentB for the current element.
+ * If the current element is a TestComponentB, it is returned.
+ * If no matching TestComponentB is found, returns \`null\`.
+ *
+ * @returns {TestComponentBWrapper | null}
+ */
+findClosestTestComponentB(): TestComponentBWrapper | null;
    }
 }
 
@@ -88,6 +106,16 @@ ElementWrapper.prototype.findAllTestComponentBs = function(selector) {
   return this.findAllComponents(TestComponentBWrapper, selector);
 };
 
+ElementWrapper.prototype.findClosestTestComponentA = function() {
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findClosestComponent(TestComponentAWrapper);
+};
+ElementWrapper.prototype.findClosestTestComponentB = function() {
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findClosestComponent(TestComponentBWrapper);
+};
 
 export default function wrapper(root: Element = document.body) {
   if (document && document.body && !document.body.contains(root)) {

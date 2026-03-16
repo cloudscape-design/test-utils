@@ -170,6 +170,26 @@ If no matching component is found, returns an empty array.",
           },
         },
         {
+          "description": "Returns the closest ancestor element (or self) that matches the specified component type.
+Uses the native Element.closest() method to traverse up the DOM tree.
+If no matching component is found, returns \`null\`.",
+          "name": "findClosestComponent",
+          "parameters": [
+            {
+              "description": "Component's wrapper class",
+              "flags": {
+                "isOptional": false,
+              },
+              "name": "ComponentClass",
+              "typeName": "ComponentWrapperClass<Wrapper, ElementType>",
+            },
+          ],
+          "returnType": {
+            "isNullable": true,
+            "name": "Wrapper",
+          },
+        },
+        {
           "description": "Returns the component wrapper matching the specified selector.
 If the specified selector doesn't match any element, it returns \`null\`.
 
@@ -533,6 +553,29 @@ If no matching component is found, returns an empty array.",
                 "name": "NewElementType",
               },
             ],
+          },
+        },
+        {
+          "description": "Returns the closest ancestor element (or self) that matches the specified component type.
+Uses the native Element.closest() method to traverse up the DOM tree.
+If no matching component is found, returns \`null\`.",
+          "inheritedFrom": {
+            "name": "AbstractWrapper.findClosestComponent",
+          },
+          "name": "findClosestComponent",
+          "parameters": [
+            {
+              "description": "Component's wrapper class",
+              "flags": {
+                "isOptional": false,
+              },
+              "name": "ComponentClass",
+              "typeName": "ComponentWrapperClass<Wrapper, ElementType>",
+            },
+          ],
+          "returnType": {
+            "isNullable": true,
+            "name": "Wrapper",
           },
         },
         {
@@ -932,6 +975,29 @@ If no matching component is found, returns an empty array.",
                 "name": "NewElementType",
               },
             ],
+          },
+        },
+        {
+          "description": "Returns the closest ancestor element (or self) that matches the specified component type.
+Uses the native Element.closest() method to traverse up the DOM tree.
+If no matching component is found, returns \`null\`.",
+          "inheritedFrom": {
+            "name": "AbstractWrapper.findClosestComponent",
+          },
+          "name": "findClosestComponent",
+          "parameters": [
+            {
+              "description": "Component's wrapper class",
+              "flags": {
+                "isOptional": false,
+              },
+              "name": "ComponentClass",
+              "typeName": "ComponentWrapperClass<Wrapper, ElementType>",
+            },
+          ],
+          "returnType": {
+            "isNullable": true,
+            "name": "Wrapper",
           },
         },
         {
