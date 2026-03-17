@@ -291,6 +291,99 @@ describe('DOM test utils', () => {
         expect(components[1].getElement().textContent).toBe('Old Button');
       });
     });
+
+    describe('findClosestComponent()', () => {
+      class OuterWrapper extends ComponentWrapper {
+        static rootSelector = 'outer-component';
+      }
+
+      class InnerWrapper extends ComponentWrapper {
+        static rootSelector = 'inner-component';
+      }
+
+      class UnrelatedWrapper extends ComponentWrapper {
+        static rootSelector = 'unrelated-component';
+      }
+
+      let nestedNode: HTMLElement;
+
+      beforeEach(() => {
+        nestedNode = document.createElement('div');
+        nestedNode.innerHTML = `
+          <div class="outer-component" data-id="outer-1">
+            <div class="inner-component" data-id="inner-1">
+              <div class="outer-component" data-id="outer-2">
+                <div class="inner-component" data-id="inner-2">
+                  <span class="deep-child">target</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(nestedNode);
+      });
+
+      afterEach(() => {
+        document.body.removeChild(nestedNode);
+      });
+
+      it('returns the closest parent matching the component type', () => {
+        const deepChild = nestedNode.querySelector('.deep-child')!;
+        const childWrapper = new ElementWrapper(deepChild);
+
+        const closestInner = childWrapper.findClosestComponent(InnerWrapper);
+        expect(closestInner).toBeInstanceOf(InnerWrapper);
+        expect(closestInner!.getElement().getAttribute('data-id')).toBe('inner-2');
+      });
+
+      it('returns the closest outer component, skipping nearer components of different types', () => {
+        const deepChild = nestedNode.querySelector('.deep-child')!;
+        const childWrapper = new ElementWrapper(deepChild);
+
+        const closestOuter = childWrapper.findClosestComponent(OuterWrapper);
+        expect(closestOuter).toBeInstanceOf(OuterWrapper);
+        expect(closestOuter!.getElement().getAttribute('data-id')).toBe('outer-2');
+      });
+
+      it('returns the outermost component when called from a mid-level element', () => {
+        const inner1 = nestedNode.querySelector('[data-id="inner-1"]')!;
+        const innerWrapper = new ElementWrapper(inner1);
+
+        const closestOuter = innerWrapper.findClosestComponent(OuterWrapper);
+        expect(closestOuter).toBeInstanceOf(OuterWrapper);
+        expect(closestOuter!.getElement().getAttribute('data-id')).toBe('outer-1');
+      });
+
+      it('returns self when the element itself matches the component type', () => {
+        const inner2 = nestedNode.querySelector('[data-id="inner-2"]')!;
+        const innerWrapper = new ElementWrapper(inner2);
+
+        const closestInner = innerWrapper.findClosestComponent(InnerWrapper);
+        expect(closestInner!.getElement().getAttribute('data-id')).toBe('inner-2');
+      });
+
+      it('returns null when no ancestor matches the component type', () => {
+        const deepChild = nestedNode.querySelector('.deep-child')!;
+        const childWrapper = new ElementWrapper(deepChild);
+
+        const result = childWrapper.findClosestComponent(UnrelatedWrapper);
+        expect(result).toBeNull();
+      });
+
+      it('handles legacyRootSelector when finding closest component', () => {
+        class LegacyWrapper extends ComponentWrapper {
+          static rootSelector = 'new-root';
+          static legacyRootSelector = 'outer-component';
+        }
+
+        const deepChild = nestedNode.querySelector('.deep-child')!;
+        const childWrapper = new ElementWrapper(deepChild);
+
+        const closest = childWrapper.findClosestComponent(LegacyWrapper);
+        expect(closest).toBeInstanceOf(LegacyWrapper);
+        expect(closest!.getElement().getAttribute('data-id')).toBe('outer-2');
+      });
+    });
   });
 
   describe('createWrapper', () => {
