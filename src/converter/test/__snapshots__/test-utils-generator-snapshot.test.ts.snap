@@ -41,7 +41,7 @@ findAllTestComponentAs(selector?: string): Array<TestComponentAWrapper>;
 
 /**
  * Returns the wrapper of the closest parent TestComponentA for the current element.
- * If the current element is a TestComponentA, it is returned.
+ * If the current element is an instance of TestComponentA itself, it is returned.
  * If no matching TestComponentA is found, returns \`null\`.
  *
  * @returns {TestComponentAWrapper | null}
@@ -69,7 +69,7 @@ findAllTestComponentBs(selector?: string): Array<TestComponentBWrapper>;
 
 /**
  * Returns the wrapper of the closest parent TestComponentB for the current element.
- * If the current element is a TestComponentB, it is returned.
+ * If the current element is an instance of TestComponentB itself, it is returned.
  * If no matching TestComponentB is found, returns \`null\`.
  *
  * @returns {TestComponentBWrapper | null}

@@ -54,7 +54,7 @@ findAll${pluralName}(selector?: string): Array<${wrapperName}>;
 
 /**
  * Returns the wrapper of the closest parent ${name} for the current element.
- * If the current element is a ${name}, it is returned.
+ * If the current element is an instance of ${name} itself, it is returned.
  * If no matching ${name} is found, returns \`null\`.
  *
  * @returns {${wrapperName} | null}
