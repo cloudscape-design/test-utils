@@ -171,7 +171,6 @@ If no matching component is found, returns an empty array.",
         },
         {
           "description": "Returns the closest ancestor element (or self) that matches the specified component type.
-Uses the native Element.closest() method to traverse up the DOM tree.
 If no matching component is found, returns \`null\`.",
           "name": "findClosestComponent",
           "parameters": [
@@ -557,7 +556,6 @@ If no matching component is found, returns an empty array.",
         },
         {
           "description": "Returns the closest ancestor element (or self) that matches the specified component type.
-Uses the native Element.closest() method to traverse up the DOM tree.
 If no matching component is found, returns \`null\`.",
           "inheritedFrom": {
             "name": "AbstractWrapper.findClosestComponent",
@@ -979,7 +977,6 @@ If no matching component is found, returns an empty array.",
         },
         {
           "description": "Returns the closest ancestor element (or self) that matches the specified component type.
-Uses the native Element.closest() method to traverse up the DOM tree.
 If no matching component is found, returns \`null\`.",
           "inheritedFrom": {
             "name": "AbstractWrapper.findClosestComponent",

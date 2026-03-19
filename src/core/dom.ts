@@ -183,7 +183,6 @@ export class AbstractWrapper<ElementType extends Element>
 
   /**
    * Returns the closest ancestor element (or self) that matches the specified component type.
-   * Uses the native Element.closest() method to traverse up the DOM tree.
    * If no matching component is found, returns `null`.
    *
    * @param {ComponentWrapperClass} ComponentClass Component's wrapper class
