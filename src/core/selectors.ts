@@ -1,7 +1,13 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import { IElementWrapper } from './interfaces';
-import { appendSelector, isScopedSelector, substituteScope, getUnscopedClassName } from './utils';
+import {
+  appendSelector,
+  isScopedSelector,
+  substituteScope,
+  getUnscopedClassName,
+  getComponentRootSelector,
+} from './utils';
 
 const getRootSelector = (selector: string, root: string): string => {
   const rootSelector = isScopedSelector(selector) ? substituteScope(selector, root) : `${root} ${selector}`;
@@ -72,10 +78,7 @@ export class AbstractWrapper implements IElementWrapper<string, MultiElementWrap
     ComponentClass: ComponentWrapperClass<Wrapper>,
     selector?: string,
   ): MultiElementWrapper<Wrapper> {
-    let componentRootSelector = `.${ComponentClass.rootSelector}`;
-    if ('legacyRootSelector' in ComponentClass && ComponentClass.legacyRootSelector) {
-      componentRootSelector = `:is(.${ComponentClass.rootSelector}, .${ComponentClass.legacyRootSelector})`;
-    }
+    const componentRootSelector = getComponentRootSelector(ComponentClass);
     const componentCombinedSelector = selector
       ? appendSelector(componentRootSelector, selector)
       : componentRootSelector;

@@ -23,6 +23,13 @@ ElementWrapper.prototype.findAll${pluralName} = function(selector) {
   return this.findAllComponents(${wrapperName}, selector);
 };`;
 
+const componentClosestFinder = ({ name, wrapperName }: ComponentWrapperMetadata) => `
+ElementWrapper.prototype.findClosest${name} = function() {
+  // casting to 'any' is needed to avoid this issue with generics
+  // https://github.com/microsoft/TypeScript/issues/29132
+  return (this as any).findClosestComponent(${wrapperName});
+};`;
+
 const componentFindersInterfaces = {
   dom: ({ name, pluralName, wrapperName }: ComponentWrapperMetadata) => `
 /**
@@ -43,7 +50,16 @@ find${name}(selector?: string): ${wrapperName} | null;
  * @param {string} [selector] CSS Selector
  * @returns {Array<${wrapperName}>}
  */
-findAll${pluralName}(selector?: string): Array<${wrapperName}>;`,
+findAll${pluralName}(selector?: string): Array<${wrapperName}>;
+
+/**
+ * Returns the wrapper of the closest parent ${name} for the current element,
+ * or the element itself if it is an instance of ${name}.
+ * If no ${name} is found, returns \`null\`.
+ *
+ * @returns {${wrapperName} | null}
+ */
+findClosest${name}(): ${wrapperName} | null;`,
 
   selectors: ({ name, pluralName, wrapperName }: ComponentWrapperMetadata) => `
 /**
@@ -103,6 +119,6 @@ declare module '@cloudscape-design/test-utils-core/dist/${testUtilType}' {
 }
 
 ${components.map(componentFinders).join('')}
-
+${testUtilType === 'dom' ? components.map(componentClosestFinder).join('') : ''}
 ${defaultExport[testUtilType]}
 `;
