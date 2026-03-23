@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 /*eslint-env browser*/
 import { IElementWrapper } from './interfaces';
-import { KeyCode, isScopedSelector, substituteScope, appendSelector } from './utils';
+import { KeyCode, isScopedSelector, substituteScope, appendSelector, getComponentRootSelector } from './utils';
 import { act } from './utils-dom';
 
 // Original KeyboardEventInit lacks some properties https://github.com/Microsoft/TypeScript/issues/15228
@@ -172,16 +172,28 @@ export class AbstractWrapper<ElementType extends Element>
     ComponentClass: ComponentWrapperClass<Wrapper, ElementType>,
     selector?: string,
   ): Array<Wrapper> {
-    let componentRootSelector = `.${ComponentClass.rootSelector}`;
-    if ('legacyRootSelector' in ComponentClass && ComponentClass.legacyRootSelector) {
-      componentRootSelector = `:is(.${ComponentClass.rootSelector}, .${ComponentClass.legacyRootSelector})`;
-    }
+    const componentRootSelector = getComponentRootSelector(ComponentClass);
     const componentCombinedSelector = selector
       ? appendSelector(componentRootSelector, selector)
       : componentRootSelector;
 
     const elementWrappers = this.findAll<ElementType>(componentCombinedSelector);
     return elementWrappers.map(wrapper => new ComponentClass(wrapper.getElement()));
+  }
+
+  /**
+   * Returns the closest ancestor element (or self) that matches the specified component type.
+   * If no matching component is found, returns `null`.
+   *
+   * @param {ComponentWrapperClass} ComponentClass Component's wrapper class
+   * @returns `Wrapper | null`
+   */
+  findClosestComponent<Wrapper extends ComponentWrapper, ElementType extends HTMLElement>(
+    ComponentClass: ComponentWrapperClass<Wrapper, ElementType>,
+  ): Wrapper | null {
+    const componentRootSelector = getComponentRootSelector(ComponentClass);
+    const closestElement = this.element.closest<ElementType>(componentRootSelector);
+    return closestElement ? new ComponentClass(closestElement) : null;
   }
 }
 

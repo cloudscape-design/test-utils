@@ -59,6 +59,17 @@ const trimContentHash = (className: string): string => {
   return className;
 };
 
+export function getComponentRootSelector(componentClass: {
+  rootSelector: string;
+  legacyRootSelector?: string;
+}): string {
+  const rootSelector = `.${componentClass.rootSelector}`;
+  if ('legacyRootSelector' in componentClass && componentClass.legacyRootSelector) {
+    return `:is(.${componentClass.rootSelector}, .${componentClass.legacyRootSelector})`;
+  }
+  return rootSelector;
+}
+
 export const getUnscopedClassName = (selector: string): string => {
   // this regexp resembles the logic of this code in the theming-core package:
   // see src/build/tasks/postcss/generate-scoped-name.ts
