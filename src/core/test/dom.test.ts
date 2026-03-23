@@ -293,12 +293,12 @@ describe('DOM test utils', () => {
     });
 
     describe('findClosestComponent()', () => {
-      class OuterWrapper extends ComponentWrapper {
-        static rootSelector = 'outer-component';
+      class ComponentAWrapper extends ComponentWrapper {
+        static rootSelector = 'component-a';
       }
 
-      class InnerWrapper extends ComponentWrapper {
-        static rootSelector = 'inner-component';
+      class ComponentBWrapper extends ComponentWrapper {
+        static rootSelector = 'component-b';
       }
 
       class UnrelatedWrapper extends ComponentWrapper {
@@ -307,9 +307,13 @@ describe('DOM test utils', () => {
 
       const nestedElements = document.createElement('div');
       nestedElements.innerHTML = `
-        <div class="outer-component" data-id="outer">
-          <div class="inner-component" data-id="inner">
-            <span class="deep-child">target</span>
+        <div class="component-a" data-testid="component-a-outer">
+          <div class="component-b" data-testid="component-b-outer">
+            <div class="component-a" data-testid="component-a-inner">
+              <div class="component-b" data-testid="component-b-inner">
+                <span data-testid="deep-child">target</span>
+              </div>
+            </div>
           </div>
         </div>
       `;
@@ -322,34 +326,25 @@ describe('DOM test utils', () => {
         document.body.removeChild(nestedElements);
       });
 
-      it('returns the closest parent matching the component type', () => {
-        const deepChild = nestedElements.querySelector('.deep-child')!;
+      it('returns the closest parent matching the component type, skipping nearer components of different types', () => {
+        const deepChild = nestedElements.querySelector('[data-testid="deep-child"]')!;
         const childWrapper = new ElementWrapper(deepChild);
 
-        const closestInner = childWrapper.findClosestComponent(InnerWrapper);
-        expect(closestInner).toBeInstanceOf(InnerWrapper);
-        expect(closestInner!.getElement().getAttribute('data-id')).toBe('inner');
-      });
-
-      it('returns the closest outer component, skipping nearer components of different types', () => {
-        const deepChild = nestedElements.querySelector('.deep-child')!;
-        const childWrapper = new ElementWrapper(deepChild);
-
-        const closestOuter = childWrapper.findClosestComponent(OuterWrapper);
-        expect(closestOuter).toBeInstanceOf(OuterWrapper);
-        expect(closestOuter!.getElement().getAttribute('data-id')).toBe('outer');
+        const closestInner = childWrapper.findClosestComponent(ComponentAWrapper);
+        expect(closestInner).toBeInstanceOf(ComponentAWrapper);
+        expect(closestInner!.getElement().getAttribute('data-testid')).toBe('component-a-inner');
       });
 
       it('returns self when the element itself matches the component type', () => {
-        const inner = nestedElements.querySelector('[data-id="inner"]')!;
+        const inner = nestedElements.querySelector('[data-testid="component-b-inner"]')!;
         const innerWrapper = new ElementWrapper(inner);
 
-        const closestInner = innerWrapper.findClosestComponent(InnerWrapper);
-        expect(closestInner!.getElement().getAttribute('data-id')).toBe('inner');
+        const closestInner = innerWrapper.findClosestComponent(ComponentBWrapper);
+        expect(closestInner!.getElement().getAttribute('data-testid')).toBe('component-b-inner');
       });
 
       it('returns null when no ancestor matches the component type', () => {
-        const deepChild = nestedElements.querySelector('.deep-child')!;
+        const deepChild = nestedElements.querySelector('[data-testid="deep-child"]')!;
         const childWrapper = new ElementWrapper(deepChild);
 
         const result = childWrapper.findClosestComponent(UnrelatedWrapper);
