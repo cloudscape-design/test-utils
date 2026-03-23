@@ -312,6 +312,7 @@ describe('DOM test utils', () => {
             <div class="component-a" data-testid="component-a-inner">
               <div class="component-b" data-testid="component-b-inner">
                 <span data-testid="deep-child">target</span>
+                <div class="component-a" data-testid="component-a-sibling"/>
               </div>
             </div>
           </div>
