@@ -312,11 +312,11 @@ describe('DOM test utils', () => {
             <div class="component-a" data-testid="component-a-inner">
               <div class="component-b" data-testid="component-b-inner">
                 <span data-testid="deep-child">target</span>
-                <div class="component-a" data-testid="component-a-sibling"/>
               </div>
             </div>
           </div>
         </div>
+        <div class="component-b" data-testid="component-b-sibling"/>
       `;
 
       beforeEach(() => {
@@ -349,6 +349,14 @@ describe('DOM test utils', () => {
         const childWrapper = new ElementWrapper(deepChild);
 
         const result = childWrapper.findClosestComponent(UnrelatedWrapper);
+        expect(result).toBeNull();
+      });
+
+      it('does not match elements outside of the parent chain', () => {
+        const deepChild = nestedElements.querySelector('[data-testid="component-a-outer"]')!;
+        const childWrapper = new ElementWrapper(deepChild);
+
+        const result = childWrapper.findClosestComponent(ComponentBWrapper);
         expect(result).toBeNull();
       });
     });
