@@ -3,7 +3,7 @@
 const eslint = require('@eslint/js');
 const tsEslint = require('typescript-eslint');
 const unicornPlugin = require('eslint-plugin-unicorn');
-const headerPlugin = require('eslint-plugin-header');
+const headerPlugin = require('@tony.ganchev/eslint-plugin-header');
 const prettierPlugin = require('eslint-plugin-prettier');
 const prettierConfig = require('eslint-config-prettier');
 
