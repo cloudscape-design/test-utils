@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-/*eslint-env browser*/
+
 import * as Tokenizer from 'css-selector-tokenizer';
 import 'css.escape';
 

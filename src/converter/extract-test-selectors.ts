@@ -123,12 +123,11 @@ export function extractTestSelectorsUtil({ srcPath = 'src', libPath = 'lib/compo
   }
 
   function resolveSelectorsPath(importPath: string) {
-    let selectorsFile = importPath;
     // Path to selectors file from 'lib folder'.
-    selectorsFile = path.resolve(path.relative(libTestUtilsPath, importPath));
+    const relativeSelectorsFile = path.resolve(path.relative(libTestUtilsPath, importPath));
     // Absolute path to selectors file.
-    selectorsFile = path.resolve(path.join(libPath, selectorsFile));
-    return selectorsFile;
+    const absoluteSelectorsFile = path.resolve(path.join(libPath, relativeSelectorsFile));
+    return absoluteSelectorsFile;
   }
 
   function getComponentNameFromFilePath(filePath: string) {

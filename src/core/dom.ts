@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-/*eslint-env browser*/
+
 import { IElementWrapper } from './interfaces';
 import { KeyCode, isScopedSelector, substituteScope, appendSelector, getComponentRootSelector } from './utils';
 import { act } from './utils-dom';
