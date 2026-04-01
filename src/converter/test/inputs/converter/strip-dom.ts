@@ -1,6 +1,5 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-/* eslint-env browser */
 
 import { ComponentWrapper, ElementWrapper, usesDom } from '../../../../../lib/core/dom';
 
