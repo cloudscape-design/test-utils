@@ -99,12 +99,22 @@ export default function wrapper(root: string = 'body') {
 export interface GenerateFindersParams {
   components: ComponentWrapperMetadata[];
   testUtilType: TestUtilType;
+  namespace?: string;
 }
 
-export const generateComponentFinders = ({ components, testUtilType }: GenerateFindersParams) => `
+const DEFAULT_NAMESPACES: Record<TestUtilType, string> = {
+  dom: '@cloudscape-design/test-utils-core/dist/dom',
+  selectors: '@cloudscape-design/test-utils-core/dist/selectors',
+};
+
+export const generateComponentFinders = ({ components, testUtilType, namespace }: GenerateFindersParams) => {
+  const declareModuleTarget = namespace ?? DEFAULT_NAMESPACES[testUtilType];
+  const importPath = namespace ?? `@cloudscape-design/test-utils-core/${testUtilType}`;
+
+  return `
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
-import { ElementWrapper } from '@cloudscape-design/test-utils-core/${testUtilType}';
+import { ElementWrapper } from '${importPath}';
 import { appendSelector } from '@cloudscape-design/test-utils-core/utils';
 
 export { ElementWrapper };
@@ -112,7 +122,7 @@ ${components.map(componentWrapperImport).join('')}
 
 ${components.map(componentWrapperExport).join('')}
 
-declare module '@cloudscape-design/test-utils-core/dist/${testUtilType}' {
+declare module '${declareModuleTarget}' {
    interface ElementWrapper {
     ${components.map(componentFindersInterfaces[testUtilType]).join('')}
    }
@@ -122,3 +132,4 @@ ${components.map(componentFinders).join('')}
 ${testUtilType === 'dom' ? components.map(componentClosestFinder).join('') : ''}
 ${defaultExport[testUtilType]}
 `;
+};

@@ -91,7 +91,8 @@ export class AbstractWrapper implements IElementWrapper<string, MultiElementWrap
   }
 }
 
-export class ElementWrapper extends AbstractWrapper {}
+export class BaseElementWrapper extends AbstractWrapper {}
+export class ElementWrapper extends BaseElementWrapper {}
 
 export class ComponentWrapper extends AbstractWrapper {}
 

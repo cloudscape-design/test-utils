@@ -73,4 +73,21 @@ describe(`${generateComponentFinders.name}`, () => {
       }
     });
   });
+
+  describe.each(testUtilTypes)('%s with custom namespace', testUtilType => {
+    const customNamespace = `@my-lib/test-utils-core/dist/${testUtilType}`;
+    const sourceFileContent = generateComponentFinders({ components: mockComponents, testUtilType, namespace: customNamespace });
+
+    test('it imports ElementWrapper from the custom namespace', () => {
+      expect(sourceFileContent).toMatch(`import { ElementWrapper } from '${customNamespace}'`);
+    });
+
+    test('it augments the custom namespace', () => {
+      expect(sourceFileContent).toMatch(`declare module '${customNamespace}'`);
+    });
+
+    test('it does not augment the default cloudscape namespace', () => {
+      expect(sourceFileContent).not.toMatch(`declare module '@cloudscape-design/test-utils-core/dist`);
+    });
+  });
 });

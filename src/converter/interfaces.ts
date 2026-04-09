@@ -39,6 +39,18 @@ export interface GenerateTestUtilsParams {
    *
    */
   testUtilsPath: string;
+
+  /**
+   * Custom namespace for the ElementWrapper module augmentation and import.
+   * When provided, the generated index files will import ElementWrapper from the custom namespace
+   * and augment it instead of the default @cloudscape-design/test-utils-core namespace.
+   * This allows custom component libraries to declare an isolated ElementWrapper that does not
+   * inherit augmentations from @cloudscape-design/components.
+   */
+  namespace?: {
+    dom: string;
+    selectors: string;
+  };
 }
 
 export interface ComponentWrapperMetadata extends ComponentMetadata {

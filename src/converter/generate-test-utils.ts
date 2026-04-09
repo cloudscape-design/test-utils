@@ -13,7 +13,7 @@ interface GenerateIndexFilesParams extends GenerateTestUtilsParams {
   testUtilType: TestUtilType;
 }
 
-function generateIndexFile({ testUtilsPath, components, testUtilType }: GenerateIndexFilesParams) {
+function generateIndexFile({ testUtilsPath, components, testUtilType, namespace }: GenerateIndexFilesParams) {
   const componenWrappersMetadata: ComponentWrapperMetadata[] = components.map(
     ({ name, pluralName, testUtilsFolderName }) => ({
       name,
@@ -23,7 +23,11 @@ function generateIndexFile({ testUtilsPath, components, testUtilType }: Generate
     }),
   );
 
-  const content = generateComponentFinders({ testUtilType, components: componenWrappersMetadata });
+  const content = generateComponentFinders({
+    testUtilType,
+    components: componenWrappersMetadata,
+    namespace: namespace?.[testUtilType],
+  });
   const indexFilePath = path.join(testUtilsPath, testUtilType, 'index.ts');
   writeSourceFile(indexFilePath, content);
 }
@@ -53,8 +57,8 @@ function generateSelectorUtils(testUtilsPath: string) {
 /**
  * Generates test utils index files for dom and selector and converts the dom test utils to selectors.
  */
-export function generateTestUtils({ components, testUtilsPath }: GenerateTestUtilsParams) {
+export function generateTestUtils({ components, testUtilsPath, namespace }: GenerateTestUtilsParams) {
   generateSelectorUtils(testUtilsPath);
-  generateIndexFile({ components, testUtilsPath, testUtilType: 'dom' });
-  generateIndexFile({ components, testUtilsPath, testUtilType: 'selectors' });
+  generateIndexFile({ components, testUtilsPath, testUtilType: 'dom', namespace });
+  generateIndexFile({ components, testUtilsPath, testUtilType: 'selectors', namespace });
 }

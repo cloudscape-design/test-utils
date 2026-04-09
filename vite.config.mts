@@ -16,6 +16,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@cloudscape-design/test-utils-core': path.resolve(__dirname, './lib/core'),
+      '@my-lib/test-utils-core': path.resolve(__dirname, './src/converter/test/mock-test-utils-custom-namespace/my-lib-test-utils-core'),
     },
   },
 });

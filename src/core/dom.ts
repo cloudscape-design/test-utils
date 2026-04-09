@@ -197,7 +197,8 @@ export class AbstractWrapper<ElementType extends Element>
   }
 }
 
-export class ElementWrapper<ElementType extends Element = HTMLElement> extends AbstractWrapper<ElementType> {}
+export class BaseElementWrapper<ElementType extends Element = HTMLElement> extends AbstractWrapper<ElementType> {}
+export class ElementWrapper<ElementType extends Element = HTMLElement> extends BaseElementWrapper<ElementType> {}
 export class ComponentWrapper<ElementType extends Element = HTMLElement> extends AbstractWrapper<ElementType> {}
 export function createWrapper(root: Element = document.body) {
   if (document && document.body && !document.body.contains(root)) {

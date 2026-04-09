@@ -98,4 +98,27 @@ describe(`${generateTestUtils.name}`, () => {
       expect(container.querySelector(componentBChildSelector).textContent).toBe('First Component B');
     });
   });
+
+  describe('custom namespace generated dom index file', () => {
+    test('component finders work on the custom ElementWrapper', async () => {
+      const { default: createWrapper } = await import('./mock-test-utils-custom-namespace/dom');
+      const container = renderTestNode();
+      const wrapper = createWrapper(container);
+
+      expect(wrapper.findTestComponentA().getElement().textContent).toBe('First Component A');
+      expect(wrapper.findTestComponentB().getElement().textContent).toBe('First Component B');
+    });
+
+    test('custom ElementWrapper prototype is independent from the cloudscape ElementWrapper prototype', async () => {
+      const { ElementWrapper: CustomElementWrapper } = await import('./mock-test-utils-custom-namespace/dom');
+      const { ElementWrapper: CloudscapeElementWrapper } = await import('./mock-test-utils/dom');
+
+      // The two ElementWrapper classes are distinct — prototype mutations on one don't affect the other
+      expect(CustomElementWrapper.prototype).not.toBe(CloudscapeElementWrapper.prototype);
+      // Both share BaseElementWrapper as their parent, but their own prototypes are separate
+      expect(Object.getPrototypeOf(CustomElementWrapper.prototype)).toBe(
+        Object.getPrototypeOf(CloudscapeElementWrapper.prototype),
+      );
+    });
+  });
 });

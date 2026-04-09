@@ -64,4 +64,25 @@ describe(`${generateTestUtils.name}`, () => {
       expect.stringMatching(testUtilsFilePartialContent),
     );
   });
+
+  test.each(testUtilsType)('uses custom namespace in generated %s index file', testUtilType => {
+    const customNamespace = `@my-lib/test-utils-core/dist/${testUtilType}`;
+    generateTestUtils({
+      components: mockComponents,
+      testUtilsPath: './test/mock-test-utils',
+      namespace: {
+        dom: '@my-lib/test-utils-core/dist/dom',
+        selectors: '@my-lib/test-utils-core/dist/selectors',
+      },
+    });
+
+    expect(writeFileSync).toHaveBeenCalledWith(
+      `test/mock-test-utils/${testUtilType}/index.ts`,
+      expect.stringMatching(`declare module '${customNamespace}'`),
+    );
+    expect(writeFileSync).toHaveBeenCalledWith(
+      `test/mock-test-utils/${testUtilType}/index.ts`,
+      expect.stringMatching(`from '${customNamespace}'`),
+    );
+  });
 });
