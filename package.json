@@ -27,7 +27,7 @@
     "css-selector-tokenizer": "^0.8.0",
     "css.escape": "^1.5.1",
     "glob": "^13.0.6",
-    "lodash": "^4.17.23",
+    "lodash": "^4.18.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
