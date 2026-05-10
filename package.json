@@ -31,6 +31,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@cloudscape-design/build-tools": "github:cloudscape-design/build-tools#main",
     "@eslint/js": "^10.0.1",
     "@testing-library/react": "^16.2.0",
     "@tony.ganchev/eslint-plugin-header": "^3.3.1",
