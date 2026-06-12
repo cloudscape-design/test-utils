@@ -6,7 +6,14 @@ import { convertToSelectorUtil } from '../convert-to-selectors';
 import { generateTestUtils } from '../generate-test-utils';
 import { ComponentMetadata } from '../interfaces';
 
-vi.mock('fs');
+vi.mock('fs', () => {
+  const fns = {
+    readFileSync: vi.fn(),
+    writeFileSync: vi.fn(),
+    mkdirSync: vi.fn(),
+  };
+  return { ...fns, default: fns };
+});
 vi.mock('../convert-to-selectors');
 
 const mockComponents: ComponentMetadata[] = [
