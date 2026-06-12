@@ -9,7 +9,7 @@ export default defineConfig({
     coverage: {
       enabled: process.env.CI === 'true',
       provider: 'istanbul',
-      include: ['src/**'],
+      include: ['src/**/*.{js,jsx,ts,tsx}'],
       exclude: ['**/debug-tools/**', '**/test/**'],
     },
   },
