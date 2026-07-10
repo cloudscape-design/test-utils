@@ -7,9 +7,6 @@ const headerPlugin = require('@tony.ganchev/eslint-plugin-header');
 const prettierPlugin = require('eslint-plugin-prettier');
 const prettierConfig = require('eslint-config-prettier');
 
-// https://github.com/Stuk/eslint-plugin-header/issues/57
-headerPlugin.rules.header.meta.schema = false;
-
 module.exports = [
   {
     ignores: ['node_modules/**', 'lib/**', '**/dist/**', 'src/converter/test/outputs/**', 'test/mock-test-utils/**'],
