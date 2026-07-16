@@ -18,6 +18,21 @@ export default class DummyWrapper extends ComponentWrapper {
 }"
 `;
 
+exports[`reexport-source 1`] = `
+"// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: Apache-2.0
+
+// Proxied wrappers are often written as re-exports, so the \`/dom\` -> \`/selectors\`
+// rewrite has to apply to re-export sources too, not just imports.
+export { default } from "@cloudscape-design/components/test-utils/selectors/button";
+export * from "@cloudscape-design/components/test-utils/selectors/container";
+
+// Local exports have no module source, so they stay as-is.
+const value = 1;
+export { value };
+export default value;"
+`;
+
 exports[`simple 1`] = `
 "// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0

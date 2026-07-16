@@ -10,6 +10,14 @@ interface PluginArguments {
   types: typeof types;
 }
 
+// Rewrites a `@cloudscape-design/.../dom` module path to `.../selectors`.
+function rewriteDomSourceToSelectors(source: NodePath<types.StringLiteral>, t: typeof types) {
+  const value = source.node.value;
+  if (value.startsWith('@cloudscape-design/')) {
+    source.replaceWith(t.stringLiteral(value.replace(/\b\/dom\b/, '/selectors')));
+  }
+}
+
 function selectorUtilsGenerator({ types: t }: PluginArguments): PluginObj {
   return {
     visitor: {
@@ -17,10 +25,7 @@ function selectorUtilsGenerator({ types: t }: PluginArguments): PluginObj {
         const source = path.get('source');
 
         // Rewrite import path @cloudscape-design/.../dom -> @cloudscape-design/.../selectors
-        if (source.node.value.startsWith('@cloudscape-design/')) {
-          const newImportPath = source.node.value.replace(/\b\/dom\b/, '/selectors');
-          source.replaceWith(t.stringLiteral(newImportPath));
-        }
+        rewriteDomSourceToSelectors(source, t);
 
         // Remove @usesDom decorator
         if (source.node.value === runtimeSelectorsPath) {
@@ -34,6 +39,15 @@ function selectorUtilsGenerator({ types: t }: PluginArguments): PluginObj {
         if (source.node.value === domUtilsPath) {
           path.remove();
         }
+      },
+      // Re-exports need the same rewrite as imports. Local exports have no source.
+      ExportNamedDeclaration(path: NodePath<types.ExportNamedDeclaration>) {
+        if (path.node.source) {
+          rewriteDomSourceToSelectors(path.get('source') as NodePath<types.StringLiteral>, t);
+        }
+      },
+      ExportAllDeclaration(path: NodePath<types.ExportAllDeclaration>) {
+        rewriteDomSourceToSelectors(path.get('source'), t);
       },
       ClassDeclaration(path: NodePath<types.ClassDeclaration>) {
         // our wrapper classes have generic parameters only in DOM version
