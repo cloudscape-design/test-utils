@@ -56,7 +56,8 @@
     "vitest": "^4.1.11"
   },
   "overrides": {
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "minimatch": "11.0.5"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
