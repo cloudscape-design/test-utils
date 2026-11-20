@@ -123,6 +123,8 @@ export default function wrapper(root: Element = document.body) {
   };
   return new ElementWrapper(root);
 }
+
+export { wrapper as createWrapper };
 "
 `;
 
@@ -214,5 +216,7 @@ ElementWrapper.prototype.findAllTestComponentBs = function(selector) {
 export default function wrapper(root: string = 'body') {
   return new ElementWrapper(root);
 }
+
+export { wrapper as createWrapper };
 "
 `;

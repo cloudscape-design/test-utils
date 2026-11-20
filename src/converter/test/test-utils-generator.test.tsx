@@ -32,7 +32,7 @@ function renderTestNode() {
 describe(`${generateTestUtils.name}`, () => {
   describe('generated dom index file', () => {
     test('component finders return the first matching node', async () => {
-      const { default: createWrapper } = await import('./mock-test-utils/dom');
+      const { createWrapper } = await import('./mock-test-utils/dom');
       const container = renderTestNode();
       const wrapper = createWrapper(container);
 
@@ -61,7 +61,7 @@ describe(`${generateTestUtils.name}`, () => {
 
   describe('generated selectors index file', () => {
     test('component finders return the selector matching the first component', async () => {
-      const { default: createWrapper } = await import('./mock-test-utils/selectors');
+      const { createWrapper } = await import('./mock-test-utils/selectors');
       const container = renderTestNode();
       const wrapper = createWrapper();
 

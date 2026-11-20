@@ -65,12 +65,13 @@ describe(`${generateComponentFinders.name}`, () => {
       }
     });
 
-    test('it exports the wrapper creator', () => {
+    test('it exports the wrapper creator as default and named exports', () => {
       if (testUtilType === 'dom') {
         expect(sourceFileContent).toMatch('export default function wrapper(root: Element = document.body)');
       } else {
         expect(sourceFileContent).toMatch(`export default function wrapper(root: string = 'body')`);
       }
+      expect(sourceFileContent).toMatch('export { wrapper as createWrapper };');
     });
   });
 });
