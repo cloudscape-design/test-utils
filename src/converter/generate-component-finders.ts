@@ -88,12 +88,16 @@ export default function wrapper(root: Element = document.body) {
     console.warn('[AwsUi] [test-utils] provided element is not part of the document body, interactions may work incorrectly')
   };
   return new ElementWrapper(root);
-}`,
+}
+
+export { wrapper as createWrapper };`,
 
   selectors: `
 export default function wrapper(root: string = 'body') {
   return new ElementWrapper(root);
-}`,
+}
+
+export { wrapper as createWrapper };`,
 };
 
 export interface GenerateFindersParams {
